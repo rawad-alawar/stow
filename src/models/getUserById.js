@@ -1,17 +1,12 @@
-var knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: '../../database/dev.sqlite3'
-  }
-})
+var knex = require('./connection')
 
 function getUserById(id){
   knex('users').where({
     user_ID: id
-  }).finally(function(data){
-    console.log("finished")
-    // knex.destroy()
+  })
+  .then(function(data){
+    return data
   })
 }
 
-console.log(getUserById(2))
+module.exports = getUserById

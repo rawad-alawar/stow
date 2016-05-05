@@ -5,7 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var db = require('./src/models/getAllListings')
+var getAllListings = require('./src/models/getAllListings')
+var getUserById = require('./src/models/getUserById')
 
 var app = express();
 
@@ -22,11 +23,20 @@ app.get('/', function(req, res) {
 });
 
 app.get('/list', function(req, res) {
-  db().then( function(data){
-    console.log(data)
-    res.send(data)
+  getAllListings()
+    .then( function(data){
+      console.log(data)
+      res.send(data)
   })
 })
+
+app.get('/user/:id', function(req, res) {
+  console.log(getUserById)
+  getUserById(2).then(function(data){
+      res.send(data)
+    })
+
+} )
 
 
 
