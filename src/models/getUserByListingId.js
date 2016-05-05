@@ -1,6 +1,6 @@
 var knex = require('./connection')
 
-function getUserByListingId(listingID){
+function getUserByListingId(listingID){ ///refactor to use a join
   return knex('listings')
   .where({
     listings_ID: listingID
