@@ -10,8 +10,12 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'public'),
-    publicPath: '/public/'
+    publicPath: '/public/',
     filename: 'bundle.js'
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
 
   plugins: [
@@ -31,17 +35,17 @@ module.exports = {
 
   module: {
     loaders: [
+      { test: /\.css$/,
+        loader: 'style!css' },
+      { test: /\.scss?$/,
+        loader: 'style!css!sass',
+        include: path.join(__dirname, 'public', 'styles') },
       { test: /\.js?$/,
         loader: 'babel',
         exclude: /node_modules/ },
       { test: /\.jsx?$/,
         loader: 'babel',
         exclude: /node_modules/ },
-      { test: /\.css$/,
-        loader: 'style!css' },
-      { test: /\.scss?$/,
-        loader: 'style!css!sass',
-        include: path.join(__dirname, 'public', 'styles') },
       { test: /\.png$/,
         loader: 'file' },
       { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
