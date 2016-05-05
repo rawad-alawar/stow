@@ -1,19 +1,14 @@
-var webpack = require('webpack');
-
-function getEntrySources(sources) {
-    if (process.env.NODE_ENV !== 'production') {
-        sources.push('webpack-dev-server/client?http://localhost:8080');
-        sources.push('webpack/hot/only-dev-server');
-    }
-    return sources;
-}
+const path = require('path')
+const webpack = require('webpack');
 
 module.exports = {
-  entry: {
-    app: getEntrySources([
-      './src/index.js'
-    ])
-  },
+  devtool: 'eval',
+
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/index.js'
+  ],
+
   module: {
     loaders: [
       { test: /\.css$/,
@@ -25,15 +20,19 @@ module.exports = {
         loader: 'react-hot!babel' },
       { test: /\.js?$/,
         exclude: /node_modules/,
-        loader: 'react-hot!babel' }
+        loader: 'react-hot!babel' },
+      { test: /\.png$/,
+        loader: 'file' },
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file' }
     ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/public',
-    publicPath: '/',
+    path: path.join(__dirname, 'public'),
+    publicPath: '/public/',
     filename: 'bundle.js'
   },
   devServer: {
