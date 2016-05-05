@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "node ./bin/www",
-    "build": "webpack --optimize-minimize",
+    "build": "webpack",
     "watch": "webpack --progress --colors --watch",
     "dev": "webpack-dev-server --inline --hot"
   },
