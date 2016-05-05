@@ -1,3 +1,7 @@
 body {
   background-color: yellow;
 }
+
+.main-container {
+	padding-top: 50px;
+}

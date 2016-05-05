@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import Header from './Header'
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome to {this.props.title}</h1>
+        {this.props.children}
       </div>
     )
   }
