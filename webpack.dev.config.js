@@ -1,5 +1,5 @@
 const path = require('path')
-const webpack = require('webpack');
+const webpack = require('webpack')
 
 module.exports = {
   devtool: 'eval',
@@ -27,14 +27,14 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
 
   module: {
     loaders: [
       { test: /\.css$/,
         loader: 'style!css' },
       { test: /\.scss?$/,
-        loader: 'style!css!sass'
+        loader: 'style!css!sass',
         include: path.join(__dirname, 'public', 'styles') },
       { test: /\.js?$/,
         loader: 'react-hot!babel',
@@ -47,5 +47,5 @@ module.exports = {
       { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         loader: 'file' }
     ]
-  },
+  }
 };
