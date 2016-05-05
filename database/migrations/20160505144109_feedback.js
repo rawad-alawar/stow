@@ -4,9 +4,9 @@ exports.up = function(knex, Promise) {
   console.log('create table')
 
   return knex.schema.createTableIfNotExists('feedback', function(table) {
-      table.increments('id')
-      table.string('feedbacker_ID')
-      table.string('poster_ID')
+      table.increments('feedback_ID')
+      table.integer('feedbacker_ID')
+      table.integer('poster_ID')
       table.string('comment')
       table.integer('rating')
       table.timestamps()

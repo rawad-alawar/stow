@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('feedback').insert({
-      id: 1,
+      feedback_ID: 1,
       feedbacker_ID: '',
       poster_ID: '',
       comment:'',

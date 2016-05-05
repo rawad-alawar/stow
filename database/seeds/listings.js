@@ -5,7 +5,8 @@ exports.seed = function(knex, Promise) {
     knex('listings').del(),
 
     // Inserts seed entries
-    knex('listings').insert({id: 1,
+    knex('listings').insert({
+      listings_ID: 1,
       renter_ID: '',
       lister_ID:'',
       suburb:'',
