@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var getAllListings = require('./src/models/getAllListings')
 var getUserById = require('./src/models/getUserById')
 var getUserByListingId = require('./src/models/getUserById')
+var saveUserSignup = require('./src/models/saveUserSignup')
 
 var app = express();
 
@@ -48,6 +49,14 @@ app.get('/user/listing/:id', function(req, res) {
   })
 })
 
+app.post('/user/signup', function(req, res){
+  console.log(typeof saveUserSignup)
+  console.log(req.body)
+  saveUserSignup(req.body)
+  .then(function(){
+    res.send("booty hole warrior")
+  })
+})
 
 
 
