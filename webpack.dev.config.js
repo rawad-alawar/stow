@@ -32,7 +32,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'public'),
-    publicPath: '/',
+    publicPath: '/public/',
     filename: 'bundle.js'
   },
   devServer: {
