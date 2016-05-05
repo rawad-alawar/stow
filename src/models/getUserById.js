@@ -1,9 +1,11 @@
 var knex = require('./connection')
 
 function getUserById(id){
-  knex('users').where({
+  return knex('users')
+  .where({
     user_ID: id
   })
+  .select()
   .then(function(data){
     return data
   })

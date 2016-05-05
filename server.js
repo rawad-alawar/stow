@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var getAllListings = require('./src/models/getAllListings')
 var getUserById = require('./src/models/getUserById')
+var getUserByListingId = require('./src/models/getUserById')
 
 var app = express();
 
@@ -27,19 +28,25 @@ app.get('/', function(req, res) {
 
 app.get('/list', function(req, res) {
   getAllListings()
-    .then( function(data){
-      console.log(data)
-      res.send(data)
+  .then( function(data){
+    console.log(data)
+    res.send(data)
   })
 })
 
 app.get('/user/:id', function(req, res) {
-  console.log(getUserById)
-  getUserById(2).then(function(data){
-      res.send(data)
+  getUserById(req.params.id)
+  .then(function(data){
+    res.send(data)
     })
-
 } )
+
+app.get('/user/listing/:id', function(req, res) {
+  getUserByListingId(req.params.id)
+  .then(function(data) {
+    res.send(data)
+  })
+})
 
 
 

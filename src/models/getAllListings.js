@@ -6,13 +6,8 @@ function getAllListings(){
     .select().table('listings')
     .then(function(data){
       console.log(typeof data)
-
       return data
     })
-
-  // .finally(function(){
-  //   knex.destroy()
-  // })
 }
 
 
