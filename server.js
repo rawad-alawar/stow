@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var db = require('./src/models/getAllListings')
+
 var app = express();
 
 // uncomment after placing your favicon in /public
@@ -18,5 +20,15 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
+
+app.get('/list', function(req, res) {
+  db().then( function(data){
+    console.log(data)
+    res.send(data)
+  })
+})
+
+
+
 
 module.exports = app;
