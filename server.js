@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 var indexPath = path.join(__dirname, '/public/index.html')
-var publicPath = express.static(path.join(__dirname, '/'))
+var publicPath = express.static(path.join(__dirname, '/public'))
 
 app.use('/public', publicPath)
 app.get('/', function(req, res) {
