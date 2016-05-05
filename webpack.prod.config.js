@@ -14,6 +14,10 @@ module.exports = {
     filename: 'bundle.js'
   },
 
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -31,17 +35,17 @@ module.exports = {
 
   module: {
     loaders: [
+      { test: /\.css$/,
+        loader: 'style!css' },
+      { test: /\.scss?$/,
+        loader: 'style!css!sass',
+        include: path.join(__dirname, 'public', 'styles') },
       { test: /\.js?$/,
         loader: 'babel',
         exclude: /node_modules/ },
       { test: /\.jsx?$/,
         loader: 'babel',
         exclude: /node_modules/ },
-      { test: /\.css$/,
-        loader: 'style!css' },
-      { test: /\.scss?$/,
-        loader: 'style!css!sass',
-        include: path.join(__dirname, 'public', 'styles') },
       { test: /\.png$/,
         loader: 'file' },
       { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,

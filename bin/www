@@ -17,8 +17,8 @@ app.set('port', port);
 
 if(process.env.NODE_ENV !== 'production') {
   var webpack = require('webpack')
-  const webpackDevMiddleware = require('webpack-dev-middleware')
-  const webpackHotMiddleware = require('webpack-hot-middleware')
+  var webpackDevMiddleware = require('webpack-dev-middleware')
+  var webpackHotMiddleware = require('webpack-hot-middleware')
   var config = require('../webpack.dev.config.js')
   var compiler = webpack(config)
 
@@ -101,5 +101,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log('Server listening on Port ' + port);
+  console.log('Server is listening on Port ' + port);
 }
