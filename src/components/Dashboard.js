@@ -1,19 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
-import Header from './Header'
+
 import Jumbotron from './Jumbotron'
 import Listings from './Listings'
-import Dashboard from './Dashboard'
 
 
-
-class Home extends Component {
+class Dashboard extends Component {
   render() {
-    return (
-      <div className="col-sm-12">
-        <Header/>
-        {this.props.children}
+    return ( 
+      <div>
+        <Jumbotron />
+        <Listings />
       </div>
     )
   }
@@ -25,4 +23,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Dashboard)

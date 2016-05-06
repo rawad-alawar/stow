@@ -6,14 +6,16 @@ import Signin from './components/Signin'
 import Signup from './components/Signup'
 import Upload from './components/Upload'
 import Jumbotron from './components/Jumbotron'
+import Dashboard from './components/Dashboard'
 
 
 export default (
   <Router history={hashHistory}>
     <Route path='/' component={Home}>
-      <Route path='/signin' component={Signin}/>
-      <Route path='/signup' component={Signup}/>
-      <Route path='/upload' component={Upload}/>
+    	<IndexRoute component={Dashboard}/>
+      <Route path='signin' component={Signin}/>
+      <Route path='signup' component={Signup}/>
+      <Route path='upload' component={Upload}/>
     </Route>
   </Router>
 )
