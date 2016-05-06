@@ -3,9 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import Header from './Header'
 import Jumbotron from './Jumbotron'
-import Listings from './Listings'
-import Dashboard from './Dashboard'
-
 
 
 class Home extends Component {
