@@ -13,18 +13,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sessions({
-  cookieName: 'mysession',
-  secret: 'James hates mince',
-  duration: 60 * 60 * 1000,
-  activeDuration: 1000 * 60 * 5
-}))
-
-var indexPath = path.join(__dirname, '/public/index.html')
-var publicPath = express.static(path.join(__dirname, '/public'))
-var auth = require('./src/auth')
-var sess
-
 app.use(session({
   secret: 'top secret',
   saveUninitialized: true,
@@ -32,12 +20,18 @@ app.use(session({
   db: knex
 }))
 
+var auth = require('./src/auth')
+var sess
+
+var indexPath = path.join(__dirname, '/public/index.html')
+var publicPath = express.static(path.join(__dirname, '/public'))
+
 app.use('/public', publicPath)
-app.get('/', function(req, res) {
+app.get('/', function(req,res) {
     res.sendFile(indexPath);
 })
 
-app.post('/login', function (req, res) {
+app.post('/login', function (req,res) {
   sess = req.session
   auth.getUser(req.body.email)
     .then(function(data) {
@@ -46,7 +40,7 @@ app.post('/login', function (req, res) {
       else {
         auth.checkPassword(req.body.password, data[0].password_hash, function(err, correct) {
           if(correct) {
-            sess.userId = data[0].id
+            sess.userId = data[0].userId
             res.end()
           }
         })
@@ -54,10 +48,29 @@ app.post('/login', function (req, res) {
     })
 })
 
-app.get('/chechAuthorisation', function(req, res) {
-  sess = req.userId
+app.post('/signup', function (req,res) {
+  sess = req.session
+  auth.getUser(req.body.email)
+    .then(function(data) {
+      if(data.length > 0)
+        res.send('Email already in use')
+      else {
+        auth.hash(req.body.password, function(err,hash) {
+          if(err) {console.log(err); return}
+          auth.createUser(req.body.email, hash)
+            .then(function(data) {
+              req.session.userId = data[0]
+              res.redirect('/')
+            })
+        })
+      }
+    })
+})
+
+app.get('/checkAuth', function(req,res) {
+  sess = req.session
   var authorised = false
-  if(sess.email) {
+  if(sess.userId) {
     authorised = true
   }
   res.send(authorised)
