@@ -17,6 +17,7 @@ function saveListing(data) {
     endDate: data.enddate,
     availability: data.availability
   })
+  .then(knex.destroy())
 }
 
 module.exports = saveListing

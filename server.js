@@ -2,12 +2,20 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session')
+var cookieParser = require('cookie-parser')
+
+var env = process.env.NODE_ENV || 'development'
+
+var knex = require('./src/models/connection')
 
 var getAllListings = require('./src/models/getAllListings')
 var getUserById = require('./src/models/getUserById')
 var getUserByListingId = require('./src/models/getUserById')
-var saveUserSignup = require('./src/models/saveUserSignup')
+var createUser = require('./src/models/createUser')
 var saveListing = require('./src/models/saveListing')
+var getUserByUsername = require('./src/models/getUserByUsername')
+var hashPassword = require('./src/models/hash')
+var checkPassword = require('./src/models/checkPassword')
 var app = express();
 
 app.use(bodyParser.json());
@@ -20,7 +28,6 @@ app.use(session({
   db: knex
 }))
 
-var auth = require('./src/auth')
 var sess
 
 var indexPath = path.join(__dirname, '/public/index.html')
@@ -33,15 +40,18 @@ app.get('/', function(req,res) {
 
 app.post('/login', function (req,res) {
   sess = req.session
-  auth.getUser(req.body.email)
+  getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length === 0)
-        res.send('Email not found')
+        res.send('Username not found')
       else {
-        auth.checkPassword(req.body.password, data[0].password_hash, function(err, correct) {
+        checkPassword(req.body.password, data[0].password, function(err, correct) {
           if(correct) {
             sess.userId = data[0].userId
-            res.end()
+            res.send()
+          }
+          else{
+          res.end()
           }
         })
       }
@@ -50,14 +60,14 @@ app.post('/login', function (req,res) {
 
 app.post('/signup', function (req,res) {
   sess = req.session
-  auth.getUser(req.body.email)
+  getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length > 0)
-        res.send('Email already in use')
+        res.send('Username already in use')
       else {
-        auth.hash(req.body.password, function(err,hash) {
+        hashPassword(req.body.password, function(err,hash) {
           if(err) {console.log(err); return}
-          auth.createUser(req.body.email, hash)
+          createUser(req.body, hash)
             .then(function(data) {
               req.session.userId = data[0]
               res.redirect('/')
@@ -116,7 +126,7 @@ app.post('/user/signup', function(req, res){
   })
 })
 
-<<<<<<< HEAD
+
 app.post('/listing/add', function(req, res){
   console.log(req.body)
   saveListing(req.body)
@@ -124,12 +134,11 @@ app.post('/listing/add', function(req, res){
     res.end()
   })
 })
-=======
+
 app.get('/login', function(req, res) {
   req.sessions.username = 'fancypants'
 })
 
->>>>>>> 072cb76f96b23813e5bca67ecc183674fff8a106
 
 
 module.exports = app;
