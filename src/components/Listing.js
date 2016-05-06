@@ -6,8 +6,8 @@ class Listing extends Component {
   render() {
     return (
       <div className="col-sm-12">
-        <div className="row">
-          <div className="col-sm-12 col-lg-4">
+        <div className="row"> 
+          <div className="col-sm-6">
             <img className="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="350" height="350"/>
           </div>
 

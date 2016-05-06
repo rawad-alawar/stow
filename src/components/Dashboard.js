@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import Jumbotron from './Jumbotron'
-import Listings from './Listings'
+import ListingsContainer from './ListingsContainer'
 
 
 class Dashboard extends Component {
@@ -10,7 +10,7 @@ class Dashboard extends Component {
     return ( 
       <div>
         <Jumbotron />
-        <Listings />
+        <ListingsContainer />
       </div>
     )
   }
