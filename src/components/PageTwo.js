@@ -2,14 +2,12 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-class Home extends Component {
+class PageTwo extends Component {
   render() {
     return (
       <div>
-        <h1>Hello to {this.props.title}</h1>
-        <Link to="/">Home</Link><br></br>
-        <Link to="/PageTwo">Go to pageTwo</Link>
-        {this.props.children}
+        <h2>Page Two!</h2>
+        <p>I'm page two!</p>
       </div>
     )
   }
@@ -21,4 +19,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(PageTwo)
