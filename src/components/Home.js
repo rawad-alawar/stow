@@ -9,8 +9,8 @@ class Home extends Component {
   render() {
     return (
       <div className="col-sm-12">
-      <Header/>
-        {this.props.children || <Jumbotron/> }
+        <Header/>
+        {this.props.children}
       </div>
     )
   }
