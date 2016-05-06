@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+import Header from './Header'
+import Jumbotron from './Jumbotron'
+
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h1>Hello to {this.props.title}</h1>
-        <Link to="/">Home</Link><br></br>
-        <Link to="/PageTwo">Go to pageTwo</Link>
-        {this.props.children}
+      <div className="col-sm-12">
+      <Header/>
+        {this.props.children || <Jumbotron/> }
       </div>
     )
   }
