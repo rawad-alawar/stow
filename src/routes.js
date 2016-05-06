@@ -7,6 +7,7 @@ import Signup from './components/Signup'
 import Upload from './components/Upload'
 import Jumbotron from './components/Jumbotron'
 import Dashboard from './components/Dashboard'
+import Listing from './components/Listing'
 
 
 export default (
@@ -16,6 +17,8 @@ export default (
       <Route path='signin' component={Signin}/>
       <Route path='signup' component={Signup}/>
       <Route path='upload' component={Upload}/>
+      <Route path='listing' component={Listing}/>
+
     </Route>
   </Router>
 )
