@@ -16,6 +16,7 @@ exports.seed = function(knex, Promise) {
       country:'',
       size:'',
       price:0,
+      description: 'a real beauty of spot',
       negotiable: true,
       url: '',
       startDate:'2016-05-05',
