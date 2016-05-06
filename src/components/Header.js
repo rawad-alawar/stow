@@ -3,13 +3,27 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 class Header extends Component {
+
+  handleUpload(e){
+    e.preventDefault()
+    request.get('/checkAuth')
+      .end(err, authorised)=>{
+        authorised ? console.log('in session') : console.log('not logged in');
+
+      }
+
+        //if authorised===true, end
+        //if authorised  ===false, direct to login page
+  }
+
+
   render() {
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
             <Link to='/Upload'>
-              <button type='button' className='btn btn-med btn-info right'>Upload</button>
+              <button type='button' className='btn btn-med btn-info right' onClick={this.handleUpload.bind(this)}>Upload</button>
             </Link>
             <Link to='/'>
               <button type='button' className='btn btn-med btn-info right'>Home</button>

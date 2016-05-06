@@ -83,7 +83,7 @@ app.get('/checkAuth', function(req,res) {
   if(sess.userId) {
     authorised = true
   }
-  res.send(authorised)
+  res.json(authorised)
 })
 
 app.get('/logout', function(req, res) {
