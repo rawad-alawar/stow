@@ -42,16 +42,17 @@ app.post('/login', function (req,res) {
   getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length === 0)
-        res.send('Username not found')
+        res.json('Username not found')
       else {
         checkPassword(req.body.password, data[0].password, function(err, correct) {
-          if(correct) {
+          if(err)
+            console.log(err)
+          else if(correct) {
             sess.userId = data[0].userId
-            res.send()
+            res.json('logged in')
           }
-          else{
-          res.end()
-          }
+          else
+            res.json('not logged in')
         })
       }
     })
@@ -62,14 +63,14 @@ app.post('/signup', function (req,res) {
   getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length > 0)
-        res.send('Username already in use')
+        res.json('Username already in use')
       else {
         hashPassword(req.body.password, function(err,hash) {
           if(err) {console.log(err); return}
           createUser(req.body, hash)
             .then(function(data) {
               req.session.userId = data[0]
-              res.redirect('/')
+              res.json('all signed up!')
             })
         })
       }

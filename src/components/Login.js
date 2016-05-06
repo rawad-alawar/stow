@@ -5,24 +5,21 @@ import request from 'superagent'
 
 class Login extends Component {
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault()
     const formData = {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
-    // request.get('http://localhost:3000/ajax')
-    //   .end(()=>{console.log('done')})
 
-    request.post('http://localhost:3000/login')
+    request.post('/login')
       .send(formData)
       .end((err, res)=>{
-        console.log('hi')
         if(err) console.log('ERROR ', err)
         else {
           this.refs.username=''
           this.refs.password=''
-          console.log('Server REsponse',res.body)
+          console.log('Server SAYS: ',res.body)
         }
       })
   }
