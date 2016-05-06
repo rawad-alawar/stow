@@ -8,6 +8,7 @@ function getAllListings(){
       console.log(typeof data)
       return data
     })
+    .then(knex.destroy())
 }
 
 

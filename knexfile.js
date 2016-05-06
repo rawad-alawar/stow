@@ -6,6 +6,10 @@ module.exports = {
     connection: {
       filename: __dirname + '/database/dev.sqlite3'
     },
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
       directory: 'database/migrations'
     },
