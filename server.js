@@ -33,19 +33,20 @@ app.get('/', function(req,res) {
 
 app.post('/login', function (req,res) {
   sess = req.session
-  auth.getUser(req.body.email)
-    .then(function(data) {
-      if(data.length === 0)
+  console.log("form info", req.body)
+  // auth.getUser(req.body.email)
+  //   .then(function(data) {
+  //     if(data.length === 0)
         res.send('Email not found')
-      else {
-        auth.checkPassword(req.body.password, data[0].password_hash, function(err, correct) {
-          if(correct) {
-            sess.userId = data[0].userId
-            res.end()
-          }
-        })
-      }
-    })
+      // else {
+      //   auth.checkPassword(req.body.password, data[0].password_hash, function(err, correct) {
+      //     if(correct) {
+      //       sess.userId = data[0].userId
+      //       res.end()
+      //     }
+    //     })
+    //   }
+    // })
 })
 
 app.post('/signup', function (req,res) {
