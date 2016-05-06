@@ -11,10 +11,14 @@ class Login extends Component {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
-    request.post('/login')
+    // request.get('http://localhost:3000/ajax')
+    //   .end(()=>{console.log('done')})
+
+    request.post('http://localhost:3000/login')
       .send(formData)
       .end((err, res)=>{
-        if(err) console.log(err)
+        console.log('hi')
+        if(err) console.log('ERROR ', err)
         else {
           this.refs.username=''
           this.refs.password=''

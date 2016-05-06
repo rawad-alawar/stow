@@ -12,15 +12,20 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(session({
   secret: 'top secret',
   saveUninitialized: true,
   resave: true,
-  db: knex
+  // db: knex
 }))
 
-var auth = require('./src/auth')
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+// var auth = require('./src/auth')
 var sess
 
 var indexPath = path.join(__dirname, '/public/index.html')
@@ -28,25 +33,18 @@ var publicPath = express.static(path.join(__dirname, '/public'))
 
 app.use('/public', publicPath)
 app.get('/', function(req,res) {
-    res.sendFile(indexPath);
+  res.sendFile(indexPath);
 })
 
 app.post('/login', function (req,res) {
   sess = req.session
   console.log("form info", req.body)
-  // auth.getUser(req.body.email)
-  //   .then(function(data) {
-  //     if(data.length === 0)
-        res.send('Email not found')
-      // else {
-      //   auth.checkPassword(req.body.password, data[0].password_hash, function(err, correct) {
-      //     if(correct) {
-      //       sess.userId = data[0].userId
-      //       res.end()
-      //     }
-    //     })
-    //   }
-    // })
+  sess.userId = 1
+  res.end()
+})
+
+app.get('/ajax', function( req, res) {
+  res.json('finished')
 })
 
 app.post('/signup', function (req,res) {
