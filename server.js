@@ -7,7 +7,7 @@ var getAllListings = require('./src/models/getAllListings')
 var getUserById = require('./src/models/getUserById')
 var getUserByListingId = require('./src/models/getUserById')
 var saveUserSignup = require('./src/models/saveUserSignup')
-
+var saveListing = require('./src/models/saveListing')
 var app = express();
 
 app.use(bodyParser.json());
@@ -49,10 +49,17 @@ app.post('/user/signup', function(req, res){
   console.log(req.body)
   saveUserSignup(req.body)
   .then(function(){
-    res.send("booty hole warrior")
+    res.end()
   })
 })
 
+app.post('/listing/add', function(req, res){
+  console.log(req.body)
+  saveListing(req.body)
+  .then(function(){
+    res.end()
+  })
+})
 
 
 module.exports = app;
