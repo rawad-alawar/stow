@@ -7,7 +7,7 @@ class PageTwo extends Component {
     return (
       <div>
         <h2>Page Two!</h2>
-        <p>I'm page two!</p>
+        <p>I'm page 30000!</p>
       </div>
     )
   }
