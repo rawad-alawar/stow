@@ -15,10 +15,14 @@ class Header extends Component {
               <button type='button' className='btn btn-med btn-info'>Home</button>
             </Link>
             <Link to='/Login'>
+<<<<<<< HEAD
               <button type='button' className='pull-right btn btn-med btn-info'>Log-in</button>
             </Link>
             <Link to='/Signup'>
               <button type='button' className='pull-right btn btn-med btn-info'>Sign-up</button>
+=======
+              <button type='button' className='pull-right btn btn-med btn-info right'>Login</button>
+>>>>>>> d488dca1bc105ebc125758891519f6f19bf848c1
             </Link>
           </div>
         </nav>
