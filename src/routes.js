@@ -2,18 +2,20 @@ import React from 'react'
 import {Router, Route, hashHistory, IndexRoute} from 'react-router'
 
 import Home from './components/Home'
-import Signin from './components/Signin'
+import Login from './components/Login'
 import Signup from './components/Signup'
 import Upload from './components/Upload'
 import Jumbotron from './components/Jumbotron'
+import Dashboard from './components/Dashboard'
 
 
 export default (
   <Router history={hashHistory}>
     <Route path='/' component={Home}>
-      <Route path='/signin' component={Signin}/>
-      <Route path='/signup' component={Signup}/>
-      <Route path='/upload' component={Upload}/>
+    	<IndexRoute component={Dashboard}/>
+      <Route path='login' component={login}/>
+      <Route path='signup' component={Signup}/>
+      <Route path='upload' component={Upload}/>
     </Route>
   </Router>
 )

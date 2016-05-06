@@ -20,12 +20,11 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(session({
   secret: 'top secret',
   saveUninitialized: true,
   resave: true,
-  db: knex
+  // db: knex
 }))
 
 var sess
@@ -35,7 +34,7 @@ var publicPath = express.static(path.join(__dirname, '/public'))
 
 app.use('/public', publicPath)
 app.get('/', function(req,res) {
-    res.sendFile(indexPath);
+  res.sendFile(indexPath);
 })
 
 app.post('/login', function (req,res) {
@@ -43,15 +42,17 @@ app.post('/login', function (req,res) {
   getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length === 0)
-        res.send('Username not found')
+        res.json('Username not found')
       else {
         checkPassword(req.body.password, data[0].password, function(err, correct) {
-          if(correct) {
+          if(err)
+            console.log(err)
+          else if(correct) {
             sess.userId = data[0].userId
             res.send()
           }
           else{
-            res.end()
+            res.json('logged in')
           }
         })
       }
@@ -63,14 +64,14 @@ app.post('/signup', function (req,res) {
   getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length > 0)
-        res.send('Username already in use')
+        res.json('Username already in use')
       else {
         hashPassword(req.body.password, function(err,hash) {
           if(err) {console.log(err); return}
           createUser(req.body, hash)
             .then(function(data) {
               req.session.userId = data[0]
-              res.redirect('/')
+              res.json('all signed up!')
             })
         })
       }
