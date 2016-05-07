@@ -9,14 +9,19 @@ class Header extends Component {
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
             <Link to='/Upload'>
-              <button type='button' className='btn btn-med btn-info right'>Upload</button>
+              <button type='button' className='btn btn-med btn-info'>Upload</button>
             </Link>
             <Link to='/'>
-              <button type='button' className='btn btn-med btn-info right'>Homie</button>
+              <button type='button' className='btn btn-med btn-info'>Home</button>
             </Link>
             <Link to='/Login'>
-              <button type='button' className='pull-right btn btn-med btn-info right'>Login</button>
+              <button type='button' className='pull-right btn btn-med btn-info'>Log-in</button>
             </Link>
+            <Link to='/Signup'>
+              <button type='button' className='pull-right btn btn-med btn-info'>Sign-up</button>
+            </Link>
+              <button type='button' className='pull-right btn btn-med btn-info'>Logout</button>
+
           </div>
         </nav>
       </div>
