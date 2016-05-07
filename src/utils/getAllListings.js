@@ -6,7 +6,6 @@ function getAllListings(){
     .then(function(data){
       return data
     })
-    .then(knex.destroy())
 }
 
 

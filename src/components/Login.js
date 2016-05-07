@@ -17,8 +17,6 @@ class Login extends Component {
       .end((err, res)=>{
         if(err) console.log('ERROR ', err)
         else {
-          this.refs.username=''
-          this.refs.password=''
           console.log('Server SAYS: ',res.body)
         }
       })
