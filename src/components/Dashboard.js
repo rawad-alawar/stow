@@ -6,23 +6,6 @@ import ListingsContainer from './ListingsContainer'
 import request from 'superagent'
 
 
-request
-  .get('/list')
-  .end(function(err, res){
-    var ListingData = res.body[0]
-    const Listing = {
-      heading: ListingData.heading,
-      suburb:ListingData.suburb,
-      city:ListingData.city,
-      country:ListingData.country,
-      price:ListingData.price,
-      startDate:ListingData.startDate,
-      endDate:ListingData.endDate,
-      details:ListingData.details
-    }
-    console.log('the listing data',Listing)
-  }) 
-
 
 class Dashboard extends Component {
   render() {
@@ -37,8 +20,10 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    title: state.get('title'),
+    listings:state.get('listings')
   }
 }
+
 
 export default connect(mapStateToProps)(Dashboard)

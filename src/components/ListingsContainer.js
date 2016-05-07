@@ -5,10 +5,13 @@ import ListingThumbnail from './ListingThumbnail'
 
 class ListingsContainer extends Component {
   render() {
-  	
+    console.log('listing container', this.props.listings)
+    const appendedListings = this.props.listings.map( listing => {
+      return <ListingThumbnail key={listing.get('listings_ID')} listing={listing}/>
+    })
     return (
       <div>
-
+        {appendedListings}
       </div>
     )
   }
@@ -16,8 +19,7 @@ class ListingsContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    listings: state.get('listings')
   }
 }
-
 export default connect(mapStateToProps)(ListingsContainer)
