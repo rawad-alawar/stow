@@ -10,8 +10,8 @@ var LISTINGS ;
 request
   .get('/list')
   .end(function(err, res){
-    console.log(res, "this res")
-    LISTINGS = res
+    
+    
   }) 
 
 

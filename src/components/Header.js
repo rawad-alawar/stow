@@ -20,6 +20,8 @@ class Header extends Component {
             <Link to='/Signup'>
               <button type='button' className='pull-right btn btn-med btn-info'>Sign-up</button>
             </Link>
+              <button type='button' className='pull-right btn btn-med btn-info'>Logout</button>
+
           </div>
         </nav>
       </div>
