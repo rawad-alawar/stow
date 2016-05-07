@@ -20,6 +20,10 @@ module.exports = {
   },
 
   devServer: {
+    proxy: [{
+      path: '/*',
+      target: 'http://localhost:3000'
+    }],
     contentBase: './public',
     hot: true
   },
