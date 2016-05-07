@@ -88,4 +88,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
   console.log('Server listening on Port ' + port);
+  console.log('Note: This is just the API server. You should also run "npm run dev" and open the browser on localhost:8080')
 }
