@@ -40,10 +40,11 @@ app.post('/login', function (req,res) {
             console.log(err)
           else if(correct) {
             sess.userId = data[0].userId
+            res.send()
+          }
+          else{
             res.json('logged in')
           }
-          else
-            res.json('not logged in')
         })
       }
     })

@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
       table.string('city')
       table.string('country')
       table.string('size')
+      table.text('description')
       table.float('price')
       table.boolean('negotiable')
       table.string('url')
