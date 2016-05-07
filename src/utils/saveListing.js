@@ -15,9 +15,9 @@ function saveListing(data) {
     url: data.url,
     startDate: data.startdate,
     endDate: data.enddate,
-    availability: data.availability
+    availability: data.availability,
+    created_at: Date()
   })
-  .then(knex.destroy())
 }
 
 module.exports = saveListing

@@ -7,7 +7,7 @@ class Jumbotron extends Component {
     return (
     <div className="jumbotron col-sm-12 text-center">
       <h1>Stow</h1>
-      <p className='lead'>Turn your spare space into space cash!</p>
+      <p className='lead'>Turn your spare space into spare cash!</p>
     </div>
     )
   }

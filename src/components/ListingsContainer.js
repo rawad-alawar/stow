@@ -1,16 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
-import Header from './Header'
-import Jumbotron from './Jumbotron'
+import ListingThumbnail from './ListingThumbnail'
 
-
-class Home extends Component {
+class ListingsContainer extends Component {
   render() {
+  	
     return (
       <div>
-        <Header/>
-        {this.props.children}
+
       </div>
     )
   }
@@ -22,4 +20,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(ListingsContainer)
