@@ -22,7 +22,7 @@ request
 			type: 'LOAD_LISTINGS',
 			listings: res.body
 		})
-  }) 
+  })
 
 render(
   <Provider store={store}>

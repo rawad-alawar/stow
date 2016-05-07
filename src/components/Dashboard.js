@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import request from 'superagent'
 
 import Jumbotron from './Jumbotron'
 import ListingsContainer from './ListingsContainer'
-import request from 'superagent'
-
-
 
 class Dashboard extends Component {
   render() {
-    return ( 
+    return (
       <div>
         <Jumbotron />
         <ListingsContainer />
@@ -19,11 +17,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    title: state.get('title'),
-    listings:state.get('listings')
-  }
+  return {}
 }
-
 
 export default connect(mapStateToProps)(Dashboard)

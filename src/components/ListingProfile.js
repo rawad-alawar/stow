@@ -8,7 +8,7 @@ class ListingProfile extends Component {
     const listing = this.props.listings.filter(l => l.get('listings_ID') == id).first()
     return (
       <div className="col-sm-12">
-        <div className="row"> 
+        <div className="row">
           <div className="col-sm-6">
             <img className="img img-responsive" width="460px" src={listing.get('url')}/>
           </div>
@@ -29,7 +29,6 @@ class ListingProfile extends Component {
 function mapStateToProps(state) {
   return {
     listings:state.get('listings')
-
   }
 }
 

@@ -3,14 +3,16 @@ import request from 'superagent'
 
 const INITIAL_STATE = fromJS({
   title: 'stow',
-  listings: {}
+  listings: {},
+  authorised: false
 })
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
   	case 'LOAD_LISTINGS':
-  	console.log('reducer', action.listings)
   		return state.set('listings', fromJS(action.listings))
+    case 'AUTHORISE':
+      return state.set('authorised', action.authorised)
     default:
       return state
   }

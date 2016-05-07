@@ -4,8 +4,8 @@ import {Link} from 'react-router'
 import ListingThumbnail from './ListingThumbnail'
 
 class ListingsContainer extends Component {
+
   render() {
-    console.log('listing container', this.props.listings)
     const appendedListings = this.props.listings.map( listing => {
       return <ListingThumbnail key={listing.get('listings_ID')} listing={listing}/>
     })
