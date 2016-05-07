@@ -2,7 +2,17 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import Jumbotron from './Jumbotron'
-import Listings from './Listings'
+import ListingsContainer from './ListingsContainer'
+import request from 'superagent'
+
+var LISTINGS ;
+
+request
+  .get('/list')
+  .end(function(err, res){
+    
+    
+  }) 
 
 
 class Dashboard extends Component {
@@ -10,7 +20,7 @@ class Dashboard extends Component {
     return ( 
       <div>
         <Jumbotron />
-        <Listings />
+        <ListingsContainer listings={LISTINGS} />
       </div>
     )
   }
