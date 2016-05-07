@@ -13,7 +13,7 @@ export default (
   <Router history={hashHistory}>
     <Route path='/' component={Home}>
     	<IndexRoute component={Dashboard}/>
-      <Route path='login' component={login}/>
+      <Route path='login' component={Login}/>
       <Route path='signup' component={Signup}/>
       <Route path='upload' component={Upload}/>
     </Route>

@@ -21,7 +21,7 @@ exports.seed = function(knex, Promise) {
       url: '',
       startDate:'2016-05-05',
       endDate:'2016-05-13',
-      availability:true})
-
+      availability:true,
+    })
   );
 };
