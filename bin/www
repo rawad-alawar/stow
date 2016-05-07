@@ -7,6 +7,7 @@
 var app = require('../server');
 var debug = require('debug')('stow:server');
 var http = require('http');
+var colors = require('colors')
 
 /**
  * Get port from environment and store in Express.
@@ -87,6 +88,11 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log('Server listening on Port ' + port);
-  console.log('Note: This is just the API server. You should also run "npm run dev" and open the browser on localhost:8080')
+  console.log(colors.green('Server listening on Port %s'), port)
+  console.log('')
+  console.log('>>> Hey team. Just a friendly reminder that this is just the API server. You should also run "npm run dev" in a new tab and open the browser on localhost:8080.'.bgCyan.black)
+  console.log('')
+  console.log('>>> If this is your first time running the server, don\'t forget to migrate and seed the database with "knex:migrate latest" and "knex:run seed".'.bgCyan.black)
+  console.log('')
+  console.log('>>> If you make any edits to files outside of the src folder, you will need to restart this server to see changes.'.bgRed.black)
 }
