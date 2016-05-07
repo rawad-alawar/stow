@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 class Upload extends Component {
+
   render() {
     return (
       <div className="jumbotron col-sm-4 text-center col-centered">
@@ -39,9 +40,7 @@ class Upload extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    title: state.get('title')
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(Upload)

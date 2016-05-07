@@ -17,9 +17,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    title: state.get('title')
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(Home)

@@ -4,50 +4,50 @@
  * Module dependencies.
  */
 
-var app = require('../server');
-var debug = require('debug')('stow:server');
-var http = require('http');
+var app = require('../server')
+var debug = require('debug')('stow:server')
+var http = require('http')
 var colors = require('colors')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+var port = normalizePort(process.env.PORT || '3000')
+app.set('port', port)
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(app)
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+server.listen(port)
+server.on('error', onError)
+server.on('listening', onListening)
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  var port = parseInt(val, 10)
 
   if (isNaN(port)) {
     // named pipe
-    return val;
+    return val
   }
 
   if (port >= 0) {
     // port number
-    return port;
+    return port
   }
 
-  return false;
+  return false
 }
 
 /**
@@ -56,25 +56,25 @@ function normalizePort(val) {
 
 function onError(error) {
   if (error.syscall !== 'listen') {
-    throw error;
+    throw error
   }
 
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
-    : 'Port ' + port;
+    : 'Port ' + port
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
+      console.error(bind + ' requires elevated privileges')
+      process.exit(1)
+      break
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
+      console.error(bind + ' is already in use')
+      process.exit(1)
+      break
     default:
-      throw error;
+      throw error
   }
 }
 
@@ -83,16 +83,12 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
+  var addr = server.address()
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-  console.log(colors.green('Server listening on Port %s'), port)
-  console.log('')
-  console.log('>>> Hey team. Just a friendly reminder that this is just the API server. You should also run "npm run dev" in a new tab and open the browser on localhost:8080.'.bgCyan.black)
-  console.log('')
-  console.log('>>> If this is your first time running the server, don\'t forget to migrate and seed the database with "knex:migrate latest" and "knex:run seed".'.bgCyan.black)
-  console.log('')
-  console.log('>>> If you make any edits to files outside of the src folder, you will need to restart this server to see changes.'.bgRed.black)
+    : 'port ' + addr.port
+  debug('Listening on ' + bind)
+  console.log(colors.green('\nBooty Warrior listening on Port %s \n'), port)
+  console.log('>>> Hey team. Just a friendly reminder that this is just the API server. You should also run "npm run dev" in a new tab and open the browser on localhost:8080. \n\n>>> If this is your first time running the server, don\'t forget to migrate and seed the database with "knex:migrate latest" and "knex:run seed". \n'.bgCyan.black)
+  console.log('>>> If you make any edits to files outside of the src folder, you will need to restart this server to see changes. The dev server will only live bundle the front-end files.\n'.bgRed.black)
 }
