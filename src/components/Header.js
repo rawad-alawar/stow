@@ -3,6 +3,16 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 class Header extends Component {
+
+  handleSubmit(e) {
+    e.preventDefault()
+    request.post('/logout')
+      .end((err,res) => {
+        if(err) console.log('ERROR ', err)
+        else console.log('Server SAYS: ', res.body)
+      })
+  }
+
   render() {
     return (
       <div>
@@ -17,6 +27,7 @@ class Header extends Component {
             <Link to='/Login'>
               <button type='button' className='pull-right btn btn-med btn-info right'>Login</button>
             </Link>
+            <button type='button' className='pull-right btn btn-med btn-info right' onclick={this.handleSubmit.bind(this)}>Logout</button>
           </div>
         </nav>
       </div>

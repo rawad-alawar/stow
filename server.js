@@ -66,12 +66,14 @@ app.post('/signup', function (req,res) {
         res.json('Username already in use')
       else {
         hashPassword(req.body.password, function(err,hash) {
-          if(err) {console.log(err); return}
-          createUser(req.body, hash)
-            .then(function(data) {
-              req.session.userId = data[0]
-              res.json('all signed up!')
-            })
+          if(err) console.log(err)
+          else {
+            createUser(req.body, hash)
+              .then(function(data) {
+                req.session.userId = data[0]
+                res.json('all signed up!')
+              })
+          }
         })
       }
     })
@@ -89,16 +91,15 @@ app.get('/checkAuth', function(req,res) {
 app.get('/logout', function(req, res) {
   req.session.destroy(function(err) {
     if(err)
-      console.log(err)
+      res.json(err)
     else
-      res.redirect('/')
+      res.json('logged out')
   })
 })
 
 app.get('/list', function(req, res) {
   getAllListings()
   .then( function(data){
-    console.log(data)
     res.send(data)
   })
 })
@@ -118,8 +119,6 @@ app.get('/user/listing/:id', function(req, res) {
 })
 
 app.post('/user/signup', function(req, res){
-  console.log(typeof saveUserSignup)
-  console.log(req.body)
   saveUserSignup(req.body)
   .then(function(){
     res.end()
@@ -128,7 +127,6 @@ app.post('/user/signup', function(req, res){
 
 
 app.post('/listing/add', function(req, res){
-  console.log(req.body)
   saveListing(req.body)
   .then(function(){
     res.end()
