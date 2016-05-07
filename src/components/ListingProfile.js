@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-class Listing extends Component {
+class ListingProfile extends Component {
   render() {
+    const {id} = this.props.params
+    const listing = this.props.listings.filter(l => l.get('listings_ID') == id).first()
     return (
       <div className="col-sm-12">
         <div className="row"> 
@@ -12,11 +14,12 @@ class Listing extends Component {
           </div>
 
           <div className="col-sm-6">
-            <h2>{this.props.heading}</h2>
-            <h3>{this.props.suburb}, {this.props.city}, {this.props.country}</h3>
-            <h4>{this.props.price}</h4>
-            <h4>{this.props.startDate} -> {this.props.endDate}</h4>
-            <p>{this.props.details}</p>
+            <img className="img" src={listing.get('url')}/>
+            <h2>{listing.get('heading')}</h2>
+            <h3>{listing.get('suburb')}, {listing.get('city')}, {listing.get('country')}</h3>
+            <h4>{listing.get('price')}</h4>
+            <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
+            <p>{listing.get('details')}</p>
           </div>
         </div>
       </div>
@@ -26,8 +29,9 @@ class Listing extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    listings:state.get('listings')
+
   }
 }
 
-export default connect(mapStateToProps)(Listing)
+export default connect(mapStateToProps)(ListingProfile)

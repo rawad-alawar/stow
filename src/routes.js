@@ -15,10 +15,11 @@ export default (
   <Router history={hashHistory}>
     <Route path='/' component={Home}>
     	<IndexRoute component={Dashboard}/>
+      <Route path='listing/:id' component={ListingProfile}/>
+
       <Route path='login' component={Login}/>
       <Route path='signup' component={Signup}/>
       <Route path='upload' component={Upload}/>
-      <Route path='listing' component={ListingProfile}/>
     </Route>
   </Router>
 )
