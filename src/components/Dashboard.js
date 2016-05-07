@@ -5,14 +5,22 @@ import Jumbotron from './Jumbotron'
 import ListingsContainer from './ListingsContainer'
 import request from 'superagent'
 
-var LISTINGS ;
 
 request
   .get('/list')
   .end(function(err, res){
-    var Listings = res.text
-    heading: 
-    
+    var ListingData = res.body[0]
+    const Listing = {
+      heading: ListingData.heading,
+      suburb:ListingData.suburb,
+      city:ListingData.city,
+      country:ListingData.country,
+      price:ListingData.price,
+      startDate:ListingData.startDate,
+      endDate:ListingData.endDate,
+      details:ListingData.details
+    }
+    console.log('the listing data',Listing)
   }) 
 
 
@@ -21,7 +29,7 @@ class Dashboard extends Component {
     return ( 
       <div>
         <Jumbotron />
-        <ListingsContainer listings={LISTINGS} />
+        <ListingsContainer />
       </div>
     )
   }
