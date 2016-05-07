@@ -113,4 +113,11 @@ app.post('/listing/add', function(req, res){
   })
 })
 
+app.get('/listing/:city', function(req, res){
+  utils.getListingsByLocation(req.params.city)
+  .then(function(data){
+    res.send(data)
+  })
+})
+
 module.exports = app

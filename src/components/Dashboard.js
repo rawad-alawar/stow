@@ -5,14 +5,6 @@ import Jumbotron from './Jumbotron'
 import ListingsContainer from './ListingsContainer'
 import request from 'superagent'
 
-var LISTINGS ;
-
-request
-  .get('/list')
-  .end(function(err, res){
-    
-    
-  }) 
 
 
 class Dashboard extends Component {
@@ -20,7 +12,7 @@ class Dashboard extends Component {
     return ( 
       <div>
         <Jumbotron />
-        <ListingsContainer listings={LISTINGS} />
+        <ListingsContainer />
       </div>
     )
   }
@@ -28,8 +20,10 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    title: state.get('title'),
+    listings:state.get('listings')
   }
 }
+
 
 export default connect(mapStateToProps)(Dashboard)
