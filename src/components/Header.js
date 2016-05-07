@@ -34,7 +34,7 @@ class Header extends Component {
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
             <Link to='/Upload'>
-              <button type='button' className='btn btn-med btn-info' onClick={this.handleSubmit2.bind(this)}>Upload</button>
+              <button type='button' className='btn btn-med btn-info'>Upload</button>
             </Link>
             <button type='button' className='btn btn-med btn-info' onClick={this.handleSubmit2.bind(this)}>Upload2</button>
             <Link to='/'>
