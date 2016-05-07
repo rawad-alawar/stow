@@ -5,27 +5,27 @@ import request from 'superagent'
 
 class Header extends Component {
 
-  handleSubmit(e) {
+  handleLogout(e) {
     e.preventDefault()
     request.get('/logout')
       .end((err,res) => {
         if(err) console.log('ERROR ', err)
-        else console.log('Server SAYS: ', res.body)
+        else {
+          console.log('Server SAYS: ', res.body)
+          this.props.authorise(false)
+        }
       })
   }
 
-  handleSubmit2(e) {
-    e.preventDefault()
-    request.get('/checkAuth')
-      .end((err,res) => {
-        if(err) console.log('ERROR ', err)
-        else {
-          if(res.body === true)
-            console.log('you are authorised')
-          else
-            console.log('unauthorised')
-        }
-      })
+  nextPage() {
+    if(this.props.authorised === true){
+      console.log('you are authorised')
+      return '/upload'
+    }
+    else{
+      console.log('you are not authorised')
+      return '/login'
+    }
   }
 
   render() {
@@ -33,10 +33,9 @@ class Header extends Component {
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
-            <Link to='/Upload'>
+            <Link to={this.nextPage()}>
               <button type='button' className='btn btn-med btn-info'>Upload</button>
             </Link>
-            <button type='button' className='btn btn-med btn-info' onClick={this.handleSubmit2.bind(this)}>Upload2</button>
             <Link to='/'>
               <button type='button' className='btn btn-med btn-info'>Home</button>
             </Link>
@@ -46,7 +45,7 @@ class Header extends Component {
             <Link to='/Signup'>
               <button type='button' className='pull-right btn btn-med btn-info'>Sign-up</button>
             </Link>
-            <button type='button' className='pull-right btn btn-med btn-info' onClick={this.handleSubmit.bind(this)}>Logout</button>
+            <button type='button' className='pull-right btn btn-med btn-info' onClick={this.handleLogout.bind(this)}>Logout</button>
           </div>
         </nav>
       </div>
@@ -56,8 +55,19 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    authorised: state.get('authorised')
   }
 }
 
-export default connect(mapStateToProps)(Header)
+function mapDispatchToProps(dispatch) {
+  return {
+    authorise: authorised => {
+      dispatch({
+        type: 'AUTHORISE',
+        authorised: authorised
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
