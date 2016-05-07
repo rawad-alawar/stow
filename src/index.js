@@ -8,6 +8,8 @@ import '../public/styles/main.css'
 import reducer from './reducer'
 import App from './components/App'
 
+
+
 const store = createStore(reducer)
 
 render(
@@ -16,3 +18,10 @@ render(
   </Provider>,
   document.getElementById('app')
 )
+switch (expression) {
+  case expression:
+
+    break;
+  default:
+
+}

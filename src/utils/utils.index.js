@@ -8,5 +8,6 @@ utils.createUser = require('./createUser')
 utils.saveListing = require('./saveListing')
 utils.hashPassword = require('./hash')
 utils.checkPassword = require('./checkPassword')
+utils.getListingsByLocation = require('./getListingsByLocation')
 
 module.exports = utils
