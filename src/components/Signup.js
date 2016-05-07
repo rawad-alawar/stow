@@ -27,7 +27,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="jumbotron col-sm-4 text-center">
+      <div className="jumbotron col-centered col-sm-4 text-center">
         <form className="form-signup">
           <h2 className="form-signup-heading">Create your account today</h2>
           <label className="sr-only">Desired Username</label>

@@ -12,11 +12,11 @@ class Listing extends Component {
           </div>
 
           <div className="col-sm-6">
-            <h2>Heading</h2>
-            <h3>the suburb, the city, the country</h3>
-            <h4>the price</h4>
-            <h4>the startdate -- the end date</h4>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <h2>{this.props.heading}</h2>
+            <h3>{this.props.suburb}, {this.props.city}, {this.props.country}</h3>
+            <h4>{this.props.price}</h4>
+            <h4>{this.props.startDate} -> {this.props.endDate}</h4>
+            <p>{this.props.details}</p>
           </div>
         </div>
       </div>
