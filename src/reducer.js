@@ -1,7 +1,7 @@
 import {fromJS} from 'immutable'
 
 const INITIAL_STATE = fromJS({
-  title: 'stow'
+  title: 'stow',
 })
 
 export default (state = INITIAL_STATE, action) => {
