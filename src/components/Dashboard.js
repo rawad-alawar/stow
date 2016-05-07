@@ -10,7 +10,8 @@ var LISTINGS ;
 request
   .get('/list')
   .end(function(err, res){
-    
+    var Listings = res.text
+    heading: 
     
   }) 
 
