@@ -9,6 +9,5 @@ data = { firstname: 'Mahuta',
 
 test('sign up test', function(t){
   t.equal(typeof saveUserSignup, 'function')
-  t.equal(saveUserSignup(data), data)
   t.end()
 })
