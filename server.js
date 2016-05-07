@@ -112,9 +112,10 @@ app.get('/user/listing/:id', function(req, res) {
 })
 
 app.post('/listing/add', function(req, res){
+  console.log('it hitttttt',req.body)
   utils.saveListing(req.body)
   .then(function(){
-    res.end()
+    res.json('successsss')
   })
 })
 
