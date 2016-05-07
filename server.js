@@ -19,9 +19,7 @@ var publicPath = express.static(path.join(__dirname, '/public'))
 var api = require('./api/api.js')
 
 app.use('/public', publicPath)
-app.get('/', function(req,res) {
-  res.sendFile(indexPath)
-})
+app.get('/', function(req,res) {res.sendFile(indexPath)})
 app.use(api)
 
 module.exports = app
