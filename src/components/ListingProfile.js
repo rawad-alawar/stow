@@ -10,14 +10,13 @@ class ListingProfile extends Component {
       <div className="col-sm-12">
         <div className="row"> 
           <div className="col-sm-6">
-            <img className="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="350" height="350"/>
+            <img className="img img-responsive" width="460px" src={listing.get('url')}/>
           </div>
 
           <div className="col-sm-6">
-            <img className="img" src={listing.get('url')}/>
             <h2>{listing.get('heading')}</h2>
             <h3>{listing.get('suburb')}, {listing.get('city')}, {listing.get('country')}</h3>
-            <h4>{listing.get('price')}</h4>
+            <h4>${listing.get('price')}</h4>
             <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
             <p>{listing.get('details')}</p>
           </div>
