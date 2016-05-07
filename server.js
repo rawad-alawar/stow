@@ -51,6 +51,7 @@ app.post('/login', function (req,res) {
 })
 
 app.post('/signup', function (req,res) {
+console.log(res.body)
   sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
@@ -64,6 +65,7 @@ app.post('/signup', function (req,res) {
               .then(function(data) {
                 req.session.userId = data[0]
                 res.json('all signed up!')
+
               })
           }
         })
