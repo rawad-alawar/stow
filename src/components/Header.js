@@ -12,7 +12,7 @@ class Header extends Component {
               <button type='button' className='btn btn-med btn-info right'>Upload</button>
             </Link>
             <Link to='/'>
-              <button type='button' className='btn btn-med btn-info right'>Home</button>
+              <button type='button' className='btn btn-med btn-info right'>Homie</button>
             </Link>
             <Link to='/Login'>
               <button type='button' className='pull-right btn btn-med btn-info right'>Login</button>
