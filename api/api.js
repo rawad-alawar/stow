@@ -12,11 +12,11 @@ router.post('/login', function (req,res) {
         res.json('Username not found')
       else {
         utils.checkPassword(req.body.password, data[0].password, function(err, correct) {
-          if(err)
-            console.log(err)
+          if(err) console.log(err)
           else if(correct) {
-            sess.user_ID = data[0].user_ID
-            res.json('logged in to ' + sess.user_ID)
+            var id = data[0].user_ID
+            sess.user_ID = id
+            res.json(id)
           }
         })
       }
@@ -35,8 +35,9 @@ router.post('/signup', function (req,res) {
           else {
             utils.createUser(req.body, hash)
               .then(function(data) {
-                sess.user_ID = data[0].user_ID
-                res.json('all signed up!')
+                var id = data[0]
+                sess.user_ID = id
+                res.json(id)
               })
           }
         })
@@ -65,21 +66,21 @@ router.get('/logout', function(req, res) {
 router.get('/list', function(req, res) {
   utils.getAllListings()
   .then( function(data){
-    res.send(data)
+    res.json(data)
   })
 })
 
 router.get('/user/:id', function(req, res) {
   utils.getUserById(req.params.id)
   .then(function(data){
-    res.send(data)
+    res.json(data)
     })
 } )
 
 router.get('/user/listing/:id', function(req, res) {
   utils.getUserByListingId(req.params.id)
   .then(function(data) {
-    res.send(data)
+    res.json(data)
   })
 })
 
@@ -93,7 +94,7 @@ router.post('/listing/add', function(req, res){
 router.get('/listing/:city', function(req, res){
   utils.getListingsByLocation(req.params.city)
   .then(function(data){
-    res.send(data)
+    res.json(data)
   })
 })
 

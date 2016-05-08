@@ -88,7 +88,7 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port
   debug('Listening on ' + bind)
-  console.log(colors.green('\nBooty Warrior listening on Port %s \n'), port)
+  console.log(colors.green('\nBootyhole Warrior listening on Port %s \n'), port)
   console.log('>>> Hey team. Just a friendly reminder that this is just the API server. You should also run "npm run dev" in a new tab and open the browser on localhost:8080. \n\n>>> If this is your first time running the server, don\'t forget to migrate and seed the database with "knex:migrate latest" and "knex:run seed". \n'.bgCyan.black)
   console.log('>>> If you make any edits to files outside of the src folder, you will need to restart this server to see changes. The dev server will only live bundle the front-end files.'.bgRed.black)
 }
