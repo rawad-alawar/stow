@@ -4,8 +4,8 @@ import {Link} from 'react-router'
 
 class UserProfile extends Component {
   render() {
-    const id = this.props.currentUser.get('users_ID')
-    const user = this.props.currentUser
+    const id = this.props.currentUserTest.get('users_ID')
+    const user = this.props.currentUserTest
     console.log(this.props.listings)
     console.log('userprofile',this.props.listings.get(0))
     const listing = this.props.listings.first()
@@ -32,11 +32,27 @@ class UserProfile extends Component {
                 <img src={listing.get('url')} width="200px"/>
                 </div>
                 <div className="col-sm-8 col-centered">
-                    <h2>My Stow</h2>
+                    <h2>My available Stows</h2>
                     <h3>{listing.get('suburb')}</h3>
                     <h6>{listing.get('size')}</h6>
                     <h6>${listing.get('price')}</h6>
                     <h6>{listing.get('description')}</h6>
+                </div>
+                </div>
+
+<div className="row-centered myStow">
+                <div className="col-sm-2" >
+                <img src={listing.get('url')} width="200px"/>
+                </div>
+                <div className="col-sm-8 col-centered">
+                <div className="divider">
+                </div>
+                    <h2>My rented Stows</h2>
+                    <h3>{listing.get('suburb')}</h3>
+                    <h6>{listing.get('size')}</h6>
+                    <h6>${listing.get('price')}</h6>
+                    <h6>{listing.get('description')}</h6>
+
                 </div>
                 </div>
           </div>
@@ -48,7 +64,7 @@ class UserProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.get('currentUser'),
+    currentUserTest: state.get('currentUserTest'),
     listings: state.get('listings')
   }
 }
