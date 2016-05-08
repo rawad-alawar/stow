@@ -8,18 +8,38 @@ import '../public/styles/main.css'
 import reducer from './reducer'
 import App from './components/App'
 
-
-
 const store = createStore(reducer)
 
 request
   .get('/list')
   .end(function(err, res){
-    console.log('index.js',res.body)
+    if(err) console.log(err)
 		store.dispatch({
 			type: 'LOAD_LISTINGS',
 			listings: res.body
 		})
+  })
+
+request
+  .get('/checkAuth')
+  .end((err, res) => {
+    if(err) console.log(err)
+    else {
+      if(res.body > 0) {
+        request
+          .get(`/user/${res.body}`)
+          .end((err,res) => {
+            if(err) console.log(err)
+            else {
+              store.dispatch({
+                type: 'SET_CURRENT_USER',
+                user: res.body[0]
+              })
+            }
+          })
+      }
+
+    }
   })
 
 render(
@@ -28,3 +48,4 @@ render(
   </Provider>,
   document.getElementById('app')
 )
+
