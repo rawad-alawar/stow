@@ -8,6 +8,7 @@ import {checkAuthDeep, checkLogIn, logout} from './utils'
 class Header extends Component {
 
   handleClick(e) {
+    console.log('CUREENT USER: ', this.props.currentUser)
     e.preventDefault()
     switch(e.target.name) {
       case 'upload':

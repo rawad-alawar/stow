@@ -8,6 +8,7 @@ export const checkAuthDeep = handler => {
     .end((err, res) => {
       if(err) (console.log(err))
       else {
+        console.log('CHACKAUTH: ', res.body)
         res.body === true ?
           hashHistory.push(handler.pass) :
           hashHistory.push(handler.fail)
@@ -42,14 +43,16 @@ export const checkLogIn = (currUser, target) => {
 
 export const loginOrSignUp = (action, formData, callback) => {
   request
-    .post('/login')
+    .post(action)
     .send(formData)
     .end((err,res) => {
       if(err) console.log(err)
       else {
+        console.log('BODY1: ', res.body)
         request
           .get(`/user/${res.body}`)
           .end((err,res) => {
+            console.log('BODY2: ', res.body)
             if(err) console.log(err)
             else {
               hashHistory.push('/')

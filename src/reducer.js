@@ -2,7 +2,6 @@ import {fromJS, Map} from 'immutable'
 import request from 'superagent'
 
 const INITIAL_STATE = fromJS({
-  title: 'stow',
   listings: {},
   currentUser: {}
 })

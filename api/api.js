@@ -27,8 +27,8 @@ router.post('/signup', function (req,res) {
   sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
-      if(data.length > 0)
-        res.json('Username already in use')
+      if(data.length > 0){
+        res.json('Username already in use')}
       else {
         utils.hashPassword(req.body.password, function(err,hash) {
           if(err) console.log(err)
@@ -47,6 +47,7 @@ router.post('/signup', function (req,res) {
 
 router.get('/checkAuth', function(req,res) {
   sess = req.session
+  console.log('SEESS: ', sess.user_ID)
   var authorised = false
   if(sess.user_ID) {
     authorised = true
