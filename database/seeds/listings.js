@@ -6,8 +6,6 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('listings').insert({
-      renter_ID: '',
-      listings_ID: 1,
       renter_ID: 1,
       lister_ID: 2,
       suburb:'Te Aro',
@@ -25,7 +23,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 3,
       lister_ID: 2,
       suburb:'Te Aro',
@@ -43,7 +40,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 3,
       lister_ID: 2,
       suburb:'Aro Valley',
@@ -61,7 +57,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 4,
       lister_ID: 2,
       suburb:'Thorndon',
@@ -79,7 +74,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 5,
       lister_ID: 2,
       suburb:'Kilbirnie',
@@ -97,7 +91,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 6,
       lister_ID: 2,
       suburb:'Oriental Bay',
@@ -115,7 +108,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 7,
       lister_ID: 2,
       suburb:'Aro Valley',
@@ -133,7 +125,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 8,
       lister_ID: 2,
       suburb:'Hataitai',
@@ -151,7 +142,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 9,
       lister_ID: 2,
       suburb:'Mount Victoria',
@@ -163,13 +153,12 @@ exports.seed = function(knex, Promise) {
       price:10,
       description: 'a real beauty of spot',
       negotiable: true,
-      url: 'https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAAMQAAAAJDdlYTYyNzZiLTZmMzMtNDg0Zi05MmQ4LTMwZmIxMzYxYzExMg.jpg'
+      url: 'https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAAMQAAAAJDdlYTYyNzZiLTZmMzMtNDg0Zi05MmQ4LTMwZmIxMzYxYzExMg.jpg',
       startDate:'2016-05-05',
       endDate:'2016-05-13',
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 10,
       lister_ID: 2,
       suburb:'Brooklyn',
@@ -187,7 +176,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 11,
       lister_ID: 2,
       suburb:'Mount Cook',
@@ -205,7 +193,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 12,
       lister_ID: 2,
       suburb:'Mount Cook',
@@ -223,7 +210,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 13,
       lister_ID: 2,
       suburb:'Oriental Bay',
@@ -241,7 +227,6 @@ exports.seed = function(knex, Promise) {
       availability:true
     }),
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: 14,
       lister_ID: 2,
       suburb:'Hataitai',
