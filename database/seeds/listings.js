@@ -6,7 +6,6 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('listings').insert({
-      listings_ID: 1,
       renter_ID: '',
       lister_ID: 2,
       suburb:'',
