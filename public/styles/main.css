@@ -29,4 +29,16 @@ body {
 	background-color: dodgerblue;
 }
 
+.listingThumbnail {
+  padding-bottom: 20px; 
+}
+
+.thumbnailbtn {
+  margin-left:15%;
+}
+
+.bluetxt {
+  color: dodgerblue;
+}
+
 

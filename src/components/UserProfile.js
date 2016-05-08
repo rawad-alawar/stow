@@ -15,11 +15,11 @@ class UserProfile extends Component {
         <div className="row-centered">
           <div className="col-sm-12 col-centered">
                 <div className="col-sm-3" >
-                <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" className="img-circle"/>
+                <img src="http://www.eonline.com/eol_images/Entire_Site/2015518/rs_600x600-150618104510-600.tom-myspace.jw.61815_2.jpg" width="150px" className="img-circle"/>
                 </div>
                 
                 <div className="col-sm-8">
-                    <h2>{user.get('username')}</h2>
+                    <h2 className="bluetxt">{user.get('username')}</h2>
                     <h3>{user.get('location')}</h3>
                     <h6>{user.get('firstName')}</h6>
                     <h6>{user.get('email')}</h6>
