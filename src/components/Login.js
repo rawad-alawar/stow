@@ -3,25 +3,19 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import request from 'superagent'
 
+import {loginOrSignUp} from './utils'
+
 class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
     const formData = {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
 
-    request.post('/login')
-      .send(formData)
-      .end((err, res)=>{
-        if(err) console.log('ERROR ', err)
-        else {
-          this.refs.username=''
-          this.refs.password=''
-          console.log('Server SAYS: ',res.body)
-        }
-      })
+    loginOrSignUp('/login', formData, this.props.setCurrentUser)
   }
 
   render() {
@@ -33,7 +27,7 @@ class Login extends Component {
           <input type="username" id="inputUsername" className="form-control" placeholder="Your username" ref='username' required autofocus/>
           <label for="inputPassword" className="sr-only">Password</label>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
-        <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
+          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>
       </div>
     )
@@ -42,8 +36,19 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    currentUser: state.get('currentUser')
   }
 }
 
-export default connect(mapStateToProps)(Login)
+function mapDispatchToProps(dispatch) {
+  return {
+    setCurrentUser: user => {
+      dispatch({
+        type: 'SET_CURRENT_USER',
+        user: user
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -4,8 +4,6 @@ var bodyParser = require('body-parser')
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
 
-var utils = require('./src/utils/utils.index.js')
-
 var app = express()
 
 app.use(bodyParser.json())
@@ -16,11 +14,12 @@ app.use(session({
   resave: true
 }))
 
-
 var indexPath = path.join(__dirname, '/public/index.html')
 var publicPath = express.static(path.join(__dirname, '/public'))
+var api = require('./api/api.js')
 
 app.use('/public', publicPath)
+<<<<<<< HEAD
 app.get('/', function(req,res) {
   res.sendFile(indexPath)
 })
@@ -119,5 +118,9 @@ app.post('/listing/add', function(req, res){
     res.end()
   })
 })
+=======
+app.get('/', function(req,res) {res.sendFile(indexPath)})
+app.use(api)
+>>>>>>> 2d7511b1c9673f82445b51da66cf24b3118b5f50
 
 module.exports = app

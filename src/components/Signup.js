@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
+
+import {loginOrSignUp} from './utils'
 
 class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
     const formData = {
       username: this.refs.username.value,
       password: this.refs.password.value,
@@ -15,19 +18,12 @@ class Signup extends Component {
       lastName: this.refs.lastname.value
     }
 
-    request.post('/signup')
-      .send(formData)
-      .end((err, res)=>{
-        if(err) console.log('ERROR ', err)
-        else {
-          console.log('Server SAYS: ', res.body)
-        }
-      })
+    loginOrSignUp('/signup', formData, this.props.setCurrentUser)
   }
 
   render() {
     return (
-      <div className="jumbotron col-sm-4 text-center">
+      <div className="jumbotron col-centered col-sm-4 text-center">
         <form className="form-signup">
           <h2 className="form-signup-heading">Create your account today</h2>
           <label className="sr-only">Desired Username</label>
@@ -48,9 +44,20 @@ class Signup extends Component {
 }
 
 function mapStateToProps(state) {
+  return {}
+}
+
+function mapDispatchToProps(dispatch) {
   return {
-    title: state.get('title')
+    setCurrentUser: user => {
+      dispatch({
+        type: 'SET_CURRENT_USER',
+        user: user
+      })
+    }
   }
 }
 
-export default connect(mapStateToProps)(Signup)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+

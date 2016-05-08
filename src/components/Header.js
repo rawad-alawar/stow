@@ -1,27 +1,50 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {hashHistory, Link} from 'react-router'
+import request from 'superagent'
+
+import {checkAuthDeep, checkLogIn, logout} from './utils'
 
 class Header extends Component {
+
+  handleClick(e) {
+    console.log('CUREENT USER: ', this.props.currentUser)
+    e.preventDefault()
+    switch(e.target.name) {
+      case 'upload':
+        checkAuthDeep({
+          pass: '/upload',
+          fail: '/login'
+        })
+        break
+      case 'logInOut':
+        if(this.props.currentUser.size > 0) {
+          logout(() => {this.props.logOut()})
+        }
+        else
+          hashHistory.push('/login')
+        break
+    }
+  }
+
   render() {
+    var currUser = this.props.currentUser.size
+    const id = this.props.currentUser.get('users_ID')
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
-            <Link to='/Upload'>
-              <button type='button' className='btn btn-med btn-info'>Upload</button>
-            </Link>
+            <button name='upload' type='button' className='btn btn-med btn-info' onClick={this.handleClick.bind(this)}>Upload</button>
             <Link to='/'>
               <button type='button' className='btn btn-med btn-info'>Home</button>
             </Link>
-            <Link to='/Login'>
-              <button type='button' className='pull-right btn btn-med btn-info'>Log-in</button>
+            <Link to='/signup'>
+              <button type='button' className={`pull-right btn btn-med btn-info ${checkLogIn(currUser, 'signup')}`}>Sign-up</button>
             </Link>
-            <Link to='/Signup'>
-              <button type='button' className='pull-right btn btn-med btn-info'>Sign-up</button>
+            <button name='logInOut' type='button' className='pull-right btn btn-med btn-info' onClick={this.handleClick.bind(this)}>{checkLogIn(currUser, 'logInOut')}</button>
+            <Link to={`user/${id}`}>
+              <button type='button' className='pull-right btn btn-med btn-info'>my account</button>
             </Link>
-              <button type='button' className='pull-right btn btn-med btn-info'>Logout</button>
-
           </div>
         </nav>
       </div>
@@ -31,8 +54,18 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    title: state.get('title')
+    currentUser: state.get('currentUser')
   }
 }
 
-export default connect(mapStateToProps)(Header)
+function mapDispatchToProps(dispatch) {
+  return {
+    logOut: () => {
+      dispatch({
+        type: 'LOGOUT'
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
