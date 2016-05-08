@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
-import request from 'superagent'
+
 
 import {checkAuthDeep, checkLogIn, logout} from './utils'
 

@@ -1,8 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+import ReactDOM from 'react-dom'
+import FeedbackForm from './FeedbackForm'
+import request from 'superagent'
+
 
 class UserProfile extends Component {
+
+  mount(){
+    ReactDOM.render(<FeedbackForm id={this.props.currentUserTest.get('users_ID')} unmount={this.unmount.bind(this)}/>, document.getElementById('a'))
+  }
+
+  unmount(){
+    ReactDOM.unmountComponentAtNode(document.getElementById('a'))
+  }
+
   render() {
     const id = this.props.currentUserTest.get('users_ID')
     const user = this.props.currentUserTest
@@ -17,7 +30,7 @@ class UserProfile extends Component {
                 <div className="col-sm-3" >
                 <img src="http://www.eonline.com/eol_images/Entire_Site/2015518/rs_600x600-150618104510-600.tom-myspace.jw.61815_2.jpg" width="150px" className="img-circle"/>
                 </div>
-                
+
                 <div className="col-sm-8">
                     <h2 className="bluetxt">{user.get('username')}</h2>
                     <h3>{user.get('location')}</h3>
@@ -52,8 +65,10 @@ class UserProfile extends Component {
                     <h6>{listing.get('size')}</h6>
                     <h6>${listing.get('price')}</h6>
                     <h6>{listing.get('description')}</h6>
+                    <button type='button' onClick={this.mount.bind(this)}>Place Feedback</button>
 
                 </div>
+                <div id='a'></div>
                 </div>
           </div>
         </div>

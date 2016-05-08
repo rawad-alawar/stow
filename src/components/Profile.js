@@ -8,7 +8,7 @@ class profile extends Component {
       //Profile page needs to be able to display the current users details and render it on to the page based on who is logged in
       //individual elements need to be rendered here
       //individual functions need to make the functionality for each bit of the profile page
-      
+
       <div className="col-sm-12">
         <div className="row">
           <div className="col-sm-6">
