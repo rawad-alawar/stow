@@ -7,7 +7,7 @@ class ListingProfile extends Component {
     const {id} = this.props.params
     const listing = this.props.listings.filter(l => l.get('listings_ID') == id).first()
     return (
-      <div className="col-sm-12">
+      <div className="col-sm-12 col-centered">
         <div className="row">
           <div className="col-sm-6">
             <img className="img img-responsive" width="460px" src={listing.get('url')}/>
