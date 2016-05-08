@@ -29,6 +29,7 @@ class Header extends Component {
   }
 
   render() {
+    const id = this.props.currentUser.get('users_ID')
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -45,6 +46,9 @@ class Header extends Component {
             <Link to='/Signup'>
               <button type='button' className='pull-right btn btn-med btn-info'>Sign-up</button>
             </Link>
+            <Link to={`user/${id}`}>
+              <button type='button' className='pull-right btn btn-med btn-info'>my account</button>
+            </Link>
             <button type='button' className='pull-right btn btn-med btn-info' onClick={this.handleLogout.bind(this)}>Logout</button>
           </div>
         </nav>
@@ -55,7 +59,8 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    authorised: state.get('authorised')
+    authorised: state.get('authorised'),
+    currentUser:state.get('currentUser')
   }
 }
 

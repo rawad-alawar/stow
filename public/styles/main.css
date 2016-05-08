@@ -20,4 +20,9 @@ body {
     margin-right:-4px;
 }
 
+.divider {
+	height: 10px;
+	background-color: dodgerblue;
+}
+
 
