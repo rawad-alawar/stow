@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 
@@ -7,8 +8,29 @@ import {checkAuthDeep, checkLogIn, logout} from './utils'
 
 class Header extends Component {
 
+  componentDidMount() {
+    if(this.props.currentUser.size > 1)
+      this.mount()
+  }
+
+  componentDidUpdate() {
+    if(this.props.currentUser.size > 1)
+      this.mount()
+    else
+      this.unmount()
+  }
+
+  mount() {
+    ReactDOM.render(
+      <button type='button' className='btn btn-med btn-info'>☻ account: {this.props.currentUser.get('username')}</button>, document.getElementById('accountBtn')
+    )
+  }
+
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById('accountBtn'))
+  }
+
   handleClick(e) {
-    console.log('CUREENT USER: ', this.props.currentUser)
     e.preventDefault()
     switch(e.target.name) {
       case 'upload':
@@ -42,8 +64,8 @@ class Header extends Component {
               <button type='button' className={`pull-right btn btn-med btn-info ${checkLogIn(currUser, 'signup')}`}>Sign-up</button>
             </Link>
             <button name='logInOut' type='button' className='pull-right btn btn-med btn-info' onClick={this.handleClick.bind(this)}>{checkLogIn(currUser, 'logInOut')}</button>
-            <Link to={`user/${id}`}>
-              <button type='button' className='pull-right btn btn-med btn-info'>☻ account: {this.props.currentUser.get('username')}</button>
+            <Link to={`user/${this.props.currentUser.get('id')}`}>
+              <div id='accountBtn' className='pull-right'></div>
             </Link>
           </div>
         </nav>

@@ -5,7 +5,7 @@ const INITIAL_STATE = fromJS({
   listings: {},
   currentUser: {},
   errorMsg: {},
-  currentUserTest: {users_ID:1,username:'keanu',location:'wellington',details:'hi there i need more money so come put stuff in my roof. wont steal it promise',lastName:'carnevale',email:'kdawg@bootyholewarrior.serve'}
+  currentUserTest: {users_ID:2,username:'keanu',location:'wellington',details:'hi there i need more money so come put stuff in my roof. wont steal it promise',lastName:'carnevale',email:'kdawg@bootyholewarrior.serve'}
 })
 
 export default (state = INITIAL_STATE, action) => {
