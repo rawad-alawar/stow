@@ -43,7 +43,7 @@ class Header extends Component {
             </Link>
             <button name='logInOut' type='button' className='pull-right btn btn-med btn-info' onClick={this.handleClick.bind(this)}>{checkLogIn(currUser, 'logInOut')}</button>
             <Link to={`user/${id}`}>
-              <button type='button' className='pull-right btn btn-med btn-info'>☻ account</button>
+              <button type='button' className='pull-right btn btn-med btn-info'>☻ account: {this.props.currentUser.get('username')}</button>
             </Link>
           </div>
         </nav>
