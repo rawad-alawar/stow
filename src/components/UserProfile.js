@@ -1,8 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+import ReactDOM from 'react-dom'
+import FeedbackForm from './FeedbackForm'
+import request from 'superagent'
+
 
 class UserProfile extends Component {
+
+  mount(){
+    ReactDOM.render(<FeedbackForm id={this.props.currentUserTest.get('users_ID')} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
+  }
+
+  unmount(){
+    ReactDOM.unmountComponentAtNode(document.getElementById('fb-form'))
+  }
+
   render() {
     const user = this.props.currentUser
     const id = user.get('user_ID')
@@ -47,6 +60,8 @@ class UserProfile extends Component {
                 <h6>{listing.get('size')}</h6>
                 <h6>${listing.get('price')}</h6>
                 <h6>{listing.get('description')}</h6>
+                <button type='button' onClick={this.mount.bind(this)}>Place Feedback</button>
+                <div id='fb-form'></div>
               </div>
             </div>
           </div>
