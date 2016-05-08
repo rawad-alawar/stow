@@ -3,24 +3,25 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 class ListingThumbnail extends Component {
+
   render() {
+    const id = this.props.listing.get('listings_ID')
     return (
-      <div>
-       <div className="col-sm-3">
-          <img className="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="200" height="140"/>
-          <h2></h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a className="btn btn-default" href="#" role="button">View stow &raquo;</a></p>
-        </div>
+      <div className="col-sm-3">
+        <img className="img" src={this.props.listing.get('url')} alt="this is the image" width="200" height="140"/>
+        <h2>${this.props.listing.get('price')}</h2>
+        <p>{this.props.listing.get('description')}</p>
+        <Link to={`listing/${id}`}>
+            <button type='button' className='btn btn-default'>View Stow &raquo;</button>
+        </Link>
       </div>
     )
   }
 }
 
+
 function mapStateToProps(state) {
-  return {
-    title: state.get('title')
-  }
+  return {}
 }
 
-export default connect(mapStateToProps)(ListingThumbnail)
+export default ListingThumbnail

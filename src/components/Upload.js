@@ -5,6 +5,7 @@ import request from 'superagent'
 
 class Upload extends Component {
 
+<<<<<<< HEAD
   handleUpload(e) {
     e.preventDefault()
     const formData = {
@@ -36,6 +37,8 @@ class Upload extends Component {
       })
   }
 
+=======
+>>>>>>> a355a06948821e74b207f661d80628da8c1bfef5
   render() {
     return (
       <div className="jumbotron col-sm-4 text-center col-centered">
@@ -89,9 +92,7 @@ class Upload extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    title: state.get('title')
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(Upload)

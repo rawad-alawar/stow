@@ -1,36 +1,13 @@
 var express = require('express')
-var path = require('path')
-var bodyParser = require('body-parser')
-var session = require('express-session')
-var cookieParser = require('cookie-parser')
+var router = express.Router()
 
-var app = express()
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(session({
-  secret: 'top secret',
-  saveUninitialized: true,
-  resave: true
-}))
-
-var indexPath = path.join(__dirname, '/public/index.html')
-var publicPath = express.static(path.join(__dirname, '/public'))
-var api = require('./api/api.js')
-
-app.use('/public', publicPath)
-<<<<<<< HEAD
-app.get('/', function(req,res) {
-  res.sendFile(indexPath)
-})
-
+var utils = require('./utils/utils.index.js')
 var sess
 
-app.post('/login', function (req,res) {
+router.post('/login', function (req,res) {
   sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
-      console.log("DATA: ", data)
       if(data.length === 0)
         res.json('Username not found')
       else {
@@ -38,18 +15,15 @@ app.post('/login', function (req,res) {
           if(err)
             console.log(err)
           else if(correct) {
-            sess.userId = data[0].userId
-            res.send()
-          }
-          else{
-            res.json('logged in')
+            sess.user_ID = data[0].user_ID
+            res.json('logged in to ' + sess.user_ID)
           }
         })
       }
     })
 })
 
-app.post('/signup', function (req,res) {
+router.post('/signup', function (req,res) {
   sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
@@ -61,7 +35,7 @@ app.post('/signup', function (req,res) {
           else {
             utils.createUser(req.body, hash)
               .then(function(data) {
-                req.session.userId = data[0]
+                sess.user_ID = data[0].user_ID
                 res.json('all signed up!')
               })
           }
@@ -70,63 +44,57 @@ app.post('/signup', function (req,res) {
     })
 })
 
-app.get('/checkAuth', function(req,res) {
+router.get('/checkAuth', function(req,res) {
   sess = req.session
   var authorised = false
-  if(sess.userId) {
+  if(sess.user_ID) {
     authorised = true
   }
-  res.send(authorised)
+  res.json(authorised)
 })
 
-app.get('/logout', function(req, res) {
+router.get('/logout', function(req, res) {
   req.session.destroy(function(err) {
     if(err)
-      console.log(err)
+      res.json(err)
     else
-      res.redirect('/')
+      res.json('logged out')
   })
 })
 
-app.get('/list', function(req, res) {
+router.get('/list', function(req, res) {
   utils.getAllListings()
   .then( function(data){
-    console.log(data)
     res.send(data)
   })
 })
 
-app.get('/user/:id', function(req, res) {
+router.get('/user/:id', function(req, res) {
   utils.getUserById(req.params.id)
   .then(function(data){
     res.send(data)
     })
 } )
 
-app.get('/user/listing/:id', function(req, res) {
+router.get('/user/listing/:id', function(req, res) {
   utils.getUserByListingId(req.params.id)
   .then(function(data) {
     res.send(data)
   })
 })
 
-app.post('/listing/add', function(req, res){
-  console.log('it hitttttt',req.body)
+router.post('/listing/add', function(req, res){
   utils.saveListing(req.body)
   .then(function(){
-    res.json('successsss')
+    res.end()
   })
 })
 
-app.get('/listing/:city', function(req, res){
+router.get('/listing/:city', function(req, res){
   utils.getListingsByLocation(req.params.city)
   .then(function(data){
     res.send(data)
   })
 })
 
-app.get('/', function(req,res) {res.sendFile(indexPath)})
-app.use(api)
-
-
-module.exports = app
+module.exports = router

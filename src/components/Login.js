@@ -17,9 +17,8 @@ class Login extends Component {
       .end((err, res)=>{
         if(err) console.log('ERROR ', err)
         else {
-          this.refs.username=''
-          this.refs.password=''
           console.log('Server SAYS: ',res.body)
+          this.props.authorise(true)
         }
       })
   }
@@ -33,7 +32,7 @@ class Login extends Component {
           <input type="username" id="inputUsername" className="form-control" placeholder="Your username" ref='username' required autofocus/>
           <label for="inputPassword" className="sr-only">Password</label>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
-        <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
+          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>
       </div>
     )
@@ -41,9 +40,18 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
+  return {}
+}
+
+function mapDispatchToProps(dispatch) {
   return {
-    title: state.get('title')
+    authorise: authorised => {
+      dispatch({
+        type: 'AUTHORISE',
+        authorised: authorised
+      })
+    }
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
