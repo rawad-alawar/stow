@@ -2,11 +2,12 @@ var knex = require('./connection')
 
 function createUser(data, hash){
   return knex('users').insert({
-    firstName: data.firstname,
-    lastName: data.lastname,
+    firstName: data.firstName,
+    lastName: data.lastName,
     username: data.username,
     email: data.email,
-    password: hash
+    password: hash,
+    created_at: Date()
   })
 }
 

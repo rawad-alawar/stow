@@ -15,8 +15,8 @@ class Signup extends Component {
       username: this.refs.username.value,
       password: this.refs.password.value,
       email: this.refs.email.value,
-      firstName: this.refs.firstName.value,
-      lastName: this.refs.lastName.value
+      firstName: this.refs.firstname.value,
+      lastName: this.refs.lastname.value
     }
 
     loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.props.dealWithError)
@@ -29,6 +29,7 @@ class Signup extends Component {
 
   render() {
     return (
+      <div className="row-sm-12 row-centered">
       <div className="jumbotron col-centered col-sm-4 text-center">
         <form className="form-signup">
           <h2 className="form-signup-heading">Create your account today</h2>
@@ -40,6 +41,7 @@ class Signup extends Component {
           <input type="text" id="lastName" className="form-control" placeholder="Your last name" ref="lastName" required autofocus/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
         </form>
+      </div>
       </div>
     )
   }
@@ -68,4 +70,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+

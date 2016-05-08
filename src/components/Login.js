@@ -31,6 +31,7 @@ class Login extends Component {
 
   render() {
     return (
+      <div className="row-sm-12 row-centered text-centre">
       <div className="jumbotron col-sm-4 text-center col-centered">
         <form className="form-signin">
           <h2 className="form-signin-heading">Please login </h2>
@@ -39,6 +40,7 @@ class Login extends Component {
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>
+      </div>
       </div>
     )
   }
