@@ -40,33 +40,24 @@ export const checkLogIn = (currUser, target) => {
 }
 
 export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
-  console.log('Callback ', cbSuccess)
   request
     .post(action)
     .send(formData)
     .end((err,res) => {
       if(err) console.log(err)
       else {
-        console.log("RES>BODY ", res.body)
-        switch(res.body) {
-          case 'ERR:UIU':
-            cbError(res.body)
-            break
-          case 'ERR:IUOP':
-            console.log('IOUP error')
-            cbError(res.body)
-            break
-          default:
-            request
-              .get(`/user/${res.body}`)
-              .end((err,res) => {
-                if(err) console.log(err)
-                else {
-                  hashHistory.push('/')
-                  cbSuccess(res.body[0])
-                }
-              })
+        if(Number.isInteger(res.body)){
+          request
+            .get(`/user/${res.body}`)
+            .end((err,res) => {
+              if(err) console.log(err)
+              else {
+                hashHistory.push('/')
+                cbSuccess(res.body[0])
+              }
+            })
         }
+        else cbError()
       }
     })
 }

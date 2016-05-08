@@ -5,7 +5,6 @@ import {Link} from 'react-router'
 import request from 'superagent'
 
 import {loginOrSignUp} from './utils'
-import ErrorCase from './Error'
 
 class Login extends Component {
 
@@ -16,12 +15,12 @@ class Login extends Component {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
-    this.props.removeError()
+
     loginOrSignUp('/login', formData, this.props.setCurrentUser, this.mount)
   }
 
   mount() {
-    ReactDOM.render(<p className='onError'>username or password is incorrect</p>, document.getElementById('err'))
+    ReactDOM.render(<p className='onError'>Username or password is incorrect</p>, document.getElementById('err'))
   }
 
   unmount() {
@@ -50,10 +49,7 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    currentUser: state.get('currentUser'),
-    error: state.get('errorMsg')
-  }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -62,17 +58,6 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'SET_CURRENT_USER',
         user: user
-      })
-    },
-    removeError: () => {
-      dispatch({
-        type: 'REMOVE_ERROR'
-      })
-    },
-    dealWithError: errorMsg => {
-      dispatch({
-        type: 'SAVE_ERROR_TO_PROPS',
-        errorMsg: errorMsg
       })
     }
   }
