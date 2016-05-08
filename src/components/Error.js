@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 class ErrorCase extends Component {
 
   render() {
-    return <p>{this.props.error}</p>
+    return <p className="onError">{this.props.error}</p>
   }
 
 }

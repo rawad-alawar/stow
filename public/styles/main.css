@@ -41,4 +41,8 @@ body {
   color: dodgerblue;
 }
 
+.onError {
+  color: tomato;
+}
+
 

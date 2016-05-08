@@ -18,7 +18,7 @@ class ListingProfile extends Component {
             <h3>{listing.get('suburb')}, {listing.get('city')}, {listing.get('country')}</h3>
             <h4>${listing.get('price')}</h4>
             <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
-            <p>{listing.get('details')}</p>
+            <p>{listing.get('description')}</p>
           </div>
         </div>
       </div>
