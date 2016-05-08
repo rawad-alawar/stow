@@ -4,14 +4,16 @@ import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
 import {loginOrSignUp} from './utils'
 
+
 class FeedbackForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const ident = this.props.id
     const formData = {
-      comment: this.refs.comment.value
-      // rating: this.refs.rating.value
-
+      ID: ident,
+      comment: this.refs.comment.value,
+      rating: this.refs.rating.value
     }
 
     request.post('/feedback/add')
@@ -20,6 +22,7 @@ class FeedbackForm extends Component {
         if(err) console.log('ERROR ', err)
         else {
           console.log('Server SAYS: ', res)
+          console.log(formData)
           hashHistory.push('/')
         }
       })
@@ -35,7 +38,7 @@ class FeedbackForm extends Component {
           <h2 className="form-feedback-heading">Leave Feedback</h2>
 
           <label for="rating" className="sr-only">Rating</label>
-          <select name="chooseRating">
+          <select name="chooseRating" ref='rating'>
            <option value="empty"></option>
            <option value="1"> 1</option>
            <option value="2"> 2</option>
@@ -47,6 +50,7 @@ class FeedbackForm extends Component {
           <label for="feedback" className="sr-only">How was your Stow?</label>
           <textarea class="form-control" placeholder="" rows="8" cols="40" id="details" ref='comment'></textarea>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
+          <button type="button" onClick={this.props.unmount}>Close</button>
 
 
         </form>
@@ -55,8 +59,5 @@ class FeedbackForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {}
-}
 
-export default connect(mapStateToProps)(FeedbackForm)
+export default FeedbackForm
