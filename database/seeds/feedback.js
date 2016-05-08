@@ -6,13 +6,6 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('feedback').insert({
-      feedback_ID: 1,
-      feedbacker_ID: 2,
-      poster_ID: 1,
-      comment:'George\'s was great. All I needed to store was my tv. He was happy to store it until I moved into my new place. George was quick to respond to my inquiry',
-      rating: 5
-    }),
-    knex('feedback').insert({
       feedback_ID: 2,
       feedbacker_ID: 3,
       poster_ID: 1,
