@@ -9,7 +9,7 @@ import request from 'superagent'
 class UserProfile extends Component {
 
   mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.currentUserTest.get('users_ID')} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
+    ReactDOM.render(<FeedbackForm id={this.props.currentUser.get('user_ID')} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
   }
 
   unmount(){
