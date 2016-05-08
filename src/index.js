@@ -28,10 +28,3 @@ render(
   </Provider>,
   document.getElementById('app')
 )
-switch (expression) {
-  case expression:
-
-    break;
-  default:
-
-}

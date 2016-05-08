@@ -99,4 +99,12 @@ router.get('/listing/:city', function(req, res){
   })
 })
 
+router.post('/feedback/add', function(req, res){
+  utils.saveFeedback(req.body)
+  .then(function(){
+    res.end()
+  })
+})
+
+
 module.exports = router
