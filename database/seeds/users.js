@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
     }),
     knex('users').insert({
       user_ID: 4,
-      firstName:'Mahuta', 
+      firstName:'Mahuta',
       lastName: 'Hoerara-Smith' ,
       username: 'mahutahs',
       email: 'mahutahs@email.com',
@@ -122,6 +122,5 @@ exports.seed = function(knex, Promise) {
       password: '123',
       rating:'5'
     })
->>>>>>> 0302e6717f7ce528641adf72b15b5f8f8caebba8
   );
 };

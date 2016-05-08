@@ -1,4 +1,3 @@
-
 exports.seed = function(knex, Promise) {
   return Promise.join(
     // Deletes ALL existing entries
@@ -39,6 +38,6 @@ exports.seed = function(knex, Promise) {
       poster_ID: 1,
       comment:'Great experience. Super easy',
       rating: 5
-    }),
+    })
   );
 };
