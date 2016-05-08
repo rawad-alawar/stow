@@ -9,7 +9,7 @@ router.post('/login', function (req,res) {
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length === 0)
-        res.json('Username not found')
+        res.json('ERR:IUOP')
       else {
         utils.checkPassword(req.body.password, data[0].password, function(err, correct) {
           if(err) console.log(err)
@@ -17,6 +17,9 @@ router.post('/login', function (req,res) {
             var id = data[0].user_ID
             sess.user_ID = id
             res.json(id)
+          }
+          else {
+            res.json('ERR:IOUP')
           }
         })
       }
@@ -27,8 +30,8 @@ router.post('/signup', function (req,res) {
   sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
-      if(data.length > 0){
-        res.json('Username already in use')}
+      if(data.length > 0)
+        res.json('ERR:UIU')
       else {
         utils.hashPassword(req.body.password, function(err,hash) {
           if(err) console.log(err)
@@ -47,10 +50,9 @@ router.post('/signup', function (req,res) {
 
 router.get('/checkAuth', function(req,res) {
   sess = req.session
-  console.log('SEESS: ', sess.user_ID)
-  var authorised = false
+  var authorised = -1
   if(sess.user_ID) {
-    authorised = true
+    authorised = sess.user_ID
   }
   res.json(authorised)
 })

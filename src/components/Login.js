@@ -4,6 +4,7 @@ import {Link} from 'react-router'
 import request from 'superagent'
 
 import {loginOrSignUp} from './utils'
+import ErrorCase from './Error'
 
 class Login extends Component {
 
@@ -15,7 +16,17 @@ class Login extends Component {
       password: this.refs.password.value
     }
 
-    loginOrSignUp('/login', formData, this.props.setCurrentUser)
+    loginOrSignUp('/login', formData, this.setCurrUser, this.props.dealWithError)
+  }
+
+  setCurrUser(user) {
+    this.props.setCurrentUser(user)
+    this.props.removeError()
+  }
+
+  printErrorMsg() {
+    if(this.props.error.length > 0)
+      return <ErrorCase error={this.props.error}/>
   }
 
   render() {
@@ -24,9 +35,8 @@ class Login extends Component {
       <div className="jumbotron col-sm-4 text-center col-centered">
         <form className="form-signin">
           <h2 className="form-signin-heading">Please login </h2>
-          <label className="sr-only">Username</label>
           <input type="username" id="inputUsername" className="form-control" placeholder="Your username" ref='username' required autofocus/>
-          <label for="inputPassword" className="sr-only">Password</label>
+          {this.printErrorMsg()}
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>
@@ -38,7 +48,8 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.get('currentUser')
+    currentUser: state.get('currentUser'),
+    error: state.get('errorMsg')
   }
 }
 
@@ -48,6 +59,17 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'SET_CURRENT_USER',
         user: user
+      })
+    },
+    removeError: () => {
+      dispatch({
+        type: 'REMOVE_ERROR'
+      })
+    },
+    dealWithError: errorMsg => {
+      dispatch({
+        type: 'SAVE_ERROR_TO_PROPS',
+        errorMsg: errorMsg
       })
     }
   }

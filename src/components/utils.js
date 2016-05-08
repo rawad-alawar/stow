@@ -1,4 +1,3 @@
-
 import {hashHistory} from 'react-router'
 import request from 'superagent'
 
@@ -8,8 +7,7 @@ export const checkAuthDeep = handler => {
     .end((err, res) => {
       if(err) (console.log(err))
       else {
-        console.log('CHACKAUTH: ', res.body)
-        res.body === true ?
+        res.body > 0 ?
           hashHistory.push(handler.pass) :
           hashHistory.push(handler.fail)
       }
@@ -41,24 +39,31 @@ export const checkLogIn = (currUser, target) => {
   }
 }
 
-export const loginOrSignUp = (action, formData, callback) => {
+export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
   request
     .post(action)
     .send(formData)
     .end((err,res) => {
       if(err) console.log(err)
       else {
-        console.log('BODY1: ', res.body)
-        request
-          .get(`/user/${res.body}`)
-          .end((err,res) => {
-            console.log('BODY2: ', res.body)
-            if(err) console.log(err)
-            else {
-              hashHistory.push('/')
-              callback(res.body[0])
-            }
-          })
+        switch(res.body) {
+          case 'ERR:UNF':
+            cbError('username not found')
+            break
+          case 'ERR:IUOP':
+            cbError('username or password is incorrect')
+            break
+          default:
+            request
+              .get(`/user/${res.body}`)
+              .end((err,res) => {
+                if(err) console.log(err)
+                else {
+                  hashHistory.push('/')
+                  cbSuccess(res.body[0])
+                }
+              })
+        }
       }
     })
 }
