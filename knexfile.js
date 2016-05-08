@@ -7,8 +7,8 @@ module.exports = {
       filename: __dirname + '/database/dev.sqlite3'
     },
     pool: {
-      min: 2,
-      max: 10
+      min: 1,
+      max: 1
     },
     migrations: {
       directory: 'database/migrations'

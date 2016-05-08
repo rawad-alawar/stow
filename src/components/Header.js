@@ -29,6 +29,7 @@ class Header extends Component {
 
   render() {
     var currUser = this.props.currentUser.size
+    const id = this.props.currentUser.get('users_ID')
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -41,6 +42,9 @@ class Header extends Component {
               <button type='button' className={`pull-right btn btn-med btn-info ${checkLogIn(currUser, 'signup')}`}>Sign-up</button>
             </Link>
             <button name='logInOut' type='button' className='pull-right btn btn-med btn-info' onClick={this.handleClick.bind(this)}>{checkLogIn(currUser, 'logInOut')}</button>
+            <Link to={`user/${id}`}>
+              <button type='button' className='pull-right btn btn-med btn-info'>my account</button>
+            </Link>
           </div>
         </nav>
       </div>

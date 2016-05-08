@@ -24,4 +24,9 @@ body {
   display: none;
 }
 
+.divider {
+	height: 10px;
+	background-color: dodgerblue;
+}
+
 
