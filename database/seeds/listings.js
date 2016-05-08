@@ -151,7 +151,7 @@ exports.seed = function(knex, Promise) {
       price:10,
       description: 'a real beauty of spot',
       negotiable: true,
-      url: 'https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAAMQAAAAJDdlYTYyNzZiLTZmMzMtNDg0Zi05MmQ4LTMwZmIxMzYxYzExMg.jpg'
+      url: 'https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAAMQAAAAJDdlYTYyNzZiLTZmMzMtNDg0Zi05MmQ4LTMwZmIxMzYxYzExMg.jpg',
       startDate:'2016-05-05',
       endDate:'2016-05-13',
       availability:true
