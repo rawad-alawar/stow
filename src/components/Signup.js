@@ -23,6 +23,7 @@ class Signup extends Component {
 
   render() {
     return (
+      <div className="row-sm-12 row-centered">
       <div className="jumbotron col-centered col-sm-4 text-center">
         <form className="form-signup">
           <h2 className="form-signup-heading">Create your account today</h2>
@@ -38,6 +39,7 @@ class Signup extends Component {
           <input type="text" id="lastName" className="form-control" placeholder="Your last name" ref="lastname" required autofocus/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
         </form>
+      </div>
       </div>
     )
   }

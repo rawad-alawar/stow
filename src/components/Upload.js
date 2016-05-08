@@ -39,14 +39,15 @@ class Upload extends Component {
 
   render() {
     return (
-      <div className="jumbotron col-sm-4 text-center col-centered">
+      <div className="row-sm-12 row-centered">
+      <div className="jumbotron col-sm-5 text-center col-centered">
         <form className="form-signin">
           <h2 className="form-signin-heading">Upload your stow space! </h2>
           <label className="sr-only">Title</label>
           <input type="text" id="title" className="form-control" placeholder="title" ref='title' required autofocus/>
 
           <label for="details" className="sr-only">Tell us about your stow space!</label>
-          <textarea class="form-control" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="40" id="details" ref='description'></textarea>
+          <textarea className="form-control img-responsive" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="75" id="details" ref='description'></textarea>
 
           <input type="file" name="image" accept="image/*" ref='url'/>
 
@@ -84,6 +85,7 @@ class Upload extends Component {
 
           <button type="button" className="btn btn-lg btn-primary">Sign in!</button>
         </form>
+      </div>
       </div>
     )
   }
