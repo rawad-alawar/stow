@@ -8,6 +8,8 @@ import Jumbotron from './components/Jumbotron'
 import Dashboard from './components/Dashboard'
 import ListingProfile from './components/ListingProfile'
 import Login from './components/Login'
+import UserProfile from './components/UserProfile'
+
 
 export default (
   <Router history={hashHistory}>
@@ -17,6 +19,8 @@ export default (
       <Route path='signup' component={Signup}/>
       <Route path='upload' component={Upload}/>
       <Route path='listing/:id' component={ListingProfile}/>
+      <Route path='user/:id' component={UserProfile}/>
+
     </Route>
   </Router>
 )

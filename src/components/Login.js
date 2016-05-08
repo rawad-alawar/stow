@@ -3,24 +3,19 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import request from 'superagent'
 
+import {loginOrSignUp} from './utils'
+
 class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
     const formData = {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
 
-    request.post('/login')
-      .send(formData)
-      .end((err, res)=>{
-        if(err) console.log('ERROR ', err)
-        else {
-          console.log('Server SAYS: ',res.body)
-          this.props.authorise(true)
-        }
-      })
+    loginOrSignUp('/login', formData, this.props.setCurrentUser)
   }
 
   render() {
@@ -40,15 +35,17 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    currentUser: state.get('currentUser')
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    authorise: authorised => {
+    setCurrentUser: user => {
       dispatch({
-        type: 'AUTHORISE',
-        authorised: authorised
+        type: 'SET_CURRENT_USER',
+        user: user
       })
     }
   }
