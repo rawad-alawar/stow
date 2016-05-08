@@ -40,7 +40,7 @@ class UserProfile extends Component {
                 </div>
                 </div>
 
-<div className="row-centered myStow">
+                <div className="row-centered myStow">
                 <div className="col-sm-2" >
                 <img src={listing.get('url')} width="200px"/>
                 </div>
