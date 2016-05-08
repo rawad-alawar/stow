@@ -9,6 +9,7 @@ class Header extends Component {
 
   handleClick(e) {
     console.log('CUREENT USER: ', this.props.currentUser)
+    console.log('ERROR in Header: ', this.props.error)
     e.preventDefault()
     switch(e.target.name) {
       case 'upload':
@@ -54,7 +55,8 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.get('currentUser')
+    currentUser: state.get('currentUser'),
+    error: state.get('errorMsg')
   }
 }
 

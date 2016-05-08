@@ -40,18 +40,21 @@ export const checkLogIn = (currUser, target) => {
 }
 
 export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
+  console.log('Callback ', cbSuccess)
   request
     .post(action)
     .send(formData)
     .end((err,res) => {
       if(err) console.log(err)
       else {
+        console.log("RES>BODY ", res.body)
         switch(res.body) {
-          case 'ERR:UNF':
-            cbError('username not found')
+          case 'ERR:UIU':
+            cbError(res.body)
             break
           case 'ERR:IUOP':
-            cbError('username or password is incorrect')
+            console.log('IOUP error')
+            cbError(res.body)
             break
           default:
             request

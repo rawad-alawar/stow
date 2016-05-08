@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import request from 'superagent'
@@ -15,18 +16,20 @@ class Login extends Component {
       username: this.refs.username.value,
       password: this.refs.password.value
     }
-
-    loginOrSignUp('/login', formData, this.setCurrUser, this.props.dealWithError)
-  }
-
-  setCurrUser(user) {
-    this.props.setCurrentUser(user)
     this.props.removeError()
+    loginOrSignUp('/login', formData, this.props.setCurrentUser, this.mount)
   }
 
-  printErrorMsg() {
-    if(this.props.error.length > 0)
-      return <ErrorCase error={this.props.error}/>
+  mount() {
+    ReactDOM.render(<p className='onError'>username or password is incorrect</p>, document.getElementById('err'))
+  }
+
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById('err'))
+  }
+
+  componentWillUnmount() {
+    this.unmount()
   }
 
   render() {
@@ -36,7 +39,7 @@ class Login extends Component {
         <form className="form-signin">
           <h2 className="form-signin-heading">Please login </h2>
           <input type="username" id="inputUsername" className="form-control" placeholder="Your username" ref='username' required autofocus/>
-          {this.printErrorMsg()}
+          <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>

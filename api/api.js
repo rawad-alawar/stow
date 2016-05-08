@@ -13,13 +13,13 @@ router.post('/login', function (req,res) {
       else {
         utils.checkPassword(req.body.password, data[0].password, function(err, correct) {
           if(err) console.log(err)
-          else if(correct) {
+          else if(correct == true) {
             var id = data[0].user_ID
             sess.user_ID = id
             res.json(id)
           }
           else {
-            res.json('ERR:IOUP')
+            res.json('ERR:IUOP')
           }
         })
       }
