@@ -1,28 +1,24 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
+
+import {loginOrSignUp} from './utils'
 
 class Signup extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
     const formData = {
       username: this.refs.username.value,
       password: this.refs.password.value,
       email: this.refs.email.value,
       firstName: this.refs.firstName.value,
-      lastName: this.refs.lastName.value,
+      lastName: this.refs.lastName.value
     }
 
-    request.post('/signup')
-      .send(formData)
-      .end((err, res)=>{
-        if(err) console.log('ERROR ', err)
-        else {
-          console.log('Server SAYS: ', res.body)
-        }
-      })
+    loginOrSignUp('/signup', formData, this.props.setCurrentUser)
   }
 
   render() {
@@ -51,4 +47,15 @@ function mapStateToProps(state) {
   return {}
 }
 
-export default connect(mapStateToProps)(Signup)
+function mapDispatchToProps(dispatch) {
+  return {
+    setCurrentUser: user => {
+      dispatch({
+        type: 'SET_CURRENT_USER',
+        user: user
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

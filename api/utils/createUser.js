@@ -8,7 +8,6 @@ function createUser(data, hash){
     email: data.email,
     password: hash
   })
-  
 }
 
 module.exports = createUser

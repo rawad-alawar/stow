@@ -119,9 +119,7 @@ exports.seed = function(knex, Promise) {
       price:10,
       description: 'a real beauty of spot',
       negotiable: true,
-      url: '',
-      startDate:'2016-05-05',
-      endDate:'2016-05-13',
+      url: 'http://www.qbikinsurance.com/wp-content/uploads/2013/12/bigstock-Empty-garage-with-metal-roll-u-25573682.jpg',
       availability:true
     }),
     knex('listings').insert({
