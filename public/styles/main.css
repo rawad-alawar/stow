@@ -30,7 +30,7 @@ body {
 }
 
 .listingThumbnail {
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
 }
 
 .thumbnailbtn {
@@ -41,8 +41,15 @@ body {
   color: dodgerblue;
 }
 
+<<<<<<< HEAD
 .onError {
   color: tomato;
+=======
+p.onError {
+  color: tomato;
+  font-size: 12px;
+  margin: 0 0 0 4px;
+>>>>>>> 0bb8a6178d3bae6a05f9c07a3e25d9c78d1cda50
 }
 
 

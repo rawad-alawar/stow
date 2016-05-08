@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
 
 import {loginOrSignUp} from './utils'
-import ErrorCase from './Error'
 
 class Signup extends Component {
 
@@ -15,16 +15,23 @@ class Signup extends Component {
       username: this.refs.username.value,
       password: this.refs.password.value,
       email: this.refs.email.value,
-      firstName: this.refs.firstname.value,
-      lastName: this.refs.lastname.value
+      firstName: this.refs.firstName.value,
+      lastName: this.refs.lastName.value
     }
 
-    loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.props.dealWithError)
+    loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.mount)
   }
 
-  printErrorMsg() {
-    if(this.props.error.length > 0)
-      return <ErrorCase error={this.props.error}/>
+  mount() {
+    ReactDOM.render(<p className='onError'>Username is already in use</p>, document.getElementById('err'))
+  }
+
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById('err'))
+  }
+
+  componentWillUnmount() {
+    this.unmount()
   }
 
   render() {
@@ -34,7 +41,7 @@ class Signup extends Component {
         <form className="form-signup">
           <h2 className="form-signup-heading">Create your account today</h2>
           <input type="text" id="inputUsername" className="form-control" placeholder="Your username" ref="username" required autofocus/>
-          {this.printErrorMsg()}
+          <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref="password" required/>
           <input type="email" id="inputEmail" className="form-control" placeholder="Your email" ref="email" required autofocus/>
           <input type="text" id="firstName" className="form-control" placeholder="Your name" ref="firstName" required autofocus/>
@@ -48,9 +55,7 @@ class Signup extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    error: state.get('errorMsg')
-  }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -60,16 +65,9 @@ function mapDispatchToProps(dispatch) {
         type: 'SET_CURRENT_USER',
         user: user
       })
-    },
-    dealWithError: errorMsg => {
-      dispatch({
-        type: 'SAVE_ERROR_TO_PROPS',
-        errorMsg: errorMsg
-      })
     }
   }
 }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup)
-

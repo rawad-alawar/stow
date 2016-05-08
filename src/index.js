@@ -38,7 +38,6 @@ request
             }
           })
       }
-
     }
   })
 
@@ -48,3 +47,4 @@ render(
   </Provider>,
   document.getElementById('app')
 )
+

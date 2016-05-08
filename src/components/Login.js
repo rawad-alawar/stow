@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import request from 'superagent'
 
 import {loginOrSignUp} from './utils'
-import ErrorCase from './Error'
 
 class Login extends Component {
 
@@ -16,17 +16,19 @@ class Login extends Component {
       password: this.refs.password.value
     }
 
-    loginOrSignUp('/login', formData, this.setCurrUser, this.props.dealWithError)
+    loginOrSignUp('/login', formData, this.props.setCurrentUser, this.mount)
   }
 
-  setCurrUser(user) {
-    this.props.setCurrentUser(user)
-    this.props.removeError()
+  mount() {
+    ReactDOM.render(<p className='onError'>Username or password is incorrect</p>, document.getElementById('err'))
   }
 
-  printErrorMsg() {
-    if(this.props.error.length > 0)
-      return <ErrorCase error={this.props.error}/>
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById('err'))
+  }
+
+  componentWillUnmount() {
+    this.unmount()
   }
 
   render() {
@@ -36,7 +38,7 @@ class Login extends Component {
         <form className="form-signin">
           <h2 className="form-signin-heading">Please login </h2>
           <input type="username" id="inputUsername" className="form-control" placeholder="Your username" ref='username' required autofocus/>
-          {this.printErrorMsg()}
+          <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>
@@ -47,10 +49,7 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    currentUser: state.get('currentUser'),
-    error: state.get('errorMsg')
-  }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -59,17 +58,6 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'SET_CURRENT_USER',
         user: user
-      })
-    },
-    removeError: () => {
-      dispatch({
-        type: 'REMOVE_ERROR'
-      })
-    },
-    dealWithError: errorMsg => {
-      dispatch({
-        type: 'SAVE_ERROR_TO_PROPS',
-        errorMsg: errorMsg
       })
     }
   }

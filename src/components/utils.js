@@ -46,24 +46,18 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
     .end((err,res) => {
       if(err) console.log(err)
       else {
-        switch(res.body) {
-          case 'ERR:UNF':
-            cbError('username not found')
-            break
-          case 'ERR:IUOP':
-            cbError('username or password is incorrect')
-            break
-          default:
-            request
-              .get(`/user/${res.body}`)
-              .end((err,res) => {
-                if(err) console.log(err)
-                else {
-                  hashHistory.push('/')
-                  cbSuccess(res.body[0])
-                }
-              })
+        if(Number.isInteger(res.body)){
+          request
+            .get(`/user/${res.body}`)
+            .end((err,res) => {
+              if(err) console.log(err)
+              else {
+                hashHistory.push('/')
+                cbSuccess(res.body[0])
+              }
+            })
         }
+        else cbError()
       }
     })
 }

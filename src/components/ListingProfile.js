@@ -19,6 +19,7 @@ class ListingProfile extends Component {
             <h4>${listing.get('price')}</h4>
             <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
             <p>{listing.get('description')}</p>
+            <button type="button">RENT THIS STOW</button>
           </div>
         </div>
       </div>
