@@ -6,6 +6,7 @@ function saveListing(formData) {
     .insert({
       renter_ID: formData.renter_id,
       lister_ID: formData.lister_id,
+      listerName: formData.username,
       description: formData.description,
       heading: formData.title,
       suburb: formData.suburb,

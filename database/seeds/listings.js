@@ -7,7 +7,8 @@ exports.seed = function(knex, Promise) {
     // Inserts seed entries
     knex('listings').insert({
       renter_ID: 1,
-      lister_ID: 2,
+      lister_ID: 1,
+      listerName: 'Gonzo',
       suburb:'Te Aro',
       streetName:'Taranaki',
       streetNumber:'72,80',
@@ -24,6 +25,7 @@ exports.seed = function(knex, Promise) {
     knex('listings').insert({
       renter_ID: 3,
       lister_ID: 2,
+      listerName: 'Big Bird',
       suburb:'Te Aro',
       streetName:'Taranaki',
       streetNumber:'168',
@@ -39,7 +41,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 3,
-      lister_ID: 2,
+      lister_ID: 3,
+      listerName: 'Oscar',
       suburb:'Aro Valley',
       streetName:'Aro Street',
       streetNumber:'96',
@@ -55,7 +58,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 4,
-      lister_ID: 2,
+      lister_ID: 4,
+      listerName: 'Bert',
       suburb:'Thorndon',
       streetName:'Newman Terrace',
       streetNumber:'21',
@@ -71,7 +75,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 5,
-      lister_ID: 2,
+      lister_ID: 5,
+      listerName: 'Ernie',
       suburb:'Kilbirnie',
       streetName:'Rongotai Rd',
       streetNumber:'46',
@@ -87,7 +92,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 6,
-      lister_ID: 2,
+      lister_ID: 6,
+      listerName: 'Kermit',
       suburb:'Oriental Bay',
       streetName:'Oriental Parade',
       streetNumber:'246',
@@ -103,7 +109,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 7,
-      lister_ID: 2,
+      lister_ID: 7,
+      listerName: 'Snufaluffagus',
       suburb:'Aro Valley',
       streetName:'Aro Street',
       streetNumber:'200',
@@ -117,7 +124,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 8,
-      lister_ID: 2,
+      lister_ID: 8,
+      listerName: 'Elmo',
       suburb:'Hataitai',
       streetName:'Rata Rd',
       streetNumber:'8',
@@ -133,7 +141,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 9,
-      lister_ID: 2,
+      lister_ID: 9,
+      listerName: 'Miss Piggy',
       suburb:'Mount Victoria',
       streetName:'Brougham Street',
       streetNumber:'100',
@@ -149,7 +158,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 10,
-      lister_ID: 2,
+      lister_ID: 10,
+      listerName: "The Count",
       suburb:'Brooklyn',
       streetName:'Washington Ave',
       streetNumber:'156',
@@ -165,7 +175,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 11,
-      lister_ID: 2,
+      lister_ID: 11,
+      listerName: 'Cookie Monster',
       suburb:'Mount Cook',
       streetName:'Wallace St',
       streetNumber:'82',
@@ -181,7 +192,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 12,
-      lister_ID: 2,
+      lister_ID: 12,
+      listerName: 'Pikachu',
       suburb:'Mount Cook',
       streetName:'Tasman St',
       streetNumber:'165',
@@ -197,7 +209,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 13,
-      lister_ID: 2,
+      lister_ID: 13,
+      listerName: "Kawasaki Jones",
       suburb:'Oriental Bay',
       streetName:'Oriental Parad',
       streetNumber:'322',
@@ -213,7 +226,8 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       renter_ID: 14,
-      lister_ID: 2,
+      lister_ID: 14,
+      listerName: 'SeaDoo Slayer',
       suburb:'Hataitai',
       streetName:'Belvedere Rd',
       streetNumber:'5',

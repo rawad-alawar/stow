@@ -17,9 +17,9 @@ function addListingToUser(action, userId, listingId, formData) {
       return knex('listings')
         .returning('listing_ID')
         .insert({
-          renter_ID: null
+          renter_ID: null,
           lister_ID: userId,
-          listerName: formData.username
+          listerName: formData.username,
           description: 'There is no description for this listing' || formData.description,
           heading: formData.title,
           suburb: formData.suburb,

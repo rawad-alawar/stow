@@ -13,8 +13,8 @@ class UserProfile extends Component {
   constructor() {
     super()
     this.state = {
-      listedSpaces: <div className="noListings"><p>You are not listing any spaces right now</p></div>,
-      rentedSpaces: <p>You are not renting any spaces right now</p>
+      listedSpaces: <div className="noListings col-sm-9 pull-right"><p>You are not listing any spaces right now</p></div>,
+      rentedSpaces: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>
     }
   }
 
@@ -26,6 +26,7 @@ class UserProfile extends Component {
   }
 
   checkForListedSpaces(userId, listings) {
+
     var listingSummaries = listings.filter(l => l.get('lister_ID') == userId)
     if(listingSummaries.size > 0)
       var listingSummaries = listingSummaries.map(l => {
@@ -72,7 +73,6 @@ class UserProfile extends Component {
 
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
-                <div className="divider"></div>
                 {this.state.rentedSpaces}
               </div>
             </div>

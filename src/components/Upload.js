@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
-
+import {hashHistory} from 'react-router'
 
 class Upload extends Component {
 
@@ -33,10 +33,11 @@ class Upload extends Component {
   }
 
   handleUpload(e) {
+
     e.preventDefault()
     const formData = {
       title: this.refs.title.value,
-      //lister_ID: this.refs.lister_ID.value,
+      username: this.props.user.get('username'),
       suburb: this.refs.suburb.value,
       // streetname: this.refs.streetName.value,
       // streetnumber: this.refs.streetNumber.value,
@@ -94,7 +95,9 @@ class Upload extends Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    user: state.get('currentUser')
+  }
 }
 
 export default connect(mapStateToProps)(Upload)
