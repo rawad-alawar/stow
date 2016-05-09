@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
       table.string('heading')
       table.integer('renter_ID')
       table.integer('lister_ID')
+      table.string('listerName')
       table.string('suburb')
       table.string('streetName')
       table.string('streetNumber')

@@ -5,6 +5,7 @@ function saveListing(data) {
   return knex('listings').insert({
     renter_ID: data.renter_id,
     lister_ID: data.lister_id,
+    listerName: data.username,
     description: data.description,
     heading: data.title,
     suburb: data.suburb,
