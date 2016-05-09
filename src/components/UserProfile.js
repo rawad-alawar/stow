@@ -13,8 +13,8 @@ class UserProfile extends Component {
   constructor() {
     super()
     this.state = {
-      listedSpace: <div className="noListings"><p>You are not listing any spaces right now</p></div>,
-      rentedSpace: <p>You are not renting any spaces right now</p>
+      listedSpace: <div className="noListings col-sm-9 pull-right"><p>You are not listing any spaces right now</p></div>,
+      rentedSpace: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>
     }
   }
 
@@ -66,7 +66,6 @@ class UserProfile extends Component {
 
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
-                <div className="divider"></div>
                 {this.state.rentedSpace}
               </div>
             </div>
