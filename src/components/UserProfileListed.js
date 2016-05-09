@@ -14,6 +14,9 @@ class UserProfileListed extends Component {
         <h6>{listing.get('size')}</h6>
         <h6>${listing.get('price')}</h6>
         <h6>{listing.get('description')}</h6>
+        <div className="row-centered">
+        <button name="removeListing" className="btn btn-lg btn-danger">Remove this listing</button>
+        </div>
       </div>
     )
   }

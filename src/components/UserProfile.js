@@ -52,7 +52,7 @@ class UserProfile extends Component {
           <div className="col-sm-12 col-centered">
 
             <div className="col-sm-3" >
-              <img src="http://www.eonline.com/eol_images/Entire_Site/2015518/rs_600x600-150618104510-600.tom-myspace.jw.61815_2.jpg" width="150px" className="img-circle"/>
+              <img src="https://savoirs.rfi.fr/sites/all/themes/rfi/images/public/default-profile.png" width="150px" className="img-circle"/>
               <UserRating />
             </div>
             <div className="col-sm-8">

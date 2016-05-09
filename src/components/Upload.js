@@ -84,9 +84,6 @@ class Upload extends Component {
           <label className="sr-only">City</label>
           <input type="text" id="city" className="form-control" placeholder="City..." ref='city' required autofocus/>
 
-          <label className="sr-only">Stree Number</label>
-          <input type="text" id="suburb" className="form-control" placeholder="Street Number..." ref='streetNumber' required autofocus/>
-
           <label className="sr-only">Street Name</label>
           <input type="text" id="street" className="form-control" placeholder="street" ref='streetName' required autofocus/>
 
@@ -98,9 +95,6 @@ class Upload extends Component {
 
           <label className="sr-only">Approximate Size</label>
           <input type="text" id="price" className="form-control" placeholder="Approximate size..." ref='size' required autofocus/>
-
-          <label className="sr-only">Negotiable?</label>
-          <input type="text" id="negotiable" className="form-control" placeholder="negotiable" ref='negotiable' required autofocus/>
 
           <label className="sr-only">Available From:</label>
           <input type="text" id="availablefrom" className="form-control" placeholder="availablefrom" ref='startDate' required autofocus/>
