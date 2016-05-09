@@ -68,7 +68,7 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
     })
 }
 
-export const loadUserToStore = store => {
+export const loadUserToStore = () => {
   request
     .get('/checkAuth')
     .end((err,userId) => {
@@ -91,7 +91,7 @@ export const loadUserToStore = store => {
     })
 }
 
-export const loadListingsToStore = store => {
+export const loadListingsToStore = () => {
   request
   .get('/list')
   .end(function(err, res){
@@ -101,4 +101,41 @@ export const loadListingsToStore = store => {
       listings: res.body
     })
   })
+}
+
+export const rent = (action, listingId) => {
+  console.log('111')
+  request
+    .get('/checkAuth')
+    .end((err,userId) => {
+      if(err) console.log(err)
+      else {
+        console.log('222')
+        if(userId.body > 0) {
+          request
+            .get(`/user/${userId.body}`)
+            .end((err,userData) => {
+              if(err) console.log(err)
+              else {
+                store.dispatch({
+                  type: 'ADD_LISTING_TO_USER',
+                  listingId: listingId
+                })
+                request
+                  .post(`/user/${userId.body}`)
+                  .send({action: action, listingId: listingId})
+                  .end((err,listingId) => {
+                    if(err) console.log(err)
+                    else {
+                      if(listingId > 0)
+                        console.log('success')
+                      else
+                        console.log('not success')
+                    }
+                  })
+              }
+            })
+        }
+      }
+    })
 }

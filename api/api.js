@@ -14,8 +14,6 @@ router.use(function(req, res, next) {
   next();
 });
 
-
-
 var corsOptions = {
   origin: '*'
 }
@@ -104,13 +102,20 @@ router.get('/user/:id', function(req, res) {
   utils.getUserById(req.params.id)
   .then(function(data){
     res.json(data)
-    })
-} )
+  })
+})
+
+router.post('/user/:id', function(req, res) {
+  utils.addListingToUser(req.body.action, req.params.id, req.body.listingId)
+  .then(function(data) {
+    res.json(data)
+  })
+})
 
 router.get('/user/listing/:id', function(req, res) {
   utils.getUserByListingId(req.params.id)
-  .then(function(data) {
-    res.json(data)
+  .then(function(listingId) {
+    res.json(listingId)
   })
 })
 

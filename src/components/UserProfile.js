@@ -17,8 +17,6 @@ class UserProfile extends Component {
     }
   }
 
-  // componentWillUpdate
-
   componentDidMount() {
     const user = this.props.currentUser
     const id = user.get('user_ID')

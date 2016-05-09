@@ -10,6 +10,7 @@ module.exports = {
   hashPassword: require('./hash'),
   checkPassword: require('./checkPassword'),
   getListingsByLocation: require('./getListingsByLocation'),
-  saveFeedback: require('./saveFeedback')
+  saveFeedback: require('./saveFeedback'),
+  addListingToUser: require('./addListingToUser')
 
 }
