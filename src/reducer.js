@@ -16,8 +16,6 @@ export default (state = INITIAL_STATE, action) => {
       return state.set('currentUser', Map({}))
     case 'SET_CURRENT_USER':
       return state.set('currentUser', fromJS(action.user))
-    case 'ADD_LISTING_TO_USER':
-      return state
     default:
       return state
   }

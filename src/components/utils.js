@@ -103,7 +103,7 @@ export const loadListingsToStore = () => {
   })
 }
 
-export const rent = (action, listingId) => {
+export const addNewListing = (action, listingId, formData) => {
   request
     .get('/checkAuth')
     .end((err,userId) => {
@@ -115,22 +115,19 @@ export const rent = (action, listingId) => {
             .end((err,userData) => {
               if(err) console.log(err)
               else {
-                store.dispatch({
-                  type: 'ADD_LISTING_TO_USER',
-                  listingId: listingId
-                })
                 request
                   .post(`/user/${userId.body}`)
-                  .send({action: action, listingId: listingId})
+                  .send({action: action, listingId: listingId, formData: formData})
                   .end((err,listingId) => {
                     if(err) console.log(err)
                     else {
                       if(listingId.body > 0){
                         console.log('success')
                         loadListingsToStore()
+                        if(action == 'upload')
+                          hashHistory.push('/')
                       }
-                      else
-                        console.log('fail whale')
+                      else console.log('fail')
                     }
                   })
               }
@@ -139,3 +136,19 @@ export const rent = (action, listingId) => {
       }
     })
 }
+
+// export const addNewListing = (formData) => {
+//   request.post('/listing/add')
+//       .send(formData)
+//       .end((err, listingId)=>{
+//         if(err) console.log('ERROR ', err)
+//         else {
+//           if(listingId.body > 0){
+//             console.log('success')
+//             loadListingsToStore()
+//             hashHistory.push('/')
+//           }
+//           else console.log('fail')
+//         }
+//       })
+// }

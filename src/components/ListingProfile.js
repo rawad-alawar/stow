@@ -11,7 +11,7 @@ class ListingProfile extends Component {
     e.preventDefault()
     switch(e.target.name) {
       case 'rent':
-        rent('rent', this.props.params.id)
+        addNewListing('rent', this.props.params.id, null)
         break
       case 'back':
         hashHistory.push('/')
