@@ -26,6 +26,7 @@ class UserProfile extends Component {
   }
 
   checkForListedSpaces(userId, listings) {
+
     var listingSummaries = listings.filter(l => l.get('lister_ID') == userId)
     if(listingSummaries.size > 0)
       var listingSummaries = listingSummaries.map(l => {
