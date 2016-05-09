@@ -1,0 +1,13 @@
+Migrations file names should be really descriptive e.g. 'createUserTable'
+
+Change postedId to ListingId in feedback table
+
+Clarify variable names in API
+
+Refactor getUserByUserName to return just one object not array with one object
+
+use catches in promises
+
+State should take immutable objects
+
+Kind to import things in order you use them.
