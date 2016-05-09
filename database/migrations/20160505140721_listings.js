@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
   console.log('create table')
 
   return knex.schema.createTableIfNotExists('listings', function(table) {
-      table.increments('listings_ID')
+      table.increments('lister_ID')
       table.string('heading')
       table.integer('renter_ID')
       table.integer('lister_ID')
@@ -15,12 +15,11 @@ exports.up = function(knex, Promise) {
       table.string('country')
       table.string('size')
       table.text('description')
-      table.float('price')
-      table.boolean('negotiable')
+      table.decimal('price')
       table.string('url')
-      table.string('startDate')
-      table.string('endDate')
-      table.boolean('availability')
+      table.dateTime('startDate')
+      table.dateTime('endDate')
+      table.boolean('isAvailable')
       table.timestamps()
   })
 };
