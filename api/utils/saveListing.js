@@ -14,11 +14,10 @@ function saveListing(data) {
     country: data.country,
     size: data.size,
     price: data.price,
-    negotiable: data.negotiable,
     url: data.url,
     startDate: data.startdate,
     endDate: data.enddate,
-    availability: data.availability,
+    isAvailable: data.availability,
     created_at: Date()
   })
   .then(function(data){
