@@ -6,7 +6,7 @@ function getAllListings(){
     .table('listings')
     .orderBy('listing_ID', 'desc')
     .then(function(data){
-      return listingData
+      return data
     })
 }
 

@@ -3,7 +3,7 @@ var getUserByUsername = require('../getUserByUsername')
 var getListingsByLocation = require('../getListingsByLocation')
 var test = require('tape')
 var knex = require('../connection')
-var falseUser = require('./falseUser')
+var falseUser = require('./testData')
 
 test('sign up test', function(t){
   t.equal(typeof createUser, 'function', 'type of test passed!')
