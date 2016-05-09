@@ -26,33 +26,29 @@ class FeedbackForm extends Component {
           hashHistory.push('/')
         }
       })
-
   }
-
 
   render() {
 
     return (
-      <div className="jumbotron col-centered col-sm-4 text-center">
+      <div className="jumbotron col-sm-12 text-center">
         <form className="form-feedback">
           <h2 className="form-feedback-heading">Leave Feedback</h2>
-
-          <label for="rating" className="sr-only">Rating</label>
-          <select name="chooseRating" ref='rating'>
-           <option value="empty"></option>
-           <option value="1"> 1</option>
-           <option value="2"> 2</option>
-           <option value="3"> 3</option>
-           <option value="4"> 4</option>
-           <option value="5"> 5</option>
-          </select>
-
-          <label for="feedback" className="sr-only">How was your Stow?</label>
-          <textarea class="form-control" placeholder="" rows="8" cols="40" id="details" ref='comment'></textarea>
-          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
-          <button type="button" onClick={this.props.unmount}>Close</button>
-
-
+          <div className="col-sm-12">
+            <textarea placeholder="tell us about your experience with this stow..." class="form-control" rows="8" cols="40" id="details" ref='comment'></textarea>
+            <div className="row">
+              <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
+              <button type="button" className="btn btn-lg btn-danger" onClick={this.props.unmount}>Close</button>
+              <select name="chooseRating" placeholder"rating" ref='rating'>
+               <option value="0"></option>
+               <option value="1"> 1</option>
+               <option value="2"> 2</option>
+               <option value="3"> 3</option>
+               <option value="4"> 4</option>
+               <option value="5"> 5</option>
+              </select>
+            </div>
+          </div>
         </form>
       </div>
     )
