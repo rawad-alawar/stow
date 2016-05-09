@@ -10,7 +10,7 @@ class ListingsContainer extends Component {
       return <ListingThumbnail key={listing.get('listing_ID')} listing={listing}/>
     })
     return (
-      <div>
+      <div className="row row-centered">
         {appendedListings}
       </div>
     )

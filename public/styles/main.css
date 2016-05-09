@@ -7,16 +7,13 @@ body {
 	padding-top: 50px;
 }
 
-/* centered columns styles */
 .row-centered {
     text-align:center;
 }
 .col-centered {
     display:inline-block;
     float:none;
-    /* reset the text-align */
     text-align:left;
-    /* inline-block space fix */
     margin-right:-4px;
 }
 
@@ -34,12 +31,17 @@ body {
   background-color: #eee;
 }
 
+.listingsDivider {
+  height: 100px;
+}
+
 .listingThumbnail {
   padding-bottom: 50px;
 }
 
 #accountBtn {
  padding-top: 10px;
+ padding-right: 10px;
 }
 
 .thumbnailbtn {
