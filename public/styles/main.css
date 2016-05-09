@@ -38,9 +38,8 @@ body {
   padding-bottom: 50px;
 }
 
-.listingThumbnail a {
-  opacity: unset;
-
+#accountBtn {
+ padding-top: 10px;
 }
 
 .thumbnailbtn {
@@ -57,5 +56,4 @@ p.onError {
   font-size: 12px;
   margin: 0 0 0 4px;
 }
-
 

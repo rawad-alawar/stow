@@ -18,14 +18,13 @@ class ListingProfile extends Component {
           <div className="col-sm-6">
             <img className="img img-responsive" width="460px" src={listing.get('url')}/>
           </div>
-
           <div className="col-sm-6">
             <h2>{listing.get('heading')}</h2>
             <h3>{listing.get('suburb')}, {listing.get('city')}, {listing.get('country')}</h3>
             <h4>${listing.get('price')}</h4>
             <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
             <p>{listing.get('description')}</p>
-            <button type="button">RENT THIS STOW</button>
+            <button type="button">Rent this Space</button>
             <button type="button" onClick={this.handleClick.bind(this)}>Back</button>
           </div>
         </div>

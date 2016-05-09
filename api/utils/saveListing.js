@@ -1,6 +1,7 @@
 var knex = require('./connection')
 
 function saveListing(data) {
+    console.log(data.url)
   return knex('listings').insert({
     renter_ID: data.renter_id,
     lister_ID: data.lister_id,
