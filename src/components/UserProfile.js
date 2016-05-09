@@ -43,6 +43,7 @@ class UserProfile extends Component {
       <div className="jumbotron col-centered col-sm-12 text-center">
         <div className="row-centered">
           <div className="col-sm-12 col-centered">
+
             <div className="col-sm-3" >
               <img src="http://www.eonline.com/eol_images/Entire_Site/2015518/rs_600x600-150618104510-600.tom-myspace.jw.61815_2.jpg" width="150px" className="img-circle"/>
             </div>
@@ -78,7 +79,7 @@ class UserProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.get('currentUser'),
+    currentUserTest: state.get('currentUserTest'),
     listings: state.get('listings')
   }
 }

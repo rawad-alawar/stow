@@ -22,7 +22,7 @@ class Header extends Component {
 
   mount() {
     ReactDOM.render(
-      <button type='button' className='btn btn-med btn-info'>☻ account: {this.props.currentUser.get('username')}</button>, document.getElementById('accountBtn')
+      <a type='link' className='accountLink'>☻ account: {this.props.currentUser.get('username')}</a>, document.getElementById('accountBtn')
     )
   }
 
