@@ -64,7 +64,6 @@ class Upload extends Component {
       })
   }
 
-
   render() {
     return (
       <div className="row-sm-12 row-centered">
@@ -109,10 +108,11 @@ class Upload extends Component {
           <label className="sr-only">To:</label>
           <input type="text" id="to" className="form-control" placeholder="to" ref='endDate' required autofocus/>
 
+          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleUpload.bind(this)}>Submit</button>
 
-          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleUpload.bind(this)}>Submit Stow</button>
-
-          <button type="button" className="btn btn-lg btn-primary">Sign in!</button>
+          <Link to='/'>
+            <button type="button" className="btn btn-lg btn-danger pull-right">Cancel</button>
+          </Link>
         </form>
       </div>
       </div>

@@ -1,5 +1,11 @@
 import {hashHistory} from 'react-router'
 import request from 'superagent'
+import {createStore} from 'redux'
+import reducer from '../reducer'
+
+const store = createStore(reducer)
+
+export {store}
 
 export const checkAuthDeep = handler => {
   request
@@ -60,4 +66,39 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
         else cbError()
       }
     })
+}
+
+export const loadUserToStore = store => {
+  request
+    .get('/checkAuth')
+    .end((err,userId) => {
+      if(err) console.log(err)
+      else {
+        if(userId.body > 0) {
+          request
+            .get(`/user/${userId.body}`)
+            .end((err,userData) => {
+              if(err) console.log(err)
+              else {
+                store.dispatch({
+                  type: 'SET_CURRENT_USER',
+                  user: userData.body[0]
+                })
+              }
+            })
+        }
+      }
+    })
+}
+
+export const loadListingsToStore = store => {
+  request
+  .get('/list')
+  .end(function(err, res){
+    if(err) console.log(err)
+    store.dispatch({
+      type: 'LOAD_LISTINGS',
+      listings: res.body
+    })
+  })
 }

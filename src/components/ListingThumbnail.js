@@ -5,7 +5,7 @@ import {Link} from 'react-router'
 class ListingThumbnail extends Component {
 
   render() {
-    const id = this.props.listing.get('listings_ID')
+    const id = this.props.listing.get('listing_ID')
     return (
       <Link to={`listing/${id}`}>
         <div className="col-sm-3 listingThumbnail">

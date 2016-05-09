@@ -14,9 +14,7 @@ class Signup extends Component {
     const formData = {
       username: this.refs.username.value,
       password: this.refs.password.value,
-      email: this.refs.email.value,
-      firstName: this.refs.firstName.value,
-      lastName: this.refs.lastName.value
+      email: this.refs.email.value
     }
 
     loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.mount)
@@ -44,8 +42,6 @@ class Signup extends Component {
           <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref="password" required/>
           <input type="email" id="inputEmail" className="form-control" placeholder="Your email" ref="email" required autofocus/>
-          <input type="text" id="firstName" className="form-control" placeholder="Your name" ref="firstName" required autofocus/>
-          <input type="text" id="lastName" className="form-control" placeholder="Your last name" ref="lastName" required autofocus/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
         </form>
       </div>

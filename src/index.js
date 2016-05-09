@@ -7,39 +7,10 @@ import request from 'superagent'
 import '../public/styles/main.css'
 import reducer from './reducer'
 import App from './components/App'
+import {store, loadUserToStore, loadListingsToStore} from './components/utils.js'
 
-const store = createStore(reducer)
-
-request
-  .get('/list')
-  .end(function(err, res){
-    if(err) console.log(err)
-		store.dispatch({
-			type: 'LOAD_LISTINGS',
-			listings: res.body
-		})
-  })
-
-request
-  .get('/checkAuth')
-  .end((err, res) => {
-    if(err) console.log(err)
-    else {
-      if(res.body > 0) {
-        request
-          .get(`/user/${res.body}`)
-          .end((err,res) => {
-            if(err) console.log(err)
-            else {
-              store.dispatch({
-                type: 'SET_CURRENT_USER',
-                user: res.body[0]
-              })
-            }
-          })
-      }
-    }
-  })
+loadListingsToStore(store)
+loadUserToStore(store)
 
 render(
   <Provider store={store}>
@@ -47,4 +18,3 @@ render(
   </Provider>,
   document.getElementById('app')
 )
-
