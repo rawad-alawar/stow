@@ -39,8 +39,6 @@ class UserRating extends Component {
     return (
       <div className="col-sm-12">
           {this.renderStars()}
-          <div className='star'></div>
-          <div className='star'></div>
       </div>
     )
   }
