@@ -17,12 +17,13 @@ class UserProfile extends Component {
     }
   }
 
+  // componentWillUpdate
+
   componentDidMount() {
     const user = this.props.currentUser
     const id = user.get('user_ID')
     this.checkForListedSpaces(id, this.props.listings)
     this.checkForRentedSpaces(id, this.props.listings)
-    console.log('USER: ',user)
   }
 
   checkForListedSpaces(userId, listings) {
@@ -38,7 +39,6 @@ class UserProfile extends Component {
   }
 
   render() {
-    console.log('CURRENTUSER! ', this.props)
     const user = this.props.currentUser
     const id = user.get('user_ID')
     return (

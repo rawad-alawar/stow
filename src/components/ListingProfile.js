@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {hashHistory, Link} from 'react-router'
 
 class ListingProfile extends Component {
+
+  handleClick(e) {
+    e.preventDefault()
+    hashHistory.push('/')
+  }
+
   render() {
     const {id} = this.props.params
-    const listing = this.props.listings.filter(l => l.get('listings_ID') == id).first()
+    const listing = this.props.listings.filter(l => l.get('listing_ID') == id).first()
     return (
       <div className="col-sm-12 col-centered">
         <div className="row">
@@ -20,6 +26,7 @@ class ListingProfile extends Component {
             <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
             <p>{listing.get('description')}</p>
             <button type="button">RENT THIS STOW</button>
+            <button type="button" onClick={this.handleClick.bind(this)}>Back</button>
           </div>
         </div>
       </div>

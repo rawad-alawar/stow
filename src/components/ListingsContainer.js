@@ -7,7 +7,7 @@ class ListingsContainer extends Component {
 
   render() {
     const appendedListings = this.props.listings.map( listing => {
-      return <ListingThumbnail key={listing.get('listings_ID')} listing={listing}/>
+      return <ListingThumbnail key={listing.get('listing_ID')} listing={listing}/>
     })
     return (
       <div>
