@@ -29,8 +29,18 @@ body {
 	background-color: dodgerblue;
 }
 
+.dividerWhite {
+  height: 10px;
+  background-color: #eee;
+}
+
 .listingThumbnail {
-  padding-bottom: 20px;
+  padding-bottom: 50px;
+}
+
+.listingThumbnail a {
+  opacity: unset;
+
 }
 
 .thumbnailbtn {
@@ -40,6 +50,7 @@ body {
 .bluetxt {
   color: dodgerblue;
 }
+
 
 p.onError {
   color: tomato;
