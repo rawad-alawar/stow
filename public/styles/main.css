@@ -52,6 +52,10 @@ body {
   color: dodgerblue;
 }
 
+.noListings, .noRented {
+
+}
+
 
 p.onError {
   color: tomato;
