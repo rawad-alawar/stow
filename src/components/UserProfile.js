@@ -59,16 +59,14 @@ class UserProfile extends Component {
             </div>
 
             <div className="row-centered myStow">
-              <div className="col-sm-8 col-centered">
-                <h2>Spaces I'm currently listing</h2>
+              <div className="col-sm-12 col-centered">
                 {this.state.listedSpace}
               </div>
             </div>
 
             <div className="row-centered myStow">
-              <div className="col-sm-8 col-centered">
+              <div className="col-sm-12 col-centered">
                 <div className="divider"></div>
-                <h2>Spaces I'm currently renting</h2>
                 {this.state.rentedSpace}
               </div>
             </div>

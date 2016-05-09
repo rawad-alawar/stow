@@ -6,9 +6,10 @@ class UserProfileListed extends Component {
     const listing = this.props.listing
     return (
       <div>
-        <div className="col-sm-2" >
+        <div className="col-sm-3" >
           <img src={listing.get('url')} width="200px"/>
         </div>
+          <h2>Spaces I'm currently listing</h2>
         <h3>{listing.get('suburb')}</h3>
         <h6>{listing.get('size')}</h6>
         <h6>${listing.get('price')}</h6>
