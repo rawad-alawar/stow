@@ -8,7 +8,7 @@ class ListingThumbnail extends Component {
     const id = this.props.listing.get('listing_ID')
     return (
       <Link to={`listing/${id}`}>
-        <div className="col-sm-3 listingThumbnail">
+        <div className="col-sm-3 col-centered listingThumbnail">
           <img className="img" src={this.props.listing.get('url')} alt="this is the image" width="200" height="140"/>
           <h2>${this.props.listing.get('price')}</h2>
           <p>{this.props.listing.get('description')}</p>
