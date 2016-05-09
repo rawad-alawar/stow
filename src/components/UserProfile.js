@@ -2,24 +2,45 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import ReactDOM from 'react-dom'
-import FeedbackForm from './FeedbackForm'
 import request from 'superagent'
 
+import UserProfileListed from './UserProfileListed'
+import UserProfileRented from './UserProfileRented'
 
 class UserProfile extends Component {
 
-  mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.currentUser.get('user_ID')} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
+  constructor() {
+    super()
+    this.state = {
+      listedSpace: <p>You are not listing any spaces right now</p>,
+      rentedSpace: <p>You are not renting any spaces right now</p>
+    }
   }
 
-  unmount(){
-    ReactDOM.unmountComponentAtNode(document.getElementById('fb-form'))
+  componentDidMount() {
+    const user = this.props.currentUser
+    const id = user.get('user_ID')
+    this.checkForListedSpaces(id, this.props.listings)
+    this.checkForRentedSpaces(id, this.props.listings)
+  }
+
+  checkForListedSpaces(userId, listings) {
+    console.log('LISTINGs: ', listings)
+    const listing = listings.filter(l => l.get('lister_ID') == userId)
+    console.log('LISTING: ', listing)
+    if(listing.size > 0)
+      this.setState({listedSpace: <UserProfileListed listing={listing}/>})
+  }
+
+  checkForRentedSpaces(userId, listings) {
+    const listing = listings.filter(l => l.get('lister_ID') == userId).first()
+    if(listing.size > 0)
+      this.setState({rentedSpace: <UserProfileRented listing={listing}/>})
   }
 
   render() {
     const user = this.props.currentUser
     const id = user.get('user_ID')
-    const listing = this.props.listings.filter(l => l.get('lister_ID') == id).first()
     return (
       <div className="jumbotron col-centered col-sm-12 text-center">
         <div className="row-centered">
@@ -37,31 +58,17 @@ class UserProfile extends Component {
             </div>
 
             <div className="row-centered myStow">
-              <div className="col-sm-2" >
-                <img src={listing.get('url')} width="200px"/>
-              </div>
               <div className="col-sm-8 col-centered">
-                <h2>My available Stows</h2>
-                <h3>{listing.get('suburb')}</h3>
-                <h6>{listing.get('size')}</h6>
-                <h6>${listing.get('price')}</h6>
-                <h6>{listing.get('description')}</h6>
+                <h2>Spaces I'm currently listing</h2>
+                {this.state.listedSpace}
               </div>
             </div>
 
             <div className="row-centered myStow">
-              <div className="col-sm-2" >
-                <img src={listing.get('url')} width="200px"/>
-              </div>
               <div className="col-sm-8 col-centered">
                 <div className="divider"></div>
-                <h2>My rented Stows</h2>
-                <h3>{listing.get('suburb')}</h3>
-                <h6>{listing.get('size')}</h6>
-                <h6>${listing.get('price')}</h6>
-                <h6>{listing.get('description')}</h6>
-                <button type='button' onClick={this.mount.bind(this)}>Place Feedback</button>
-                <div id='fb-form'></div>
+                <h2>Spaces I'm currently renting</h2>
+                {this.state.rentedSpace}
               </div>
             </div>
           </div>
