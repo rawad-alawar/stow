@@ -38,7 +38,6 @@ class Upload extends Component {
     e.preventDefault()
     const formData = {
       title: this.refs.title.value,
-      lister_ID: this.props.user.get('user_ID'),
       username: this.props.user.get('username'),
       suburb: this.refs.suburb.value,
       streetname: this.refs.streetName.value,
