@@ -1,14 +1,11 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router'
 import ReactDOM from 'react-dom'
 import FeedbackForm from './FeedbackForm'
-import request from 'superagent'
 
 class UserProfileRented extends Component {
 
   mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.currentUser.get('user_ID')} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
+    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
   }
 
   unmount(){

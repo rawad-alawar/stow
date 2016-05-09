@@ -25,17 +25,15 @@ class UserProfile extends Component {
   }
 
   checkForListedSpaces(userId, listings) {
-    console.log('LISTINGs: ', listings)
     const listing = listings.filter(l => l.get('lister_ID') == userId)
-    console.log('LISTING: ', listing)
     if(listing.size > 0)
-      this.setState({listedSpace: <UserProfileListed listing={listing}/>})
+      this.setState({listedSpace: <UserProfileListed listing={listing.first()} id={userId}/>})
   }
 
   checkForRentedSpaces(userId, listings) {
-    const listing = listings.filter(l => l.get('lister_ID') == userId).first()
+    const listing = listings.filter(l => l.get('lister_ID') == userId)
     if(listing.size > 0)
-      this.setState({rentedSpace: <UserProfileRented listing={listing}/>})
+      this.setState({rentedSpace: <UserProfileRented listing={listing.first()} id={userId}/>})
   }
 
   render() {
