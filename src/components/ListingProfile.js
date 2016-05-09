@@ -2,11 +2,20 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 
+import {rent} from './utils'
+
 class ListingProfile extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    hashHistory.push('/')
+    switch(e.target.name) {
+      case 'rent':
+        rent('rent', this.props.params.id)
+        break
+      case 'back':
+        hashHistory.push('/')
+        break
+    }
   }
 
   render() {
@@ -24,8 +33,8 @@ class ListingProfile extends Component {
             <h4>${listing.get('price')}</h4>
             <h4>{listing.get('startDate')}, {listing.get('endDate')}</h4>
             <p>{listing.get('description')}</p>
-            <button type="button">Rent this Space</button>
-            <button type="button" onClick={this.handleClick.bind(this)}>Back</button>
+            <button name="rent" type="button" onClick={this.handleClick.bind(this)}>Rent this Space</button>
+            <button name="back" type="button" onClick={this.handleClick.bind(this)}>Back</button>
           </div>
         </div>
       </div>
