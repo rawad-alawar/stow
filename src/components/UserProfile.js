@@ -39,7 +39,6 @@ class UserProfile extends Component {
                     <h6>{listing.get('description')}</h6>
                 </div>
                 </div>
-
                 <div className="row-centered myStow">
                 <div className="col-sm-2" >
                 <img src={listing.get('url')} width="200px"/>
