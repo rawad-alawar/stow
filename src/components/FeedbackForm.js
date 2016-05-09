@@ -39,7 +39,7 @@ class FeedbackForm extends Component {
             <div className="row">
               <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
               <button type="button" className="btn btn-lg btn-danger" onClick={this.props.unmount}>Close</button>
-              <select name="chooseRating" placeholder"rating" ref='rating'>
+              <select name="chooseRating" placeholder="rating" ref='rating'>
                <option value="0"></option>
                <option value="1"> 1</option>
                <option value="2"> 2</option>
