@@ -5,11 +5,11 @@ import FeedbackForm from './FeedbackForm'
 class UserProfileRented extends Component {
 
   mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, document.getElementById('fb-form'))
+    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
   }
 
   unmount(){
-    ReactDOM.unmountComponentAtNode(document.getElementById('fb-form'))
+    ReactDOM.unmountComponentAtNode(document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
   }
 
   render() {
@@ -28,7 +28,7 @@ class UserProfileRented extends Component {
         <div className="row-centered">
         <button className="btn btn-lg btn-primary" onClick={this.mount.bind(this)}>Place Feedback</button>
         </div>
-        <div id='fb-form'></div>
+        <div id={`fb-form-${listing.get('listing_ID')}`}></div>
       </div>
     )
   }

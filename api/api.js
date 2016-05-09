@@ -6,7 +6,6 @@ var dotenv = require('dotenv')
 require('dotenv').config()
 
 var utils = require('./utils/utils.index.js')
-var sess
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -30,7 +29,7 @@ router.post('/photos', cors(corsOptions), function (req, res) {
 })
 
 router.post('/login', function (req,res) {
-  sess = req.session
+  var sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length === 0)
@@ -52,7 +51,7 @@ router.post('/login', function (req,res) {
 })
 
 router.post('/signup', function (req,res) {
-  sess = req.session
+  var sess = req.session
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length > 0)
@@ -74,7 +73,7 @@ router.post('/signup', function (req,res) {
 })
 
 router.get('/checkAuth', function(req,res) {
-  sess = req.session
+  var sess = req.session
   var authorised = -1
   if(sess.user_ID) {
     authorised = sess.user_ID
@@ -107,15 +106,15 @@ router.get('/user/:id', function(req, res) {
 
 router.post('/user/:id', function(req, res) {
   utils.addListingToUser(req.body.action, req.params.id, req.body.listingId)
-  .then(function(data) {
-    res.json(data)
+  .then(function(listingId) {
+    res.json(listingId)
   })
 })
 
 router.get('/user/listing/:id', function(req, res) {
   utils.getUserByListingId(req.params.id)
-  .then(function(listingId) {
-    res.json(listingId)
+  .then(function(data) {
+    res.json(data)
   })
 })
 
@@ -141,7 +140,6 @@ router.post('/feedback/add', function(req, res){
 })
 
 router.post('/upload', function(req, res) {
-  console.log(req.body)
   res.end()
 })
 
