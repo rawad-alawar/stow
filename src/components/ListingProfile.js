@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import ListingsContainer from './ListingsContainer'
 
-import {rent} from './utils'
+import {rent, loadListingsToStore} from './utils'
 
 class ListingProfile extends Component {
 
