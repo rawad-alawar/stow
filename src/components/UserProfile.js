@@ -6,13 +6,14 @@ import request from 'superagent'
 
 import UserProfileListed from './UserProfileListed'
 import UserProfileRented from './UserProfileRented'
+import UserRating from './UserRating'
 
 class UserProfile extends Component {
 
   constructor() {
     super()
     this.state = {
-      listedSpace: <p>You are not listing any spaces right now</p>,
+      listedSpace: <div className="noListings"><p>You are not listing any spaces right now</p></div>,
       rentedSpace: <p>You are not renting any spaces right now</p>
     }
   }
@@ -52,6 +53,7 @@ class UserProfile extends Component {
 
             <div className="col-sm-3" >
               <img src="http://www.eonline.com/eol_images/Entire_Site/2015518/rs_600x600-150618104510-600.tom-myspace.jw.61815_2.jpg" width="150px" className="img-circle"/>
+              <UserRating />
             </div>
             <div className="col-sm-8">
               <h2 className="bluetxt">{user.get('username')}</h2>
