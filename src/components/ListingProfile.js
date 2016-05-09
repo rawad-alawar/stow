@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 
-import {rent} from './utils'
+import {rent, loadListingsToStore} from './utils'
 
 class ListingProfile extends Component {
 

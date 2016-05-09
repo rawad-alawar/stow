@@ -1,7 +1,6 @@
 var knex = require('./connection')
 
 function addListingToUser(action, userId, listingId) {
-  console.log('addListingToUser')
   if(action == 'rent')
     return knex('listings')
       .returning('listing_ID')
