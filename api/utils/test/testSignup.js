@@ -5,7 +5,6 @@ var test = require('tape')
 var knex = require('../connection')
 var falseUser = require('./falseUser')
 
-console.log(falseUser.username)
 test('sign up test', function(t){
   t.equal(typeof createUser, 'function', 'type of test passed!')
   t.equal(typeof createUser(falseUser), 'object', 'function returns object')
@@ -18,15 +17,10 @@ test('Get user by username test', function(t){
 })
 
 test('Get user by username Async', function(t){
-  // .then(function(t){
-  console.log(falseUser)
+  console.log(falseUser.username)
     t.equal(typeof falseUser, 'object', 'function returns an object'),
-    t.equal(falseUser.username == 'DEATHGUN', 'function returns correct user'),
-  // })
-
-  // .then(function(){
+    t.equal(falseUser.username, 'DEATHGUN', 'function returns the right username'),
     t.end()
-  // })
 })
 
 test('Get Listing by location test', function(t){
