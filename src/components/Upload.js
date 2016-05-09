@@ -3,7 +3,35 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import request from 'superagent'
 
+
 class Upload extends Component {
+
+ componentDidMount() {
+      $('#upload').cloudinary_upload_widget(
+      {
+        cloud_name: 'dvzbt8kfq',
+        upload_preset: 'rwy3xr9i',
+        cropping: 'server',
+        folder: 'user_photos',
+        theme: 'minimal',
+        button_caption: '<i class="fa fa-camera-retro fa-1x">Upload Image</i>',
+        cropping_aspect_ratio: 1,
+        callback: '/profile'
+      },
+      (error, result) => {
+        if (error) {
+          console.log('Error: ', error)
+        } else {
+          let userUpload = {
+            external_photo_id: result[0].signature,
+            photo_url: result[0].url
+          }
+           document.querySelector('#url').value = userUpload.photo_url
+           console.log(document.querySelector('#url').value)
+          }
+        }
+    )
+  }
 
   handleUpload(e) {
     e.preventDefault()
@@ -18,7 +46,7 @@ class Upload extends Component {
       size: this.refs.size.value,
       price: this.refs.price.value,
       // negotiable: this.refs.negotiable.value,
-      // url: this.refs.url.value,
+      url: document.querySelector('#url').value,
       startDate: this.refs.startDate.value,
       // endDate: this.refs.endDate.value,
       // availability: this.refs.availability.value,
@@ -48,8 +76,8 @@ class Upload extends Component {
 
           <label for="details" className="sr-only">Tell us about your stow space!</label>
           <textarea className="form-control img-responsive" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="75" id="details" ref='description'></textarea>
-
-          <input type="file" name="image" accept="image/*" ref='url'/>
+          <div id="upload"></div>
+          <div id="url" type="hidden" ref="url"></div>
 
           <label className="sr-only">Suburb</label>
           <input type="text" id="suburb" className="form-control" placeholder="Suburb..." ref='suburb' required autofocus/>
@@ -80,6 +108,7 @@ class Upload extends Component {
 
           <label className="sr-only">To:</label>
           <input type="text" id="to" className="form-control" placeholder="to" ref='endDate' required autofocus/>
+
 
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleUpload.bind(this)}>Submit Stow</button>
 

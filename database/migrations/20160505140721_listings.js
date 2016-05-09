@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
   console.log('create table')
 
   return knex.schema.createTableIfNotExists('listings', function(table) {
-      table.increments('lister_ID')
+      table.increments('listing_ID')
       table.string('heading')
       table.integer('renter_ID')
       table.integer('lister_ID')

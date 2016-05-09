@@ -1,8 +1,35 @@
 var express = require('express')
 var router = express.Router()
+var cors = require('cors')
+var cloudinary = require('cloudinary')
+var dotenv = require('dotenv')
+require('dotenv').config()
 
 var utils = require('./utils/utils.index.js')
 var sess
+
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+
+var corsOptions = {
+  origin: '*'
+}
+
+cloudinary.config({
+  cloud_name: 'dzq9wgh8v',
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
+router.post('/photos', cors(corsOptions), function (req, res) {
+  cloudinary.uploader.upload(Object.keys(req.body)[0], function (result) {
+  })
+})
 
 router.post('/login', function (req,res) {
   sess = req.session
@@ -106,6 +133,11 @@ router.post('/feedback/add', function(req, res){
   .then(function(){
     res.end()
   })
+})
+
+router.post('/upload', function(req, res) {
+  console.log(req.body)
+  res.end()
 })
 
 
