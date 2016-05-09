@@ -26,6 +26,8 @@ class UserProfile extends Component {
 
   checkForListedSpaces(userId, listings) {
     const listing = listings.filter(l => l.get('lister_ID') == userId)
+    const listingID = listings.filter(l => l.get("listing_ID") ==userId)
+    console.log(listing.first, "this is listing ID")
     if(listing.size > 0)
       this.setState({listedSpace: <UserProfileListed listing={listing.first()} id={userId}/>})
   }
