@@ -3,8 +3,10 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
-
+var cors = require('cors')
 var app = express()
+
+app.use(cors())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
