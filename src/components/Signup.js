@@ -43,6 +43,9 @@ class Signup extends Component {
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref="password" required/>
           <input type="email" id="inputEmail" className="form-control" placeholder="Your email" ref="email" required autofocus/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
+          <Link to='/'>
+            <button type="button" className="btn btn-lg btn-danger pull-right">Cancel</button>
+          </Link>
         </form>
       </div>
       </div>

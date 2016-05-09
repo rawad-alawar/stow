@@ -41,6 +41,9 @@ class Login extends Component {
           <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
           <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
+          <Link to='/'>
+            <button type="button" className="btn btn-lg btn-danger pull-right">Cancel</button>
+          </Link>
         </form>
       </div>
       </div>

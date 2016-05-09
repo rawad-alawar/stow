@@ -9,8 +9,8 @@ import reducer from './reducer'
 import App from './components/App'
 import {store, loadUserToStore, loadListingsToStore} from './components/utils.js'
 
-loadListingsToStore(store)
-loadUserToStore(store)
+loadListingsToStore()
+loadUserToStore()
 
 render(
   <Provider store={store}>
