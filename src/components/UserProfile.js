@@ -26,17 +26,22 @@ class UserProfile extends Component {
   }
 
   checkForListedSpaces(userId, listings) {
-    const listing = listings.filter(l => l.get('lister_ID') == userId)
-    const listingID = listings.filter(l => l.get("listing_ID") ==userId)
-    console.log(listing.first, "this is listing ID")
-    if(listing.size > 0)
-      this.setState({listedSpace: <UserProfileListed listing={listing.first()} id={userId}/>})
+
+    var listingSummaries = listings.filter(l => l.get('lister_ID') == userId)
+    if(listingSummaries.size > 0)
+      var listingSummaries = listingSummaries.map(l => {
+        return <UserProfileListed key={l.get('listing_ID')} listing={l} />
+      })
+      this.setState({listedSpace: listingSummaries})
   }
 
   checkForRentedSpaces(userId, listings) {
-    const listing = listings.filter(l => l.get('lister_ID') == userId)
-    if(listing.size > 0)
-      this.setState({rentedSpace: <UserProfileRented listing={listing.first()} id={userId}/>})
+    var listingSummaries = listings.filter(l => l.get('renter_ID') == userId)
+    if(listingSummaries.size > 0)
+      var listingSummaries = listingSummaries.map(l => {
+        return <UserProfileRented key={l.get('listing_ID')} listing={l} />
+      })
+      this.setState({rentedSpace: listingSummaries})
   }
 
   render() {

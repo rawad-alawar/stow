@@ -104,13 +104,11 @@ export const loadListingsToStore = () => {
 }
 
 export const rent = (action, listingId) => {
-  console.log('111')
   request
     .get('/checkAuth')
     .end((err,userId) => {
       if(err) console.log(err)
       else {
-        console.log('222')
         if(userId.body > 0) {
           request
             .get(`/user/${userId.body}`)
@@ -127,10 +125,12 @@ export const rent = (action, listingId) => {
                   .end((err,listingId) => {
                     if(err) console.log(err)
                     else {
-                      if(listingId > 0)
+                      if(listingId.body > 0){
                         console.log('success')
+                        loadListingsToStore()
+                      }
                       else
-                        console.log('not success')
+                        console.log('fail whale')
                     }
                   })
               }
