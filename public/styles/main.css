@@ -77,7 +77,10 @@ p.onError {
   margin: 3px 0 3px 4px;
 }
 
-.form-control.error{
+.form-control {
+  margin: 3px 0;
+}
+.form-control.error {
   border-color: red;
-  border-width: 1px;
+  border-width: 2px;
 }

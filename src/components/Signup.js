@@ -29,7 +29,7 @@ class Signup extends Component {
     if(form.isValid)
       loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.mount)
     else {
-      this.setState({error: <p className='onError'>Please fill in the required information</p>})
+      this.setState({error: <p className='onError'>Please fill in the required fields</p>})
       this.setState({style: 'error'})
     }
   }

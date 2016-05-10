@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
+
 import ListingsContainer from './ListingsContainer'
 import ListingsPreview from './ListingPreview'
+import {addNewListing} from './utils'
 
 class ListingProfile extends Component {
 

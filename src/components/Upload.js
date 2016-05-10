@@ -60,7 +60,7 @@ class Upload extends Component {
     if(form.isValid)
       addNewListing('upload', null, formData)
     else {
-      this.setState({error: <p className='onError'>Please fill in the required information</p>})
+      this.setState({error: <p className='onError'>Please fill in the required fields</p>})
       this.setState({style: 'error'})
     }
   }
