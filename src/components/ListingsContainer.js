@@ -19,7 +19,6 @@ class ListingsContainer extends Component {
     })
   }
 
-
   render() {
     const appendedListings = this.props.listings.filter((t) => {
       return t.get('city') == this.state.filterInput
@@ -27,7 +26,6 @@ class ListingsContainer extends Component {
     .map( listing => {
       return <ListingThumbnail key={listing.get('listing_ID')} listing={listing}/>
     })
-
     return (
       <div>
         <div>
