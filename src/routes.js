@@ -11,7 +11,7 @@ import UserProfile from './components/UserProfile'
 
 
 export default (
-  <Router history={hashHistory}>
+  <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
     <Route path='/' component={Home}>
     	<IndexRoute component={Dashboard}/>
       <Route path='login' component={Login}/>

@@ -39,14 +39,14 @@ class FeedbackForm extends Component {
             <div className="row">
               <button class type="button" href="/form-feedback" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
               <button type="button" className="btn btn-lg btn-danger" onClick={this.props.unmount}>Close</button>
-              <select name="chooseRating" ref='rating'/>
-               <option value="0"></option>
-               <option value="1"> 1</option>
-               <option value="2"> 2</option>
-               <option value="3"> 3</option>
-               <option value="4"> 4</option>
-               <option value="5"> 5</option>
-              <select/>
+
+               <select name="chooseRating">
+                <option value="1">★</option>
+                <option value="2">★★</option>
+                <option value="3">★★★</option>
+                <option value="4">★★★★</option>
+                <option value="5">★★★★★</option>
+              </select> 
             </div>
           </div>
         </form>
