@@ -3,35 +3,43 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import ListingThumbnail from './ListingThumbnail'
 
+
 class ListingsContainer extends Component {
   constructor(props){
     super(props)
     this.state={
-
       filterString: 'city',
-      filterInput: 'Wellington'
+      filterInput: 'Wellington',
+      defaultCity: 'Wellington'   //will be changed to geolocated city
     }
   }
 
-
   handleFilter(){
-    console.log('handlefilter is called')
     this.setState({
       filterInput: this.refs.filterInput.value
     })
   }
 
-
   render() {
-    const appendedListings = this.props.listings.filter((t) => {
-      console.log(t.get('city'), 'this is this')
-      return t.get('city') == this.state.filterInput
+    const availableListings = this.props.listings.filter(l => {
+      return l.get('isAvailable') == true
+    })
+    const appendedListings = availableListings.filter((t) => {
+      if(this.refs.filterSelect){
+        if (this.state.filterInput.length ==0){
+          return (t.get('city')== this.state.defaultCity )
+        }else if (this.refs.filterSelect.value=='city' && this.state.filterInput.length>-1){
+          return (t.get('city') == this.state.filterInput)
+        }else if (this.refs.filterSelect.value=='price'){
+          return (t.get('price') <= parseInt(this.state.filterInput))
+        }
+      }else{
+        return t.get('city') == this.state.filterInput
+      }
     })
     .map( listing => {
-      console.log(listing.get('city'))
       return <ListingThumbnail key={listing.get('listing_ID')} listing={listing}/>
     })
-
     return (
       <div>
         <div>
@@ -40,7 +48,6 @@ class ListingsContainer extends Component {
             <option value="price">price</option>
           </select>
           <input ref='filterInput' onChange={this.handleFilter.bind(this)} type='text' />
-
         </div>
         <div className="row row-centered">
           {appendedListings}

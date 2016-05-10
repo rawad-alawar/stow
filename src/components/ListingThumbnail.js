@@ -4,26 +4,17 @@ import {Link} from 'react-router'
 
 class ListingThumbnail extends Component {
 
-  // getPreviewText() {
-  //   const bigText = this.props.listing.get('description')
-  //   if (bigText.length) > 40 {
-  //     const slicedText = bigText.slice(0,-4)
-  //     console.log(slicedText)
-  //   }
-  // }
-
-      getPreviewText(){    
-        var text = this.props.listing.get('description')       
-        var charsToCutTo = 30;
-        if(text.length>charsToCutTo){
-            var description = "";
-            for(var i = 0; i < charsToCutTo; i++){
-                description += text[i];
-            } 
-            return(description)+'...'
-        }   
-        return text         
-     };
+  getPreviewText(){
+    var text = this.props.listing.get('description')
+    var charsToCutTo = 30;
+    if(text.length>charsToCutTo){
+      var description = "";
+      for(var i = 0; i < charsToCutTo; i++)
+        description += text[i];
+      return(description)+'...'
+    }
+    return text
+  }
 
   render() {
     const id = this.props.listing.get('listing_ID')

@@ -7,30 +7,32 @@ function addListingToUser(action, userId, listingId, formData) {
         .returning('listing_ID')
         .where('listing_ID', listingId)
         .update({
-          renter_ID: userId
+          renter_ID: userId,
+          isAvailable: false
         })
-        .then(function(listingId) {
-          return listingId
+        .then(function(changedId) {
+          return changedId
         })
       break
     case 'upload':
       return knex('listings')
         .returning('listing_ID')
         .insert({
+          heading: formData.heading.value,
+          listerName: formData.listerName.value,
+          description: formData.description.value || 'There is no description for this listing',
+          city: formData.city.value,
+          suburb: formData.suburb.value,
+          size: formData.size.value || 'Unknown',
+          price: formData.price.value,
+          url: formData.url.value || 'http://placehold.it/200x140',
           renter_ID: null,
           lister_ID: userId,
-          listerName: formData.username,
-          description: formData.description || 'There is no description for this listing',
-          heading: formData.title,
-          suburb: formData.suburb,
-          city: formData.city,
-          size: formData.size || 'Unknown',
-          price: formData.price || 'To be negotiated',
-          url: formData.url || 'http://placehold.it/200x140',
+          isAvailable: true,
           created_at: Date()
         })
-      .then(function(listingId){
-        return listingId
+      .then(function(changedId){
+        return changedId
       })
   }
 }

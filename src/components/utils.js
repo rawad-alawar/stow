@@ -133,6 +133,35 @@ export const addNewListing = (action, listingId, formData) => {
               }
             })
         }
+        else hashHistory.push('/login')
+      }
+    })
+}
+
+export const validateForm = formData => {
+  for (let entry in formData) {
+    let mustHave = formData[entry].mustHave
+    let value = formData[entry].value
+    if (mustHave == true && value == '')
+      return {isValid: false, entry: entry}
+  }
+  return {isValid: true}
+}
+
+export const deleteListing = listingId => {
+  request
+    .delete(`/listing/${listingId}`)
+    .end((err,changedId) => {
+      if(err) console.log(err)
+      else {
+        if(changedId.body > 0) {
+          console.log('success')
+          loadListingsToStore()
+        }
+        else {
+          console.log('you are not logged in')
+          hashHistory.push('/login')
+        }
       }
     })
 }

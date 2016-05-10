@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
-
+import request from 'superagent'
 
 import {checkAuthDeep, checkLogIn, logout} from './utils'
 
@@ -32,11 +32,15 @@ class Header extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    if(this.props.currentUser.size > 0) {
-      logout(() => {this.props.logOut()})
+    switch(e.target.name) {
+      case 'logInOut':
+        if(this.props.currentUser.size > 0) {
+          logout(() => {this.props.logOut()})
+        }
+        else
+          hashHistory.push('/login')
+        break
     }
-    else
-      hashHistory.push('/login')
   }
 
   render() {
@@ -46,8 +50,8 @@ class Header extends Component {
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
-            <Link to='/'>
-              <button type='button' className='btn btn-med btn-info'>Home</button>
+          <Link to='/'>
+            <button name='home' type='button' className='btn btn-med btn-info'>Home</button>
             </Link>
             <Link to='/signup'>
               <button type='button' className={`pull-right btn btn-med btn-info ${checkLogIn(userSize, 'signup')}`}>Sign-up</button>
