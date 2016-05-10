@@ -1,7 +1,8 @@
+@import url(//fonts.googleapis.com/css?family=Pacifico);
+
 body {
   background-color: dodgerblue;
 }
-
 
 .col-sm-12 {
 	padding-top: 50px;
@@ -15,6 +16,10 @@ body {
     float:none;
     text-align:left;
     margin-right:-4px;
+}
+
+.bigheading {
+font-family: 'Pacifico', sans-serif;
 }
 
 .hidden {
@@ -52,9 +57,9 @@ body {
   color: dodgerblue;
 }
 
-.noListings, .noRented {
-
-}
+.main-jumbotron {
+background-image: url("https://images.unsplash.com/photo-1454269996696-bf4d98fde5da?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=5203b47bf381c09fef5ae040a7cf7dbf");
+background-size: cover;}
 
 
 p.onError {

@@ -2,15 +2,8 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
-import ListingsContainer from './ListingsContainer'
 
 class UserRating extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      stars:4
-    }
-  }
 
   handleClick(e) {
     e.preventDefault()
@@ -19,10 +12,6 @@ class UserRating extends Component {
 
   renderStars(){
     
-
-    // const spanArray = this.state.stars.map(s => {
-      // return <div><span className="star" aria-hidden="true">★</span></div>
-    // })
     var spanArray= []
     if(this.props.user.get('rating') == '' || this.props.user.get('rating') == undefined)
       spanArray = <div>User yet to be rated</div>

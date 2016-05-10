@@ -40,10 +40,10 @@ class Login extends Component {
           <input type="username" id="inputUsername" className="form-control" placeholder="Your username" ref='username' required autofocus/>
           <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref='password' required/>
-          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Login</button>
           <Link to='/'>
-            <button type="button" className="btn btn-lg btn-danger pull-right">Cancel</button>
+            <button type="button" className="btn btn-lg btn-danger pull-left">Cancel</button>
           </Link>
+          <button type="button" className="btn btn-lg btn-primary pull-right" onClick={this.handleSubmit.bind(this)}>Login</button>
         </form>
       </div>
       </div>

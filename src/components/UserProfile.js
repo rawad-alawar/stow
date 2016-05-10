@@ -53,7 +53,7 @@ class UserProfile extends Component {
           <div className="col-sm-12 col-centered">
 
             <div className="col-sm-3" >
-              <img src="http://www.eonline.com/eol_images/Entire_Site/2015518/rs_600x600-150618104510-600.tom-myspace.jw.61815_2.jpg" width="150px" className="img-circle"/>
+              <img src="https://savoirs.rfi.fr/sites/all/themes/rfi/images/public/default-profile.png" width="150px" className="img-circle"/>
               <UserRating />
             </div>
             <div className="col-sm-8">
@@ -62,7 +62,6 @@ class UserProfile extends Component {
               <h6>{user.get('firstName')}</h6>
               <h6>{user.get('email')}</h6>
               <h6>{user.get('details')}</h6>
-              <div className="divider"></div>
             </div>
 
             <div className="row-centered myStow">
@@ -70,7 +69,9 @@ class UserProfile extends Component {
                 {this.state.listedSpaces}
               </div>
             </div>
-
+            <div className="col-sm-12 col-center">
+              <div className="divider"></div>
+            </div>
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
                 {this.state.rentedSpaces}
