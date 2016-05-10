@@ -20,6 +20,7 @@ class ListingProfile extends Component {
     }
   }
 
+
   render() {
     const {id} = this.props.params
     const listing = this.props.listings.filter(l => l.get('listing_ID') == id).first()
