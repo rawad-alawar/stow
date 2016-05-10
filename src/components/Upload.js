@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
-import {hashHistory} from 'react-router'
+
+import {addNewListing} from './utils'
 
 class Upload extends Component {
 
@@ -33,8 +34,9 @@ class Upload extends Component {
   }
 
   handleUpload(e) {
-
     e.preventDefault()
+
+    console.log('USER: ', this.props.user.get('username'))
     const formData = {
       title: this.refs.title.value,
       username: this.props.user.get('username'),
@@ -47,12 +49,11 @@ class Upload extends Component {
       price: this.refs.price.value,
       // negotiable: this.refs.negotiable.value,
       url: document.querySelector('#url').value,
-      startDate: this.refs.startDate.value,
-      endDate: this.refs.endDate.value,
+      // startDate: this.refs.startDate.value,
+      // endDate: this.refs.endDate.value,
       // availability: this.refs.availability.value,
       description: this.refs.description.value
     }
-
     addNewListing('upload', null, formData)
   }
 

@@ -116,12 +116,12 @@ export const addNewListing = (action, listingId, formData) => {
               if(err) console.log(err)
               else {
                 request
-                  .post(`/user/${userId.body}`)
+                  .post(`/add/${userId.body}`)
                   .send({action: action, listingId: listingId, formData: formData})
-                  .end((err,listingId) => {
+                  .end((err,changedId) => {
                     if(err) console.log(err)
                     else {
-                      if(listingId.body > 0){
+                      if(changedId.body > 0){
                         console.log('success')
                         loadListingsToStore()
                         if(action == 'upload')
@@ -136,19 +136,3 @@ export const addNewListing = (action, listingId, formData) => {
       }
     })
 }
-
-// export const addNewListing = (formData) => {
-//   request.post('/listing/add')
-//       .send(formData)
-//       .end((err, listingId)=>{
-//         if(err) console.log('ERROR ', err)
-//         else {
-//           if(listingId.body > 0){
-//             console.log('success')
-//             loadListingsToStore()
-//             hashHistory.push('/')
-//           }
-//           else console.log('fail')
-//         }
-//       })
-// }

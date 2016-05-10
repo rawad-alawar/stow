@@ -104,10 +104,10 @@ router.get('/user/:id', function(req, res) {
   })
 })
 
-router.post('/user/:id', function(req, res) {
+router.post('/add/:id', function(req, res) {
   utils.addListingToUser(req.body.action, req.params.id, req.body.listingId, req.body.formData)
-  .then(function(listingId) {
-    res.json(listingId)
+  .then(function(changedId) {
+    res.json(changedId)
   })
 })
 
@@ -117,13 +117,6 @@ router.get('/user/listing/:id', function(req, res) {
     res.json(data)
   })
 })
-
-// router.post('/listing/add', function(req, res){
-//   utils.saveListing(req.body)
-//   .then(function(){
-//     res.end()
-//   })
-// })
 
 router.get('/listing/:city', function(req, res){
   utils.getListingsByLocation(req.params.city)

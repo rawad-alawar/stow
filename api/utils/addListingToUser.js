@@ -20,17 +20,17 @@ function addListingToUser(action, userId, listingId, formData) {
           renter_ID: null,
           lister_ID: userId,
           listerName: formData.username,
-          description: 'There is no description for this listing' || formData.description,
+          description: formData.description || 'There is no description for this listing',
           heading: formData.title,
           suburb: formData.suburb,
           city: formData.city,
-          size: 'Unknown' || formData.size,
-          price: 'To be negotiated' || formData.price,
-          url: 'http://placehold.it/200x140' || formData.url,
+          size: formData.size || 'Unknown',
+          price: formData.price || 'To be negotiated',
+          url: formData.url || 'http://placehold.it/200x140',
           created_at: Date()
         })
       .then(function(listingId){
-        return formData
+        return listingId
       })
   }
 }
