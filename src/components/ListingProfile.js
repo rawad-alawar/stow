@@ -29,6 +29,7 @@ class ListingProfile extends Component {
             <img className="img img-responsive" width="460px" src={listing.get('url')}/>
           </div>
           <div className="col-sm-6">
+            <div type=hidden value={listing.get(lister_ID)}></div>
             <h2>{listing.get('heading')}</h2>
             <h3>{listing.get('suburb')}, {listing.get('city')}, {listing.get('country')}</h3>
             <h3>Listed by: {listing.get('username')}</h3>
