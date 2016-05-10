@@ -8,7 +8,6 @@ class ListingsContainer extends Component {
   constructor(props){
     super(props)
     this.state={
-
       filterString: 'city',
       filterInput: '',
       defaultCity: ''   //will be changed to geolocated city
@@ -27,12 +26,10 @@ class ListingsContainer extends Component {
 
 
   handleFilter(){
-
     this.setState({
       filterInput: this.refs.filterInput.value
     })
   }
-
 
   render() {
 
@@ -52,7 +49,6 @@ class ListingsContainer extends Component {
     .map( listing => {
       return <ListingThumbnail key={listing.get('listing_ID')} listing={listing}/>
     })
-
     return (
       <div>
         <div domLoad={this.getLocationFromDOM()}>
@@ -61,7 +57,6 @@ class ListingsContainer extends Component {
             <option value="price">price</option>
           </select>
           <input ref='filterInput' onChange={this.handleFilter.bind(this)} type='text' />
-
         </div>
         <div className="row row-centered">
           {appendedListings}

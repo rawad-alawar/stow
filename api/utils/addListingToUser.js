@@ -9,8 +9,8 @@ function addListingToUser(action, userId, listingId, formData) {
         .update({
           renter_ID: userId
         })
-        .then(function(listingId) {
-          return listingId
+        .then(function(changedId) {
+          return changedId
         })
       break
     case 'upload':
@@ -29,8 +29,8 @@ function addListingToUser(action, userId, listingId, formData) {
           lister_ID: userId,
           created_at: Date()
         })
-      .then(function(listingId){
-        return listingId
+      .then(function(changedId){
+        return changedId
       })
   }
 }

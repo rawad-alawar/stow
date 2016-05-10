@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import ReactDOM from 'react-dom'
-import request from 'superagent'
 
 import UserProfileListed from './UserProfileListed'
 import UserProfileRented from './UserProfileRented'
@@ -20,19 +19,24 @@ class UserProfile extends Component {
     }
   }
 
-  componentDidMount() {
-    const user = this.props.currentUser
-    const id = user.get('user_ID')
-    this.checkForListedSpaces(id, this.props.listings)
-    this.checkForRentedSpaces(id, this.props.listings)
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.listing !== this.props.listings){
+      return true
+    }
+    else return false
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const userId = this.props.currentUser.get('user_ID')
+    this.checkForListedSpaces(userId, nextProps.listings)
+    this.checkForRentedSpaces(userId, nextProps.listings)
   }
 
   checkForListedSpaces(userId, listings) {
-
     var listingSummaries = listings.filter(l => l.get('lister_ID') == userId)
     if(listingSummaries.size > 0)
       var listingSummaries = listingSummaries.map(l => {
-        return <UserProfileListed key={l.get('listing_ID')} listing={l} />
+        return <UserProfileListed key={l.get('listing_ID')} listing={l} id={l.get('listing_ID')}/>
       })
       this.setState({listedSpaces: listingSummaries})
   }
@@ -50,7 +54,6 @@ class UserProfile extends Component {
 
   render() {
     const user = this.props.currentUser
-    const id = user.get('user_ID')
     return (
       <div className="jumbotron col-centered col-sm-12 text-center">
         <div className="row-centered">

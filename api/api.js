@@ -146,5 +146,16 @@ router.post('/upload', function(req, res) {
   res.end()
 })
 
+router.delete('/listing/:id', function(req, res) {
+  var sess = req.session
+  if(sess.user_ID) {
+    utils.deleteListing(req.params.id)
+    .then(function(changedId) {
+      res.json(changedId)
+    })
+  }
+  else res.json(-1)
+})
+
 
 module.exports = router
