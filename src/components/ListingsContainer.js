@@ -7,7 +7,6 @@ class ListingsContainer extends Component {
   constructor(props){
     super(props)
     this.state={
-
       filterString: 'city',
       filterInput: 'Wellington'
     }
@@ -15,7 +14,6 @@ class ListingsContainer extends Component {
 
 
   handleFilter(){
-    console.log('handlefilter is called')
     this.setState({
       filterInput: this.refs.filterInput.value
     })
@@ -24,11 +22,9 @@ class ListingsContainer extends Component {
 
   render() {
     const appendedListings = this.props.listings.filter((t) => {
-      console.log(t.get('city'), 'this is this')
       return t.get('city') == this.state.filterInput
     })
     .map( listing => {
-      console.log(listing.get('city'))
       return <ListingThumbnail key={listing.get('listing_ID')} listing={listing}/>
     })
 
@@ -40,7 +36,6 @@ class ListingsContainer extends Component {
             <option value="price">price</option>
           </select>
           <input ref='filterInput' onChange={this.handleFilter.bind(this)} type='text' />
-
         </div>
         <div className="row row-centered">
           {appendedListings}
