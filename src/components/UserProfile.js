@@ -62,7 +62,6 @@ class UserProfile extends Component {
               <h6>{user.get('firstName')}</h6>
               <h6>{user.get('email')}</h6>
               <h6>{user.get('details')}</h6>
-              <div className="divider"></div>
             </div>
 
             <div className="row-centered myStow">
@@ -70,7 +69,9 @@ class UserProfile extends Component {
                 {this.state.listedSpaces}
               </div>
             </div>
-
+            <div className="col-sm-12 col-center">
+              <div className="divider"></div>
+            </div>
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
                 {this.state.rentedSpaces}

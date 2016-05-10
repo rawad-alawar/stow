@@ -42,9 +42,9 @@ class Signup extends Component {
           <div id='err'></div>
           <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref="password" required/>
           <input type="email" id="inputEmail" className="form-control" placeholder="Your email" ref="email" required autofocus/>
-          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
+          <button type="button" className="btn btn-lg btn-primary pull-right" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
           <Link to='/'>
-            <button type="button" className="btn btn-lg btn-danger pull-right">Cancel</button>
+            <button type="button" className="btn btn-lg btn-danger pull-left">Cancel</button>
           </Link>
         </form>
       </div>
