@@ -43,7 +43,7 @@ class Login extends Component {
           <Link to='/'>
             <button type="button" className="btn btn-lg btn-danger pull-left">Cancel</button>
           </Link>
-          <button type="button" className="btn btn-lg btn-primary pull-right" onClick={this.handleSubmit.bind(this)}>Login</button>
+          <input type="submit" className="btn btn-lg btn-primary pull-right" value="Login" onClick={this.handleSubmit.bind(this)}/>
         </form>
       </div>
       </div>

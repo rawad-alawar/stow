@@ -73,7 +73,11 @@ background-size: cover;}
 
 p.onError {
   color: tomato;
-  font-size: 12px;
-  margin: 0 0 0 4px;
+  font-size: 14px;
+  margin: 3px 0 3px 4px;
 }
 
+.form-control.error{
+  border-color: red;
+  border-width: 1px;
+}

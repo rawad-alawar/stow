@@ -33,7 +33,7 @@ router.post('/login', function (req,res) {
   utils.getUserByUsername(req.body.username)
     .then(function(data) {
       if(data.length === 0)
-        res.json('ERR:IUOP')
+        res.json('error')
       else {
         utils.checkPassword(req.body.password, data[0].password, function(err, correct) {
           if(err) console.log(err)
@@ -43,7 +43,7 @@ router.post('/login', function (req,res) {
             res.json(id)
           }
           else {
-            res.json('ERR:IUOP')
+            res.json('error')
           }
         })
       }
@@ -52,12 +52,12 @@ router.post('/login', function (req,res) {
 
 router.post('/signup', function (req,res) {
   var sess = req.session
-  utils.getUserByUsername(req.body.username)
+  utils.getUserByUsername(req.body.username.value)
     .then(function(data) {
       if(data.length > 0)
         res.json('ERR:UIU')
       else {
-        utils.hashPassword(req.body.password, function(err,hash) {
+        utils.hashPassword(req.body.password.value, function(err,hash) {
           if(err) console.log(err)
           else {
             utils.createUser(req.body, hash)
