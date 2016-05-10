@@ -7,10 +7,11 @@ function addListingToUser(action, userId, listingId, formData) {
         .returning('listing_ID')
         .where('listing_ID', listingId)
         .update({
-          renter_ID: userId
+          renter_ID: userId,
+          isAvailable: false
         })
-        .then(function(listingId) {
-          return listingId
+        .then(function(changedId) {
+          return changedId
         })
       break
     case 'upload':
@@ -27,10 +28,11 @@ function addListingToUser(action, userId, listingId, formData) {
           url: formData.url.value || 'http://placehold.it/200x140',
           renter_ID: null,
           lister_ID: userId,
+          isAvailable: true,
           created_at: Date()
         })
-      .then(function(listingId){
-        return listingId
+      .then(function(changedId){
+        return changedId
       })
   }
 }

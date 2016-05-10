@@ -4,6 +4,7 @@ var map
 
 
 
+
 function initMap() {
    map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
@@ -17,7 +18,6 @@ function geocodeLatLng() {
   var latlng = {lat: parseFloat(currentLat), lng: parseFloat(currentLong)};
   geocoder.geocode({'location': latlng}, function(results, status) {
     console.log("running")
-
     if (status === google.maps.GeocoderStatus.OK) {
       console.log(results)
       console.log(results[0].address_components[0].long_name)
