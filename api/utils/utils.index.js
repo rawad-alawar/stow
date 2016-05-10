@@ -11,6 +11,7 @@ module.exports = {
   checkPassword: require('./checkPassword'),
   getListingsByLocation: require('./getListingsByLocation'),
   saveFeedback: require('./saveFeedback'),
-  addListingToUser: require('./addListingToUser')
+  addListingToUser: require('./addListingToUser'),
+  deleteListing: require('./deleteListing')
 
 }

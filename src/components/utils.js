@@ -46,12 +46,10 @@ export const checkLogIn = (currUser, target) => {
 }
 
 export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
-  console.log('here')
   request
     .post(action)
     .send(formData)
     .end((err,res) => {
-      console.log('res ', res.body)
       if(err) console.log(err)
       else {
         if(Number.isInteger(res.body)){
@@ -148,4 +146,22 @@ export const validateForm = formData => {
       return {isValid: false, entry: entry}
   }
   return {isValid: true}
+}
+
+export const deleteListing = listingId => {
+  request
+    .delete(`/listing/${listingId}`)
+    .end((err,changedId) => {
+      if(err) console.log(err)
+      else {
+        if(changedId.body > 0) {
+          console.log('success')
+          loadListingsToStore()
+        }
+        else {
+          console.log('you are not logged in')
+          hashHistory.push('/login')
+        }
+      }
+    })
 }
