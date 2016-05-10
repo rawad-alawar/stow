@@ -67,7 +67,7 @@ class Upload extends Component {
           <input type="text" id="title" className="form-control" placeholder="title" ref='title' required autofocus/>
 
           <label for="details" className="sr-only">Tell us about your stow space!</label>
-          <textarea className="form-control img-responsive" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="75" id="details" ref='description'></textarea>
+          <textarea className="form-control img-responsive" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="75" id="details" ref='description' required autofocus></textarea>
           <div id="upload"></div>
           <div id="url" type="hidden" ref="url"></div>
 
@@ -83,11 +83,11 @@ class Upload extends Component {
           <label className="sr-only">Approximate Size</label>
           <input type="text" id="price" className="form-control" placeholder="Approximate size..." ref='size' required autofocus/>
 
-          <button type="button" className="btn btn-lg btn-primary" onClick={this.handleUpload.bind(this)}>Submit</button>
-
           <Link to='/'>
-            <button type="button" className="btn btn-lg btn-danger pull-right">Cancel</button>
+            <button type="button" className="btn btn-lg btn-danger">Cancel</button>
           </Link>
+
+          <button type="button" className="btn btn-lg btn-primary pull-right" onClick={this.handleUpload.bind(this)}>Submit</button>
         </form>
       </div>
       </div>
