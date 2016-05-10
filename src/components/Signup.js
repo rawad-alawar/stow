@@ -12,9 +12,9 @@ class Signup extends Component {
     e.preventDefault()
 
     const formData = {
-      username: this.refs.username.value,
-      password: this.refs.password.value,
-      email: this.refs.email.value
+      username: {value: this.refs.username.value, mustHave: false},
+      password: {value: this.refs.password.value, mustHave: false},
+      email: {value: this.refs.email.value, mustHave: false}
     }
 
     loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.mount)

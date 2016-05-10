@@ -12,7 +12,7 @@ class ListingThumbnail extends Component {
           <img className="img" src={this.props.listing.get('url')} alt="this is the image" width="200" height="140"/>
           <h2>${this.props.listing.get('price')}</h2>
           <p>{this.props.listing.get('description')}</p>
-              <button type='button' className='btn btn-default thumbnailbtn'>View Stow &raquo;</button>
+            <button type='button' className='btn btn-default thumbnailbtn'>View Stow &raquo;</button>
         </div>
       </Link>
     )
