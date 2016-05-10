@@ -17,13 +17,6 @@ class UserProfile extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if(nextProps.listing !== this.props.listings){
-      return true
-    }
-    else return false
-  }
-
   componentWillReceiveProps(nextProps) {
     const userId = this.props.currentUser.get('user_ID')
     this.checkForListedSpaces(userId, nextProps.listings)
