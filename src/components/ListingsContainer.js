@@ -14,16 +14,15 @@ class ListingsContainer extends Component {
     }
   }
 
+
   getLocationFromDOM(){ //takes 2 seconds to load on first visit but is immediate after that
-    setTimeout(() => {
-      var userLocation = document.getElementById('location')
-      console.log(userLocation.value)
-      this.setState({filterInput: this.state.filterInput = userLocation.value,
-                     defaultCity: this.state.defaultCity = userLocation.value })
-    }, 3000)
-
+      setTimeout(() => {
+        var userLocation = document.getElementById('location')
+        localStorage.setItem('hasCodeRunBefore', true)
+        this.setState({filterInput: this.state.filterInput = userLocation.value,
+                       defaultCity: this.state.defaultCity = userLocation.value })
+      }, 2000)
   }
-
 
   handleFilter(){
     this.setState({
@@ -32,8 +31,10 @@ class ListingsContainer extends Component {
   }
 
   render() {
-
-    const appendedListings = this.props.listings.filter((t) => {
+    const availableListings = this.props.listings.filter(l => {
+      return l.get('isAvailable') == true
+    })
+    const appendedListings = availableListings.filter((t) => {
       if(this.refs.filterSelect){
         if (this.state.filterInput.length ==0){
           return (t.get('city')== this.state.defaultCity )

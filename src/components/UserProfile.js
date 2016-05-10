@@ -6,8 +6,8 @@ import ReactDOM from 'react-dom'
 import UserProfileListed from './UserProfileListed'
 import UserProfileRented from './UserProfileRented'
 import UserRating from './UserRating'
-import FeedbackDisplay from './FeedbackDisplay'
-console.log(FeedbackDisplay, 'this is feefbackdisp')
+import FeedbackContainer from './FeedbackContainer'
+console.log(FeedbackContainer, 'this is feefbackdisp')
 class UserProfile extends Component {
 
   constructor() {
@@ -17,13 +17,6 @@ class UserProfile extends Component {
       rentedSpaces: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>,
       feedbackReceived: false
     }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if(nextProps.listing !== this.props.listings){
-      return true
-    }
-    else return false
   }
 
   componentWillReceiveProps(nextProps) {

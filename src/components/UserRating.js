@@ -11,7 +11,7 @@ class UserRating extends Component {
   }
 
   renderStars(){
-    
+
     var spanArray= []
     if(this.props.user.get('rating') == '' || this.props.user.get('rating') == undefined)
       spanArray = <div>User yet to be rated</div>

@@ -7,7 +7,8 @@ function getUserById(id){
   })
   .select()
   .then(function(data){
-    return data
+    console.log(data)
+    return data[0]
   })
 }
 

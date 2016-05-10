@@ -5,8 +5,38 @@ import {hashHistory, Link} from 'react-router'
 import ListingsContainer from './ListingsContainer'
 import ListingsPreview from './ListingPreview'
 import {addNewListing} from './utils'
+import request from 'superagent'
 
 class ListingProfile extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      rentButton: <button name="rent" type="button" className="btn btn-lg btn-info" onClick={this.handleClick.bind(this)}>Rent this Space</button>,
+      email: <p>no email listed</p>
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {id} = this.props.params
+    const listing = nextProps.listings.filter(l => l.get('listing_ID') == id).first()
+    if(!listing.get('isAvailable'))
+      this.setState({rentButton: <h4>Congratulations! You are renting this space!</h4>})
+  }
+
+  getUserEmail(id){
+      request
+      .get('/user/' + id)
+      .end((err, res) => {
+        var email = res.body.email
+        var element = <div className='email'><p>{email} </p></div>
+        this.setState({
+          email: this.state.email = element
+        })
+
+      })
+      return
+  }
 
   handleClick(e) {
     e.preventDefault()
@@ -24,8 +54,9 @@ class ListingProfile extends Component {
   render() {
     const {id} = this.props.params
     const listing = this.props.listings.filter(l => l.get('listing_ID') == id).first()
+    const lister = listing.get('lister_ID')
     return (
-      <div className="col-sm-12 col-centered">
+      <div className="col-sm-12 col-centered" getEmail={this.getUserEmail(lister)}>
         <div className="row">
           <div className="col-sm-6">
             <img className="img img-responsive" width="460px" src={listing.get('url')}/>
@@ -37,7 +68,10 @@ class ListingProfile extends Component {
             <h4>${listing.get('price')}</h4>
             <p>{listing.get('description')}</p>
             <p>{listing.get('size')}</p>
-            <button name="rent" type="button" className="btn btn-lg btn-info" onClick={this.handleClick.bind(this)}>Rent this Space</button>
+            <div>
+              {this.state.email}
+            </div>
+            {this.state.rentButton}
             <button name="back" type="button" className="btn btn-lg btn-danger pull-left" onClick={this.handleClick.bind(this)}>Back</button>
           </div>
         </div>
