@@ -36,7 +36,7 @@ class Upload extends Component {
   handleUpload(e) {
     e.preventDefault()
 
-    console.log('USER: ', this.props.user.get('username'))
+  
     const formData = {
       title: this.refs.title.value,
       username: this.props.user.get('username'),
