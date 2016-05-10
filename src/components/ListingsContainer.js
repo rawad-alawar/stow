@@ -19,7 +19,7 @@ class ListingsContainer extends Component {
 
 
   handleFilter(){
-    //console.log(currentCity)
+  
     this.setState({
       filterInput: this.refs.filterInput.value
     })
@@ -27,7 +27,7 @@ class ListingsContainer extends Component {
 
 
   render() {
-    console.log(currentCity)
+
     const appendedListings = this.props.listings.filter((t) => {
       if(this.refs.filterSelect){
         if (this.state.filterInput.length ==0){
