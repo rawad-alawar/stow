@@ -41,7 +41,19 @@ font-family: 'Pacifico', sans-serif;
 }
 
 .listingThumbnail {
-  padding-bottom: 50px;
+  background-color: #eee;
+    border:solid 1px dodgerblue;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.listingThumbnail img {
+  padding-top: 10px;
+}
+
+.thumbnailbtn {
+  margin-bottom: 10px;
 }
 
 #accountBtn {
@@ -49,9 +61,6 @@ font-family: 'Pacifico', sans-serif;
  padding-right: 10px;
 }
 
-.thumbnailbtn {
-  margin-left:15%;
-}
 
 .bluetxt {
   color: dodgerblue;
