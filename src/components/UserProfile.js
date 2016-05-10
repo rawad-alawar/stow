@@ -30,7 +30,7 @@ class UserProfile extends Component {
     var listingSummaries = listings.filter(l => l.get('lister_ID') == userId)
     if(listingSummaries.size > 0)
       var listingSummaries = listingSummaries.map(l => {
-        return <UserProfileListed key={l.get('listing_ID')} listing={l} />
+        return <UserProfileListed key={l.get('listing_ID')} listing={l} id={l.get('listing_ID')} />
       })
       this.setState({listedSpaces: listingSummaries})
   }
@@ -52,7 +52,7 @@ class UserProfile extends Component {
         <div className="row-centered">
           <div className="col-sm-12 col-centered">
 
-            <div className="col-sm-3" >
+            <div className="col-sm-4" >
               <img src="https://savoirs.rfi.fr/sites/all/themes/rfi/images/public/default-profile.png" width="150px" className="img-circle"/>
               <UserRating />
             </div>
@@ -69,9 +69,11 @@ class UserProfile extends Component {
                 {this.state.listedSpaces}
               </div>
             </div>
-            <div className="col-sm-12 col-center">
+
+            <div className="col-sm-12 col-centered">
               <div className="divider"></div>
             </div>
+
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
                 {this.state.rentedSpaces}

@@ -30,7 +30,7 @@ class ListingsContainer extends Component {
 
     return (
       <div>
-        <div>
+        <div className="searchBar">
           <select ref="filterSelect" >
             <option value='city'>City</option>
             <option value="price">price</option>
