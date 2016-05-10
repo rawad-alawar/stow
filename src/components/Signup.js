@@ -4,20 +4,34 @@ import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
 
-import {loginOrSignUp} from './utils'
+import {validateForm, loginOrSignUp} from './utils'
 
 class Signup extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      error: <div></div>,
+      style: ''
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault()
 
     const formData = {
-      username: this.refs.username.value,
-      password: this.refs.password.value,
-      email: this.refs.email.value
+      username: {value: this.refs.username.value, mustHave: true},
+      password: {value: this.refs.password.value, mustHave: true},
+      email: {value: this.refs.email.value, mustHave: true}
     }
 
-    loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.mount)
+    var form = validateForm(formData)
+    if(form.isValid)
+      loginOrSignUp('/signup', formData, this.props.setCurrentUser, this.mount)
+    else {
+      this.setState({error: <p className='onError'>Please fill in the required information</p>})
+      this.setState({style: 'error'})
+    }
   }
 
   mount() {
@@ -38,10 +52,13 @@ class Signup extends Component {
       <div className="jumbotron col-centered col-sm-4 text-center">
         <form className="form-signup">
           <h2 className="form-signup-heading">Create your account today</h2>
-          <input type="text" id="inputUsername" className="form-control" placeholder="Your username" ref="username" required autofocus/>
+          <input type="text" id="inputUsername" className={`form-control ${this.state.style}`} placeholder="Your username" ref="username" required autofocus/>
           <div id='err'></div>
-          <input type="password" id="inputPassword" className="form-control" placeholder="Password" ref="password" required/>
-          <input type="email" id="inputEmail" className="form-control" placeholder="Your email" ref="email" required autofocus/>
+          <input type="password" id="inputPassword" className={`form-control ${this.state.style}`} placeholder="Password" ref="password" required/>
+          <input type="email" id="inputEmail" className={`form-control ${this.state.style}`} placeholder="Your email" ref="email" required autofocus/>
+
+          {this.state.error}
+
           <button type="button" className="btn btn-lg btn-primary pull-right" onClick={this.handleSubmit.bind(this)}>Sign up!</button>
           <Link to='/'>
             <button type="button" className="btn btn-lg btn-danger pull-left">Cancel</button>

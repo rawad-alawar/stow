@@ -52,12 +52,12 @@ router.post('/login', function (req,res) {
 
 router.post('/signup', function (req,res) {
   var sess = req.session
-  utils.getUserByUsername(req.body.username)
+  utils.getUserByUsername(req.body.username.value)
     .then(function(data) {
       if(data.length > 0)
         res.json('ERR:UIU')
       else {
-        utils.hashPassword(req.body.password, function(err,hash) {
+        utils.hashPassword(req.body.password.value, function(err,hash) {
           if(err) console.log(err)
           else {
             utils.createUser(req.body, hash)
