@@ -1,5 +1,3 @@
-var getListingsByLocation = require('../getListingsByLocation')
-var hash = require('../hash.js')
 var test = require('tape')
 var knex = require('../connection')
 var testData = require('./falseListing')

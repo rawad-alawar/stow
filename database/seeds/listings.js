@@ -6,6 +6,7 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('listings').insert({
+      heading:'Great Stow',
       renter_ID: 1,
       lister_ID: 1,
       listerName: 'Gonzo',
@@ -23,6 +24,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great location',
       renter_ID: 3,
       lister_ID: 2,
       listerName: 'Big Bird',
@@ -40,6 +42,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Warm space,with a view!',
       renter_ID: 3,
       lister_ID: 3,
       listerName: 'Oscar',
@@ -57,6 +60,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'place with a view',
       renter_ID: 4,
       lister_ID: 4,
       listerName: 'Bert',
@@ -74,6 +78,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great Stow,secure location',
       renter_ID: 5,
       lister_ID: 5,
       listerName: 'Ernie',
@@ -91,6 +96,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great Stow, secure location',
       renter_ID: 6,
       lister_ID: 6,
       listerName: 'Kermit',
@@ -108,6 +114,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Secure and safe',
       renter_ID: 7,
       lister_ID: 7,
       listerName: 'Snufaluffagus',
@@ -123,6 +130,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great location',
       renter_ID: 8,
       lister_ID: 8,
       listerName: 'Elmo',
@@ -140,6 +148,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Greatest stow in all of Winterfell',
       renter_ID: 9,
       lister_ID: 9,
       listerName: 'Miss Piggy',
@@ -157,6 +166,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great Stow of Brooklyn',
       renter_ID: 10,
       lister_ID: 10,
       listerName: "The Count",
@@ -174,6 +184,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great Stow in the kitchen',
       renter_ID: 11,
       lister_ID: 11,
       listerName: 'Cookie Monster',
@@ -191,6 +202,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Greatest PokeStow',
       renter_ID: 12,
       lister_ID: 12,
       listerName: 'Pikachu',
@@ -208,6 +220,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Great Stow of the south',
       renter_ID: 13,
       lister_ID: 13,
       listerName: "Kawasaki Jones",
@@ -225,6 +238,7 @@ exports.seed = function(knex, Promise) {
       isAvailable:true
     }),
     knex('listings').insert({
+      heading:'Grand Stow',
       renter_ID: 14,
       lister_ID: 14,
       listerName: 'SeaDoo Slayer',

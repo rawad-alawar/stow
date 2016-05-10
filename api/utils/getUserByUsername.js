@@ -1,11 +1,11 @@
 var knex = require('./connection')
 
-function getUserByUsername(data){
+function getUserByUsername(name){
   return knex('users').where({
     username: name
-  }).select(name)
-  .then(function(name){
-    return name
+  }).select()
+  .then(function(data){
+    return data
   })
 }
 

@@ -3,7 +3,7 @@ var getUserByUsername = require('../getUserByUsername')
 var getListingsByLocation = require('../getListingsByLocation')
 var test = require('tape')
 var knex = require('../connection')
-var falseUser = require('./testData')
+var falseUser = require('./falseUser')
 
 test('sign up test', function(t){
   t.equal(typeof createUser, 'function', 'type of test passed!')
@@ -32,7 +32,6 @@ test('Get Listing by Location Async', function(t){
   getListingsByLocation('wellington')
   .then(function(data){
     t.equal(typeof data, 'object','function return an object')
-    console.log(data)
   })
   .then(function(){
     t.end()
