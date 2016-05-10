@@ -19,8 +19,7 @@ class UserProfileRented extends Component {
         <div className="col-sm-3" >
           <img src={listing.get('url')} width="200px"/>
         </div>
-          <h2>Spaces I'm currently renting</h2>
-
+        <h2>Spaces I'm currently renting</h2>
         <h3>{listing.get('suburb')}</h3>
         <h6>{listing.get('size')}</h6>
         <h6>${listing.get('price')}</h6>

@@ -1,6 +1,16 @@
 var createUser = require('../createUser')
 var getUserByUsername = require('../getUserByUsername')
 var getListingsByLocation = require('../getListingsByLocation')
+var hash = require('../hash.js')
 var test = require('tape')
 var knex = require('../connection')
 var falseUser = require('./testData')
+
+test('Loaded the Test Data file', function(t){
+  t.equal(typeof createUser(falseUser), 'object', 'Test data recieved!')
+  console.log(falseUser)
+  t.equal(falseUser.username,'DEATHGUN', 'Recieving correct username from test data')
+  t.equal(falseUser.password,'ilovemum', 'Recieving correct password from test data!')
+  t.end()
+  knex.destroy()
+})

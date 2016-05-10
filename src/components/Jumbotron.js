@@ -29,7 +29,8 @@ class Jumbotron extends Component {
 
 
 function mapStateToProps(state) {
-  return {}
+  return {
+  }
 }
 
 export default connect(mapStateToProps)(Jumbotron)

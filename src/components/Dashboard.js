@@ -6,6 +6,12 @@ import Jumbotron from './Jumbotron'
 import ListingsContainer from './ListingsContainer'
 
 class Dashboard extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      userid: this.props.currentUser
+    }
+  }
   render() {
     return (
       <div>
@@ -16,8 +22,11 @@ class Dashboard extends Component {
   }
 }
 
+
 function mapStateToProps(state) {
-  return {}
+  return {
+    currentUser: state.get('currentUser')
+  }
 }
 
 export default connect(mapStateToProps)(Dashboard)
