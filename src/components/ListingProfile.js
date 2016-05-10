@@ -8,6 +8,20 @@ import {addNewListing} from './utils'
 
 class ListingProfile extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      rentButton: <button name="rent" type="button" className="btn btn-lg btn-info" onClick={this.handleClick.bind(this)}>Rent this Space</button>
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {id} = this.props.params
+    const listing = nextProps.listings.filter(l => l.get('listing_ID') == id).first()
+    if(!listing.get('isAvailable'))
+      this.setState({rentButton: <h4>Congratulations! You are renting this space!</h4>})
+  }
+
   handleClick(e) {
     e.preventDefault()
     switch(e.target.name) {
@@ -37,7 +51,7 @@ class ListingProfile extends Component {
             <h4>${listing.get('price')}</h4>
             <p>{listing.get('description')}</p>
             <p>{listing.get('size')}</p>
-            <button name="rent" type="button" className="btn btn-lg btn-info" onClick={this.handleClick.bind(this)}>Rent this Space</button>
+            {this.state.rentButton}
             <button name="back" type="button" className="btn btn-lg btn-danger pull-left" onClick={this.handleClick.bind(this)}>Back</button>
           </div>
         </div>

@@ -14,9 +14,6 @@ class ListingsContainer extends Component {
     }
   }
 
-
-
-
   handleFilter(){
     this.setState({
       filterInput: this.refs.filterInput.value
@@ -24,8 +21,10 @@ class ListingsContainer extends Component {
   }
 
   render() {
-
-    const appendedListings = this.props.listings.filter((t) => {
+    const availableListings = this.props.listings.filter(l => {
+      return l.get('isAvailable') == true
+    })
+    const appendedListings = availableListings.filter((t) => {
       if(this.refs.filterSelect){
         if (this.state.filterInput.length ==0){
           return (t.get('city')== this.state.defaultCity )
