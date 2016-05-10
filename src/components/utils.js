@@ -105,6 +105,11 @@ export const loadListingsToStore = () => {
   })
 }
 
+export const loadFeedbackToStore = (userID) => {
+  request
+  .get('/feedback/'+userID)
+}
+
 export const addNewListing = (action, listingId, formData) => {
   request
     .get('/checkAuth')

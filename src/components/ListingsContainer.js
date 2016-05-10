@@ -10,16 +10,24 @@ class ListingsContainer extends Component {
     this.state={
 
       filterString: 'city',
-      filterInput: 'Wellington',
-      defaultCity: 'Wellington'   //will be changed to geolocated city
+      filterInput: '',
+      defaultCity: ''   //will be changed to geolocated city
     }
   }
 
+  getLocationFromDOM(){ //takes 2 seconds to load on first visit but is immediate after that
+    setTimeout(() => {
+      var userLocation = document.getElementById('location')
+      console.log(userLocation.value)
+      this.setState({filterInput: this.state.filterInput = userLocation.value,
+                     defaultCity: this.state.defaultCity = userLocation.value })
+    }, 3000)
 
+  }
 
 
   handleFilter(){
-  
+
     this.setState({
       filterInput: this.refs.filterInput.value
     })
@@ -47,7 +55,7 @@ class ListingsContainer extends Component {
 
     return (
       <div>
-        <div>
+        <div domLoad={this.getLocationFromDOM()}>
           <select ref="filterSelect" >
             <option value='city'>City</option>
             <option value="price">price</option>

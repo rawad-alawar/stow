@@ -121,6 +121,7 @@ router.get('/user/listing/:id', function(req, res) {
 router.get('/listing/:city', function(req, res){
   utils.getListingsByLocation(req.params.city)
   .then(function(data){
+    console.log(data[0])
     res.json(data)
   })
 })
@@ -130,6 +131,15 @@ router.post('/feedback/add', function(req, res){
   .then(function(){
     res.end()
   })
+})
+
+router.get('/feedback/:id', function(req, res) {
+  utils.getFeedbackByUserId(req.params.id)
+  .then(function(data){
+    console.log(data)
+    res.json(data)
+  })
+
 })
 
 router.post('/upload', function(req, res) {

@@ -7,14 +7,16 @@ import request from 'superagent'
 import UserProfileListed from './UserProfileListed'
 import UserProfileRented from './UserProfileRented'
 import UserRating from './UserRating'
-
+import FeedbackDisplay from './FeedbackDisplay'
+console.log(FeedbackDisplay, 'this is feefbackdisp')
 class UserProfile extends Component {
 
   constructor() {
     super()
     this.state = {
       listedSpaces: <div className="noListings col-sm-9 pull-right"><p>You are not listing any spaces right now</p></div>,
-      rentedSpaces: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>
+      rentedSpaces: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>,
+      feedbackReceived: false
     }
   }
 
@@ -43,6 +45,8 @@ class UserProfile extends Component {
       })
       this.setState({rentedSpaces: listingSummaries})
   }
+
+
 
   render() {
     const user = this.props.currentUser
@@ -76,6 +80,9 @@ class UserProfile extends Component {
               <div className="col-sm-12 col-centered">
                 {this.state.rentedSpaces}
               </div>
+            <div>
+              <FeedbackContainer />
+            </div>
             </div>
           </div>
         </div>

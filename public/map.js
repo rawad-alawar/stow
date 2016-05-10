@@ -20,7 +20,8 @@ function geocodeLatLng() {
     console.log("running")
     if (status === google.maps.GeocoderStatus.OK) {
       console.log(results)
-      console.log(results[0].address_components[0].long_name)
+      console.log()
+      document.getElementById('location').value = results[0].address_components[0].long_name;
       console.log("status ok")
 
     };
