@@ -46,10 +46,12 @@ export const checkLogIn = (currUser, target) => {
 }
 
 export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
+  console.log('here')
   request
     .post(action)
     .send(formData)
     .end((err,res) => {
+      console.log('res ', res.body)
       if(err) console.log(err)
       else {
         if(Number.isInteger(res.body)){
@@ -142,10 +144,8 @@ export const validateForm = formData => {
   for (let entry in formData) {
     let mustHave = formData[entry].mustHave
     let value = formData[entry].value
-    console.log(value)
     if (mustHave == true && value == '')
       return {isValid: false, entry: entry}
   }
-  console.log('here')
   return {isValid: true}
 }

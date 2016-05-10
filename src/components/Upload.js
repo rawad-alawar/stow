@@ -55,15 +55,13 @@ class Upload extends Component {
       price: {value: this.refs.price.value, mustHave: true},
       url: {value: document.querySelector('#url').value, mustHave: false}
     }
+
     var form = validateForm(formData)
     if(form.isValid)
       addNewListing('upload', null, formData)
     else {
       this.setState({error: <p className='onError'>Please fill in the required information</p>})
       this.setState({style: 'error'})
-    //   ReactDOM.render(
-    //     <p className='onError'>Please enter {this.state.entry}</p>, document.getElementById(this.state.entry)
-    //   )
     }
   }
 
