@@ -45,6 +45,7 @@ class Upload extends Component {
   handleUpload(e) {
     e.preventDefault()
 
+
     const formData = {
       heading: {value: this.refs.title.value, mustHave: true},
       listerName: {value: this.props.user.get('username'), mustHave: false},

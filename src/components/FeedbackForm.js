@@ -20,9 +20,7 @@ class FeedbackForm extends Component {
       .send(formData)
       .end((err, res)=>{
         if(err) console.log('ERROR ', err)
-        else {
-          console.log('Server SAYS: ', res)
-          console.log(formData)
+        else {  
           hashHistory.push('/')
         }
       })
@@ -46,7 +44,7 @@ class FeedbackForm extends Component {
                 <option value="3">★★★</option>
                 <option value="4">★★★★</option>
                 <option value="5">★★★★★</option>
-              </select> 
+              </select>
             </div>
           </div>
         </form>
