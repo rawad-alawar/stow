@@ -36,7 +36,6 @@
 	<td>xpath=(//button[@type='button'])[4]</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
