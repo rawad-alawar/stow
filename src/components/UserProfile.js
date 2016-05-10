@@ -13,8 +13,8 @@ class UserProfile extends Component {
   constructor() {
     super()
     this.state = {
-      listedSpace: <div className="noListings col-sm-9 pull-right"><p>You are not listing any spaces right now</p></div>,
-      rentedSpace: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>
+      listedSpaces: <div className="noListings col-sm-9 pull-right"><p>You are not listing any spaces right now</p></div>,
+      rentedSpaces: <div className="noRented col-sm-9 pull-right"><p>You are not renting any spaces right now</p></div>
     }
   }
 
@@ -32,7 +32,7 @@ class UserProfile extends Component {
       var listingSummaries = listingSummaries.map(l => {
         return <UserProfileListed key={l.get('listing_ID')} listing={l} />
       })
-      this.setState({listedSpace: listingSummaries})
+      this.setState({listedSpaces: listingSummaries})
   }
 
   checkForRentedSpaces(userId, listings) {
@@ -41,7 +41,7 @@ class UserProfile extends Component {
       var listingSummaries = listingSummaries.map(l => {
         return <UserProfileRented key={l.get('listing_ID')} listing={l} />
       })
-      this.setState({rentedSpace: listingSummaries})
+      this.setState({rentedSpaces: listingSummaries})
   }
 
   render() {
@@ -67,13 +67,13 @@ class UserProfile extends Component {
 
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
-                {this.state.listedSpace}
+                {this.state.listedSpaces}
               </div>
             </div>
 
             <div className="row-centered myStow">
               <div className="col-sm-12 col-centered">
-                {this.state.rentedSpace}
+                {this.state.rentedSpaces}
               </div>
             </div>
           </div>

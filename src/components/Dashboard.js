@@ -11,7 +11,6 @@ class Dashboard extends Component {
     this.state = {
       userid: this.props.currentUser
     }
-    console.log(this.props.children)
   }
   render() {
     return (
