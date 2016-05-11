@@ -156,7 +156,7 @@ export const addNewListing = (action, listingId, formData) => {
                         console.log('success')
                         loadListingsToStore()
                         if(action == 'upload')
-                          hashHistory.push('/')
+                          hashHistory.push('/user/userId.body')
                         else {
                           setTimeout(() => {
                             loadListingsToStore()
