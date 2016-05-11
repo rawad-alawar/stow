@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
 
-import {validateForm, saveFeedback} from './utils'
+import {validateForm, saveFeedback, } from './utils'
 
 
 class FeedbackForm extends Component {
@@ -18,7 +18,7 @@ class FeedbackForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
+    console.log('USERS: ', this.props.users)
     var rating = this.refs.rating.value
     if(rating == 'default')
       rating = ''
@@ -45,13 +45,18 @@ class FeedbackForm extends Component {
   getPosterId(listing) {
     console.log('users', this.props.users)
     console.log('lister id ', listing.get('lister_ID'))
-    return this.props.users.filter(u => {
+    var p = this.props.users.filter(u => {
       return u.get('user_ID') == listing.get('lister_ID')
-    }).first().get('user_ID')
+    })
+    // .first().get('user_ID')
+    console.log('USERUSER: ', p)
+    this.props.users.forEach(us => {
+      console.log('LISTER_ID_ID: ', us.get('lister_Id'))
+    })
   }
 
   render() {
-
+    console.log('USERS: ', this.props.users)
     return (
       <div className="jumbotron col-sm-12 text-center">
         <form className="form-feedback">

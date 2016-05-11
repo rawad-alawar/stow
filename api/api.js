@@ -40,7 +40,7 @@ router.post('/login', function (req,res) {
           else if(correct == true) {
             var id = data[0].user_ID
             sess.user_ID = id
-            res.json(id)
+            res.json({id: id})
           }
           else {
             res.json('error')
@@ -138,8 +138,11 @@ router.get('/listing/:city', function(req, res){
 
 router.post('/feedback/add', function(req, res){
   utils.saveFeedback(req.session.user_ID, req.body)
-  .then(function(changedId){
-    res.json(changedId)
+  .then(function(changedFeedbackId){
+    utils.updateListingWithFeedback(req.body.listingId.value)
+    .then(changedListingId)
+    var response = {changedListingId: changedListingId, changedFeedbackId: changedFeedbackId}
+    res.json(response)
   })
 })
 
