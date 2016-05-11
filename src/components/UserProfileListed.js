@@ -27,8 +27,9 @@ class UserProfileListed extends Component {
           <button name="removeListing" onClick={this.handleClick.bind(this)} className="btn btn-lg btn-danger">Remove this listing</button>
         <Link to={`listing/${this.props.id}`}>
           <button name="viewListing" className="btn btn-lg btn-default">View this listing</button>
+        </Link>
+        <Link to={`EditListing/${this.props.id}`} params={this.props.id}>
           <button name="editListing" className="btn btn-lg btn-primary">Edit this listing</button>
-
         </Link>
 
           </div>

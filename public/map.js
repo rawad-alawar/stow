@@ -20,6 +20,7 @@ function geocodeLatLng() {
     console.log("running")
     if (status === google.maps.GeocoderStatus.OK) {
       console.log(results)
+      document.getElementById('userLocation').value = results[0].address_components[0].long_name
       console.log(results[0].address_components[0].long_name)
       console.log("status ok")
 
@@ -32,8 +33,8 @@ function geolocator(callback){/// start of geolocator
       navigator.geolocation.getCurrentPosition(function(position) {
         currentLat = position.coords.latitude
         currentLong = position.coords.longitude
-        document.querySelector('#lat').value = currentLat
-        document.querySelector("#lng").value = currentLong
+        // document.querySelector('#lat').value = currentLat
+        // document.querySelector("#lng").value = currentLong
         callback()
       });
     }
