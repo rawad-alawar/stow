@@ -48,7 +48,7 @@ class UserProfile extends Component {
         <div className="row-centered">
           <div className="col-sm-12 col-centered">
 
-            <div className="col-sm-4" >
+            <div className="col-sm-3 pull-left" >
               <img src="https://savoirs.rfi.fr/sites/all/themes/rfi/images/public/default-profile.png" width="150px" className="img-circle"/>
               <UserRating />
             </div>

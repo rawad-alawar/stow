@@ -51,12 +51,12 @@ class Header extends Component {
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
           <Link to='/'>
-            <button name='home' type='button' className='btn btn-med btn-info'>Home</button>
+            <button name='home' id='homeBtn' type='button' className='btn btn-med btn-info'>Home</button>
             </Link>
             <Link to='/signup'>
-              <button type='button' className={`pull-right btn btn-med btn-info ${checkLogIn(userSize, 'signup')}`}>Sign-up</button>
+              <button type='button' id='signupBtn' className={`pull-right btn btn-med btn-info ${checkLogIn(userSize, 'signup')}`}>Sign-up</button>
             </Link>
-            <button name='logInOut' type='button' className='pull-right btn btn-med btn-info' onClick={this.handleClick.bind(this)}>{checkLogIn(userSize, 'logInOut')}</button>
+            <button name='logInOut' id='loginoutBtn' type='button' className='pull-right btn btn-med btn-info' onClick={this.handleClick.bind(this)}>{checkLogIn(userSize, 'logInOut')}</button>
             <Link to={`user/${id}`}>
               <div id='accountBtn' className='pull-right'></div>
             </Link>

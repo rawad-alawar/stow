@@ -5,7 +5,8 @@ import FeedbackForm from './FeedbackForm'
 class UserProfileRented extends Component {
 
   mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
+    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, 
+    document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`),window.scrollTo(1500,493))
   }
 
   unmount(){
@@ -22,6 +23,7 @@ class UserProfileRented extends Component {
         </div>
         <div className="col-sm-9">
           <h2>Spaces I'm currently renting</h2>
+          <h3>{listing.get('heading')}</h3>
           <h3>{listing.get('suburb')}</h3>
           <h6>{listing.get('size')}</h6>
           <h6>${listing.get('price')}</h6>
