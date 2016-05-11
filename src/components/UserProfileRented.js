@@ -58,6 +58,7 @@ class UserProfileRented extends Component {
           {this.state.feedbackFormVisible ? <FeedbackForm listing={this.props.listing} submitFeedback={this.submitFeedback.bind(this)} /> : null}
         </div>
       </div>
+
     )
   }
 }

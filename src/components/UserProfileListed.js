@@ -17,12 +17,14 @@ class UserProfileListed extends Component {
         <div className="col-sm-3" >
           <img src={listing.get('url')} width="200px"/>
         </div>
-        <h2>Spaces I'm currently listing</h2>
-        <h3>{listing.get('heading')}</h3>
-        <h3>{listing.get('suburb')}</h3>
-        <h6>Size:{listing.get('size')}</h6>
-        <h6>${listing.get('price')}</h6>
-        <h6>Description:{listing.get('description')}</h6>
+        <div class="listedStow">
+          <h2>Spaces I'm currently listing</h2>
+          <h3>{listing.get('heading')}</h3>
+          <h3>{listing.get('suburb')}</h3>
+          <h6>Size:{listing.get('size')}</h6>
+          <h6>${listing.get('price')}</h6>
+          <h6>Description:{listing.get('description')}</h6>
+        </div>
           <div className="row-centered">
           <button name="removeListing" onClick={this.handleClick.bind(this)} className="btn btn-lg btn-danger">Remove this listing</button>
         <Link to={`listing/${this.props.id}`}>
