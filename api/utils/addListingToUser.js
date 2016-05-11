@@ -29,7 +29,7 @@ function addListingToUser(action, userId, listingId, formData) {
           renter_ID: null,
           lister_ID: userId,
           isAvailable: true,
-          created_at: Date()
+          hasFeedback: false
         })
       .then(function(changedId){
         return changedId

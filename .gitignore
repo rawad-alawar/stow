@@ -20,5 +20,7 @@ node_modules
 
 # Environment files
 .env
-*database/dev.sqlite3
+
 # Bundles and Database (delete these lines for deployment)
+public/bundle*
+database/dev.sqlite3

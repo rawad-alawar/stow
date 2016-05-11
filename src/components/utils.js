@@ -52,9 +52,10 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
     .end((err,res) => {
       if(err) console.log(err)
       else {
-        if(Number.isInteger(res.body)){
+        var id = res.body.id
+        if(Number.isInteger(id)){
           request
-            .get(`/user/${res.body}`)
+            .get(`/user/${id}`)
             .end((err,res) => {
               if(err) console.log(err)
               else {
@@ -156,6 +157,12 @@ export const addNewListing = (action, listingId, formData) => {
                         loadListingsToStore()
                         if(action == 'upload')
                           hashHistory.push('/')
+                        else {
+                          setTimeout(() => {
+                            loadListingsToStore()
+                            hashHistory.push('/user/userId.body')
+                          }, 1000)
+                        }
                       }
                       else console.log('fail')
                     }
