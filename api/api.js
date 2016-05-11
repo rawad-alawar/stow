@@ -51,17 +51,21 @@ router.post('/login', function (req,res) {
 })
 
 router.post('/signup', function (req,res) {
+  console.log('Date1: ', Date.now())
   var sess = req.session
   utils.getUserByUsername(req.body.username.value)
     .then(function(data) {
+      console.log('Date2: ', Date.now())
       if(data.length > 0)
-        res.json('ERR:UIU')
+        res.json('error')
       else {
         utils.hashPassword(req.body.password.value, function(err,hash) {
+          console.log('Date3: ', Date.now())
           if(err) console.log(err)
           else {
             utils.createUser(req.body, hash)
               .then(function(data) {
+                console.log('Date4: ', Date.now())
                 var id = data[0]
                 sess.user_ID = id
                 res.json(id)
