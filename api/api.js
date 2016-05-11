@@ -115,6 +115,13 @@ router.get('/user/:id', function(req, res) {
   })
 })
 
+router.get('/singleuser/:id', function(req, res) {
+  utils.getUserById(req.params.id)
+  .then(function(data){
+    res.json(data[0])
+  })
+})
+
 router.post('/add/:id', function(req, res) {
   utils.addListingToUser(req.body.action, req.params.id, req.body.listingId, req.body.formData)
   .then(function(changedId) {
@@ -155,6 +162,16 @@ router.get('/feedback', function(req, res) {
 
 router.post('/upload', function(req, res) {
   res.end()
+})
+
+router.get('/getlisting/:id', function(req, res) {
+  var sess = req.session
+  console.log(req.params.id, "this is req.params")
+    utils.getListingById(req.params.id)
+    .then(function(data) {
+      console.log(data, 'this is this')
+      res.json(data[0])
+    })
 })
 
 router.delete('/listing/:id', function(req, res) {

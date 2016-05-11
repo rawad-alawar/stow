@@ -32,7 +32,7 @@ function saveListing(formData) {
       suburb: formData.suburb,
       streetName: formData.streetname,
       streetNumber: formData.streetnumber,
-      city: formData.city,
+      city: formData.city.toLowerCase(),
       country: formData.country,
       size: formData.size,
       price: formData.price,
