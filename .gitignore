@@ -3,6 +3,7 @@ logs
 *.log
 npm-debug.log*
 .DS_store
+.env
 
 # Runtime data
 pids
@@ -18,6 +19,11 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
+# Environment files
+.env
+
 # Bundles and Database (delete these lines for deployment)
 public/bundle*
 database/dev.sqlite3
+
+.env

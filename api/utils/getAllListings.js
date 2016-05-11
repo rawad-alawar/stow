@@ -2,13 +2,12 @@ var knex = require('./connection')
 
 function getAllListings(){
   return knex
-    .select().table('listings')
+    .select()
+    .table('listings')
+    .orderBy('listing_ID', 'desc')
     .then(function(data){
       return data
     })
-    .then(knex.destroy())
 }
-
-
 
 module.exports = getAllListings

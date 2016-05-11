@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
 
   return knex.schema.createTableIfNotExists('feedback', function(table) {
       table.increments('feedback_ID')
+      table.integer('listingId')
       table.integer('feedbacker_ID')
       table.integer('poster_ID')
       table.string('comment')

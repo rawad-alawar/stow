@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import Header from './Header'
 import Jumbotron from './Jumbotron'
+import FeedbackForm from './FeedbackForm'
 
 
 class Home extends Component {
@@ -17,9 +18,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    title: state.get('title')
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(Home)
