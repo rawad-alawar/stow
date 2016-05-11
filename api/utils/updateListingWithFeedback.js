@@ -1,7 +1,6 @@
 var knex = require('./connection')
 
 function updateListingWithFeedback(listingId) {
-  console.log('listing id in utils: ', listingId)
   return knex('listings')
     .returning('listing_ID')
     .where('listing_ID', listingId)

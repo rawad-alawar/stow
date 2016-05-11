@@ -4,8 +4,8 @@ import FeedbackForm from './FeedbackForm'
 
 class UserProfileRented extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       feedbackFormVisible: false,
       feedbackSubmitted: false,
@@ -27,9 +27,9 @@ class UserProfileRented extends Component {
   }
 
   getFeedbackState() {
-    if(this.state.feedbackFormVisible && !this.state.feedbackSubmitted)
+    if(this.state.feedbackFormVisible && !this.state.feedbackSubmitted && !this.props.listing.get('hasFeedback'))
       return <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button>
-    else if(!this.state.feedbackFormVisible && !this.state.feedbackSubmitted)
+    else if(!this.state.feedbackFormVisible && !this.state.feedbackSubmitted && !this.props.listing.get('hasFeedback'))
       return <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>
     else
       return (

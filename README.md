@@ -1,3 +1,3 @@
-# Slush stow
+# Stow
 
 > A collaborative consumption app for storage

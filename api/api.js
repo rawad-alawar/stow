@@ -140,9 +140,10 @@ router.post('/feedback/add', function(req, res){
   utils.saveFeedback(req.session.user_ID, req.body)
   .then(function(changedFeedbackId){
     utils.updateListingWithFeedback(req.body.listingId.value)
-    .then(changedListingId)
-    var response = {changedListingId: changedListingId, changedFeedbackId: changedFeedbackId}
-    res.json(response)
+    .then(function(changedListingId) {
+      var response = {changedListingId: changedListingId, changedFeedbackId: changedFeedbackId}
+      res.json(response)
+    })
   })
 })
 
