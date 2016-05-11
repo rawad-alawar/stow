@@ -116,7 +116,7 @@ class EditListing extends Component {
               <button type="button" className="btn btn-lg btn-danger">Cancel</button>
             </Link>
 
-            <input type="submit" className="btn btn-lg btn-primary pull-right" onClick={this.handleUpload.bind(this)}/>
+            <input type="submit" className="btn btn-lg btn-primary pull-right" value="Save" onClick={this.handleUpload.bind(this)}/>
           </form>
         </div>
       </div>
