@@ -7,9 +7,11 @@ import request from 'superagent'
 import '../public/styles/main.css'
 import reducer from './reducer'
 import App from './components/App'
-import {store, loadUserToStore, loadListingsToStore} from './components/utils.js'
+import {store, loadUserToStore, loadListingsToStore, loadFeedbackToStore, loadUsersToStore} from './components/utils.js'
 
 loadListingsToStore()
+loadFeedbackToStore()
+loadUsersToStore()
 loadUserToStore()
 
 render(

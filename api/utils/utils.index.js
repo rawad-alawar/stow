@@ -2,6 +2,8 @@
 module.exports = {
 
   getAllListings: require('./getAllListings'),
+  getAllUsers: require('./getAllUsers'),
+  getAllFeedback: require('./getAllFeedback'),
   getUserById: require('./getUserById'),
   getUserByListingId: require('./getUserById'),
   getUserByUsername: require('./getUserByUsername'),

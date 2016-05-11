@@ -3,37 +3,31 @@ import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
 
-import {validateForm, saveFeedback} from './utils'
+import {validateForm} from './utils'
 
 
 class FeedbackForm extends Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       error: <div></div>,
-      style: '',
+      style: ''
     }
   }
 
   handleSubmit(e) {
     e.preventDefault()
-
-    var rating = this.refs.rating.value
-    if(rating == 'default')
-      rating = ''
-
     const formData = {
-      posterId: {value: this.getPosterId(this.props.listing), mustHave: false},
-      listingId: {value: this.props.listing.get('listing_ID'), mustHave: false},
+      posterId: {value: this.getPosterId(this.props.listingId), mustHave: false},
+      listingId: {value: this.props.listingId, mustHave: false},
       comment: {value: this.refs.comment.value, mustHave: true},
-      rating: {value: rating, mustHave: false}
+      rating: {value: this.refs.rating.value, mustHave: false}
     }
 
     var form = validateForm(formData)
-    if(form.isValid) {
-      // saveFeedback(formData)
-    }
+    if(form.isValid)
+      saveFeedback(formData)
     else {
       this.setState({error: <p className='onError'>Please fill in the required fields</p>})
       this.setState({style: 'error'})
@@ -41,12 +35,10 @@ class FeedbackForm extends Component {
 
   }
 
-  getPosterId(listing) {
-    console.log('users', this.props.users)
-    console.log('lister id ', listing.get('lister_ID'))
-    return this.props.users.filter(u => {
-      return u.get('user_ID') == listing.get('lister_ID')
-    }).first().get('user_ID')
+  getPosterId(listingId) {
+    this.props.users.filter(u => {
+      return u.get('user_ID') == listingId
+    }).get('user_ID')
   }
 
   render() {
@@ -56,12 +48,13 @@ class FeedbackForm extends Component {
         <form className="form-feedback">
           <h2 className="form-feedback-heading">Leave Feedback</h2>
           <div className="col-sm-12">
-            <textarea placeholder="tell us about your experience with this stow..." className={`form-control ${this.state.style}`} rows="8" cols="40" id="details" ref='comment'></textarea>
+            <textarea placeholder="tell us about your experience with this stow..." class="form-control" rows="8" cols="40" id="details" ref='comment'></textarea>
 
             {this.state.error}
 
             <div className="row">
               <button class type="button" href="/form-feedback" className="btn btn-lg btn-primary" onClick={this.handleSubmit.bind(this)}>Submit</button>
+              <button type="button" className="btn btn-lg btn-danger" onClick={this.props.unmount}>Close</button>
 
               <select name="chooseRating" ref="rating">
                 <option value="default">Rate your experience</option>
@@ -81,9 +74,8 @@ class FeedbackForm extends Component {
 
 function mapStateToProps(state) {
   return {
-    users: state.get('users'),
-    listings: state.get('listings')
+    users: this.state.get('users')
   }
 }
 
-export default connect(mapStateToProps)(FeedbackForm)
+export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm)

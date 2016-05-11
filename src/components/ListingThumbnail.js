@@ -35,8 +35,4 @@ class ListingThumbnail extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {}
-}
-
 export default ListingThumbnail

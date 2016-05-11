@@ -4,12 +4,34 @@ import FeedbackForm from './FeedbackForm'
 
 class UserProfileRented extends Component {
 
-  mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
+  constructor() {
+    super()
+    this.state = {
+      feedbackFormVisible: false
+    }
   }
 
-  unmount(){
-    ReactDOM.unmountComponentAtNode(document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
+  handleClick(e) {
+    e.preventDefault()
+    this.toggleFeedbackForm()
+  }
+
+  // toggleFeedbackForm() {
+  //   const scope = this
+  //   if(this.state.isHidden) {
+  //     this.setState({isHidden: false})
+  //     this.setState({fbButton: <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button>})
+  //     this.setState({fbForm: <FeedbackForm listing={this.props.listing} onClick={scope.handleClick.bind(this)}/>})
+  //   }
+  //   else {
+  //     this.setState({isHidden: true})
+  //     this.setState({fbButton: <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>})
+  //     this.setState({fbForm: <div></div>})
+  //   }
+  // }
+
+  toggleFeedbackForm() {
+    this.setState({ feedbackFormVisible: !this.state.feedbackFormVisible })
   }
 
   render() {
@@ -25,9 +47,9 @@ class UserProfileRented extends Component {
         <h6>${listing.get('price')}</h6>
         <h6>{listing.get('description')}</h6>
         <div className="row-centered">
-        <button className="btn btn-lg btn-primary" onClick={this.mount.bind(this)}>Place Feedback</button>
+          {this.state.feedbackFormVisible ? <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button> : <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>}
+          {this.state.feedbackFormVisible ? <FeedbackForm listing={this.props.listing} toggle={this.toggleFeedbackForm.bind(this)} /> : null}
         </div>
-        <div id={`fb-form-${listing.get('listing_ID')}`}></div>
       </div>
     )
   }
