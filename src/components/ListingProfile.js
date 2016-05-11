@@ -28,7 +28,7 @@ class ListingProfile extends Component {
     switch(e.target.name) {
       case 'rent':
         addNewListing('rent', this.props.params.id, null)
-        setTimeout(function(){ hashHistory.push('/user/'+id) }, 3000);
+        setTimeout(function(){ hashHistory.push('/user/'+id) }, 2000);
 
         break
       case 'back':
