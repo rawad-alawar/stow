@@ -21,11 +21,15 @@ class ListingProfile extends Component {
       this.setState({rentButton: <div className="alert alert-success" role="alert"><h4>Congratulations! You are renting this space!</h4></div>})
   }
 
+
   handleClick(e) {
     e.preventDefault()
+    const id = this.props.currentUser.get('user_ID')
     switch(e.target.name) {
       case 'rent':
         addNewListing('rent', this.props.params.id, null)
+        setTimeout(function(){ hashHistory.push('/user/'+id) }, 3000);
+
         break
       case 'back':
         hashHistory.push('/')
@@ -65,7 +69,9 @@ class ListingProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    listings:state.get('listings')
+    listings:state.get('listings'),
+    currentUser:state.get('currentUser')
+
   }
 }
 
