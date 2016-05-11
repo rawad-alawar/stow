@@ -3,7 +3,6 @@ logs
 *.log
 npm-debug.log*
 .DS_store
-.env
 
 # Runtime data
 pids
@@ -23,7 +22,4 @@ node_modules
 .env
 
 # Bundles and Database (delete these lines for deployment)
-public/bundle*
-database/dev.sqlite3
 
-.env

@@ -34,7 +34,7 @@ class UserProfileRented extends Component {
     else
       return (
         <div className="alert alert-success" role="alert">
-          <h4>Thank you for giving feedback</h4>
+          <h4>Thank you for leaving feedback</h4>
           {this.state.feedback}
         </div>
       )

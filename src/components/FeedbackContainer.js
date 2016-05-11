@@ -17,6 +17,7 @@ render() {
   })
   return (
     <div>
+      <h1>This is your feedback!</h1>
       {appendedFeedback}
     </div>
   )
