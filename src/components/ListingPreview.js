@@ -17,6 +17,7 @@ class ListingsPreview extends Component {
     
     return (
       <div className="row row-centered">
+      <h4 id="similiar">Related listings:</h4>
         {appendedListings}
       </div>
     )

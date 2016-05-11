@@ -33,6 +33,7 @@ class FeedbackForm extends Component {
     var form = validateForm(formData)
     if(form.isValid) {
       // saveFeedback(formData)
+      this.props.submitFeedback(this.refs.comment.value)
     }
     else {
       this.setState({error: <p className='onError'>Please fill in the required fields</p>})

@@ -19,7 +19,7 @@ class ListingProfile extends Component {
     const {id} = this.props.params
     const listing = nextProps.listings.filter(l => l.get('listing_ID') == id).first()
     if(!listing.get('isAvailable'))
-      this.setState({rentButton: <h4>Congratulations! You are renting this space!</h4>})
+      this.setState({rentButton: <div className="alert alert-success" role="alert"><h4>Congratulations! You are renting this space!</h4></div>})
   }
 
   handleClick(e) {
@@ -40,17 +40,18 @@ class ListingProfile extends Component {
     const listing = this.props.listings.filter(l => l.get('listing_ID') == id).first()
     return (
       <div className="col-sm-12 col-centered">
-        <div className="row">
+        <div className="row listingRow">
           <div className="col-sm-6">
             <img className="img img-responsive" width="460px" src={listing.get('url')}/>
           </div>
           <div className="col-sm-6">
             <h2>{listing.get('heading')}</h2>
-            <h3>{listing.get('suburb')}, {listing.get('city')}</h3>
+            <h4>{listing.get('suburb')}, {listing.get('city')}</h4>
             <h3>Listed by: {listing.get('listerName')}</h3>
-            <h4>${listing.get('price')}</h4>
-            <p>{listing.get('description')}</p>
-            <p>{listing.get('size')}</p>
+            <h4>Email: {listing.get('listerName')}</h4>
+            <h4>${listing.get('price')} per week</h4>
+            <p>Description: {listing.get('description')}</p>
+            <p>Size: {listing.get('size')}</p>
             {this.state.rentButton}
             <button name="back" type="button" className="btn btn-lg btn-danger pull-left" onClick={this.handleClick.bind(this)}>Back</button>
           </div>

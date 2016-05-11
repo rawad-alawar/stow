@@ -1,35 +1,58 @@
 @import url(//fonts.googleapis.com/css?family=Pacifico);
 
 body {
-  background-color: dodgerblue;
+  background-color: rgb(70, 184, 218);
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
-.col-sm-12 {
-	padding-top: 50px;
+.stars {
+  float: left;
 }
+
+.listSpaceBtn {
+  padding-top: 10px;
+} 
+
 
 .row-centered {
     text-align:center;
 }
+
+.accountLink {
+  font-size: 1.5em;
+}
+
+#homeBtn, #signupBtn, #accountBtn, #loginoutBtn {
+  margin-top: 5px;
+}
+
+.uploadForm, .signupForm, .loginForm {
+  margin-top: 10%;
+}
+
 .col-centered {
     display:inline-block;
     float:none;
     text-align:left;
-    margin-right:-4px;
 }
+
 
 .bigheading {
 font-family: 'Pacifico', sans-serif;
 }
 
+
 .hidden {
   display: none;
 }
+
 
 .divider {
 	height: 10px;
 	background-color: dodgerblue;
 }
+
 
 .dividerWhite {
   height: 10px;
@@ -42,7 +65,7 @@ font-family: 'Pacifico', sans-serif;
 
 .listingThumbnail {
   background-color: #eee;
-    border:solid 1px dodgerblue;
+    border:solid 1px rgb(70, 184, 218);
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -52,15 +75,29 @@ font-family: 'Pacifico', sans-serif;
   padding-top: 10px;
 }
 
+#similiar {
+text-align: left;
+color: #eee;
+}
+
+
+.listingRow {
+  background-color: #eee;
+  margin-top: 50px;
+}
 .thumbnailbtn {
   margin-bottom: 10px;
 }
 
 #accountBtn {
- padding-top: 10px;
+ padding-top: 5px;
  padding-right: 10px;
 }
 
+.searchBar {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
 .bluetxt {
   color: dodgerblue;
@@ -68,7 +105,9 @@ font-family: 'Pacifico', sans-serif;
 
 .main-jumbotron {
 background-image: url("https://images.unsplash.com/photo-1454269996696-bf4d98fde5da?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=5203b47bf381c09fef5ae040a7cf7dbf");
-background-size: cover;}
+background-size: cover;
+margin-bottom: 10px;
+}
 
 
 p.onError {
@@ -78,9 +117,10 @@ p.onError {
 }
 
 .form-control {
-  margin: 3px 0;
+  margin: 10px 0;
 }
 .form-control.error {
   border-color: red;
   border-width: 2px;
 }
+

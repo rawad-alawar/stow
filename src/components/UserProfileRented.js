@@ -7,7 +7,9 @@ class UserProfileRented extends Component {
   constructor() {
     super()
     this.state = {
-      feedbackFormVisible: false
+      feedbackFormVisible: false,
+      feedbackSubmitted: false,
+      feedback: <div></div>
     }
   }
 
@@ -16,22 +18,26 @@ class UserProfileRented extends Component {
     this.toggleFeedbackForm()
   }
 
-  // toggleFeedbackForm() {
-  //   const scope = this
-  //   if(this.state.isHidden) {
-  //     this.setState({isHidden: false})
-  //     this.setState({fbButton: <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button>})
-  //     this.setState({fbForm: <FeedbackForm listing={this.props.listing} onClick={scope.handleClick.bind(this)}/>})
-  //   }
-  //   else {
-  //     this.setState({isHidden: true})
-  //     this.setState({fbButton: <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>})
-  //     this.setState({fbForm: <div></div>})
-  //   }
-  // }
-
   toggleFeedbackForm() {
     this.setState({ feedbackFormVisible: !this.state.feedbackFormVisible })
+  }
+
+  submitFeedback(feedback) {
+    this.setState({ feedbackSubmitted: true, feedbackFormVisible: false, feedback: feedback })
+  }
+
+  getFeedbackState() {
+    if(this.state.feedbackFormVisible && !this.state.feedbackSubmitted)
+      return <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button>
+    else if(!this.state.feedbackFormVisible && !this.state.feedbackSubmitted)
+      return <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>
+    else
+      return (
+        <div className="alert alert-success" role="alert">
+          <h4>Thank you for giving feedback</h4>
+          {this.state.feedback}
+        </div>
+      )
   }
 
   render() {
@@ -42,13 +48,14 @@ class UserProfileRented extends Component {
           <img src={listing.get('url')} width="200px"/>
         </div>
         <h2>Spaces I'm currently renting</h2>
+        <h3>{listing.get('heading')}</h3>
         <h3>{listing.get('suburb')}</h3>
         <h6>{listing.get('size')}</h6>
         <h6>${listing.get('price')}</h6>
         <h6>{listing.get('description')}</h6>
         <div className="row-centered">
-          {this.state.feedbackFormVisible ? <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button> : <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>}
-          {this.state.feedbackFormVisible ? <FeedbackForm listing={this.props.listing} toggle={this.toggleFeedbackForm.bind(this)} /> : null}
+          {this.getFeedbackState()}
+          {this.state.feedbackFormVisible ? <FeedbackForm listing={this.props.listing} submitFeedback={this.submitFeedback.bind(this)} /> : null}
         </div>
       </div>
     )

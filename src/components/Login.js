@@ -33,7 +33,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="row-sm-12 row-centered text-centre">
+      <div className="row-sm-12 row-centered text-centre loginForm">
       <div className="jumbotron col-sm-4 text-center col-centered">
         <form className="form-signin">
           <h2 className="form-signin-heading">Please login </h2>
