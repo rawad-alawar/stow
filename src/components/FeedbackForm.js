@@ -18,6 +18,7 @@ class FeedbackForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
     var rating = this.refs.rating.value
     if(rating == 'default')
       rating = ''
@@ -54,7 +55,7 @@ class FeedbackForm extends Component {
         <form className="form-feedback">
           <h2 className="form-feedback-heading">Leave Feedback</h2>
           <div className="col-sm-12">
-            <textarea placeholder="tell us about your experience with this stow..." className={`form-control ${this.state.style}`} rows="8" cols="40" id="details" ref='comment'></textarea>
+            <textarea placeholder="tell us about your experience with this stow..." className={`form-control ${this.state.style}`} rows="8" cols="40" id="details" ref='comment' id="feedbackForm"></textarea>
 
             {this.state.error}
 
