@@ -20,8 +20,8 @@ exports.up = function(knex, Promise) {
       table.string('url')
       table.dateTime('startDate')
       table.dateTime('endDate')
-      table.boolean('isAvailable')
-      table.timestamps()
+      table.boolean('isAvailable'),
+      table.boolean('hasFeedback')
   })
 };
 

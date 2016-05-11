@@ -22,4 +22,4 @@ node_modules
 .env
 
 # Bundles and Database (delete these lines for deployment)
-
+database/dev.sqlite3
