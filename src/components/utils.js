@@ -52,9 +52,10 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
     .end((err,res) => {
       if(err) console.log(err)
       else {
-        if(Number.isInteger(res.body)){
+        var id = res.body.id
+        if(Number.isInteger(id)){
           request
-            .get(`/user/${res.body}`)
+            .get(`/user/${id}`)
             .end((err,res) => {
               if(err) console.log(err)
               else {
@@ -94,12 +95,42 @@ export const loadUserToStore = () => {
 export const loadListingsToStore = () => {
   request
   .get('/list')
-  .end(function(err, res){
+  .end(function(err, listings){
     if(err) console.log(err)
-    store.dispatch({
-      type: 'LOAD_LISTINGS',
-      listings: res.body
-    })
+    else {
+      store.dispatch({
+        type: 'LOAD_LISTINGS',
+        listings: listings.body
+      })
+    }
+  })
+}
+
+export const loadFeedbackToStore = () => {
+  request
+  .get('/feedback')
+  .end(function(err, feedback) {
+    if(err) console.log(err)
+    else {
+      store.dispatch({
+        type: 'LOAD_FEEDBACK',
+        feedback: feedback.body
+      })
+    }
+  })
+}
+
+export const loadUsersToStore = () => {
+  request
+  .get('/users')
+  .end(function(err, users) {
+    if(err) console.log(err)
+    else {
+      store.dispatch({
+        type: 'LOAD_USERS',
+        users: users.body
+      })
+    }
   })
 }
 
@@ -125,7 +156,13 @@ export const addNewListing = (action, listingId, formData) => {
                         console.log('success')
                         loadListingsToStore()
                         if(action == 'upload')
-                          hashHistory.push('/')
+                          hashHistory.push('/user/userId.body')
+                        else {
+                          setTimeout(() => {
+                            loadListingsToStore()
+                            hashHistory.push('/user/userId.body')
+                          }, 1000)
+                        }
                       }
                       else console.log('fail')
                     }
@@ -162,6 +199,23 @@ export const deleteListing = listingId => {
           console.log('you are not logged in')
           hashHistory.push('/login')
         }
+      }
+    })
+}
+
+export const saveFeedback = formData => {
+  request
+    .post('/feedback/add')
+    .send(formData)
+    .end((err, changedId)=>{
+      if(err) console.log(err)
+      else {
+        if(changedId.body.changedListingId > 0 &&
+          changedId.body.changedFeedbackId > 0) {
+          console.log('success')
+          loadFeedbackToStore()
+        }
+        else console.log('fail')
       }
     })
 }

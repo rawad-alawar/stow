@@ -40,7 +40,7 @@ router.post('/login', function (req,res) {
           else if(correct == true) {
             var id = data[0].user_ID
             sess.user_ID = id
-            res.json(id)
+            res.json({id: id})
           }
           else {
             res.json('error')
@@ -51,20 +51,24 @@ router.post('/login', function (req,res) {
 })
 
 router.post('/signup', function (req,res) {
-  var sess = req.session
   utils.getUserByUsername(req.body.username.value)
     .then(function(data) {
-      if(data.length > 0)
-        res.json('ERR:UIU')
-      else {
+      if(data.length > 0) {
+        res.json({error: 'username already in use'})
+      } else {
         utils.hashPassword(req.body.password.value, function(err,hash) {
-          if(err) console.log(err)
-          else {
+          if(err) {
+            console.log(err)
+            res.json({error: err})
+          } else {
             utils.createUser(req.body, hash)
               .then(function(data) {
                 var id = data[0]
-                sess.user_ID = id
-                res.json(id)
+                req.session.user_ID = id
+                res.json({id: id})
+              })
+              .catch(function(err){
+                res.json({error: err})
               })
           }
         })
@@ -97,10 +101,24 @@ router.get('/list', function(req, res) {
   })
 })
 
+router.get('/users', function(req, res) {
+  utils.getAllUsers()
+  .then(function(users) {
+    res.json(users)
+  })
+})
+
 router.get('/user/:id', function(req, res) {
   utils.getUserById(req.params.id)
   .then(function(data){
     res.json(data)
+  })
+})
+
+router.get('/singleuser/:id', function(req, res) {
+  utils.getUserById(req.params.id)
+  .then(function(data){
+    res.json(data[0])
   })
 })
 
@@ -126,14 +144,35 @@ router.get('/listing/:city', function(req, res){
 })
 
 router.post('/feedback/add', function(req, res){
-  utils.saveFeedback(req.body)
-  .then(function(){
-    res.end()
+  utils.saveFeedback(req.session.user_ID, req.body)
+  .then(function(changedFeedbackId){
+    utils.updateListingWithFeedback(req.body.listingId.value)
+    .then(function(changedListingId) {
+      var response = {changedListingId: changedListingId, changedFeedbackId: changedFeedbackId}
+      res.json(response)
+    })
+  })
+})
+
+router.get('/feedback', function(req, res) {
+  utils.getAllFeedback()
+  .then(function(feedback) {
+    res.json(feedback)
   })
 })
 
 router.post('/upload', function(req, res) {
   res.end()
+})
+
+router.get('/getlisting/:id', function(req, res) {
+  var sess = req.session
+  console.log(req.params.id, "this is req.params")
+    utils.getListingById(req.params.id)
+    .then(function(data) {
+      console.log(data, 'this is this')
+      res.json(data[0])
+    })
 })
 
 router.delete('/listing/:id', function(req, res) {

@@ -1,7 +1,10 @@
 
 module.exports = {
 
+  getListingById: require('./getListingById'),
   getAllListings: require('./getAllListings'),
+  getAllUsers: require('./getAllUsers'),
+  getAllFeedback: require('./getAllFeedback'),
   getUserById: require('./getUserById'),
   getUserByListingId: require('./getUserById'),
   getUserByUsername: require('./getUserByUsername'),
@@ -12,6 +15,7 @@ module.exports = {
   getListingsByLocation: require('./getListingsByLocation'),
   saveFeedback: require('./saveFeedback'),
   addListingToUser: require('./addListingToUser'),
-  deleteListing: require('./deleteListing')
+  deleteListing: require('./deleteListing'),
+  updateListingWithFeedback: require('./updateListingWithFeedback')
 
 }

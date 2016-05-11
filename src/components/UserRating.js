@@ -17,7 +17,7 @@ class UserRating extends Component {
       spanArray = <div>User yet to be rated</div>
     else {
       for (var i=0; i < this.props.user.get('rating'); i++) {
-        spanArray.push(<div><span className="star" aria-hidden="true">★</span></div>)
+        spanArray.push(<div className="stars"><span aria-hidden="true">★</span></div>)
       }
     }
     return spanArray

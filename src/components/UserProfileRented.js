@@ -4,12 +4,40 @@ import FeedbackForm from './FeedbackForm'
 
 class UserProfileRented extends Component {
 
-  mount(){
-    ReactDOM.render(<FeedbackForm id={this.props.id} unmount={this.unmount.bind(this)}/>, document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
+  constructor(props) {
+    super(props)
+    this.state = {
+      feedbackFormVisible: false,
+      feedbackSubmitted: false,
+      feedback: <div></div>
+    }
   }
 
-  unmount(){
-    ReactDOM.unmountComponentAtNode(document.getElementById(`fb-form-${this.props.listing.get('listing_ID')}`))
+  handleClick(e) {
+    e.preventDefault()
+    this.toggleFeedbackForm()
+  }
+
+  toggleFeedbackForm() {
+    this.setState({ feedbackFormVisible: !this.state.feedbackFormVisible })
+  }
+
+  submitFeedback(feedback) {
+    this.setState({ feedbackSubmitted: true, feedbackFormVisible: false, feedback: feedback })
+  }
+
+  getFeedbackState() {
+    if(this.state.feedbackFormVisible && !this.state.feedbackSubmitted && !this.props.listing.get('hasFeedback'))
+      return <button className="btn btn-lg btn-danger" onClick={this.handleClick.bind(this)}>Cancel</button>
+    else if(!this.state.feedbackFormVisible && !this.state.feedbackSubmitted && !this.props.listing.get('hasFeedback'))
+      return <button className="btn btn-lg btn-primary" onClick={this.handleClick.bind(this)}>Place Feedback</button>
+    else
+      return (
+        <div className="alert alert-success" role="alert">
+          <h4>Thank you for leaving feedback</h4>
+          {this.state.feedback}
+        </div>
+      )
   }
 
   render() {
@@ -20,14 +48,15 @@ class UserProfileRented extends Component {
           <img src={listing.get('url')} width="200px"/>
         </div>
         <h2>Spaces I'm currently renting</h2>
+        <h3>{listing.get('heading')}</h3>
         <h3>{listing.get('suburb')}</h3>
         <h6>{listing.get('size')}</h6>
         <h6>${listing.get('price')}</h6>
         <h6>{listing.get('description')}</h6>
         <div className="row-centered">
-        <button className="btn btn-lg btn-primary" onClick={this.mount.bind(this)}>Place Feedback</button>
+          {this.getFeedbackState()}
+          {this.state.feedbackFormVisible ? <FeedbackForm listing={this.props.listing} submitFeedback={this.submitFeedback.bind(this)} /> : null}
         </div>
-        <div id={`fb-form-${listing.get('listing_ID')}`}></div>
       </div>
     )
   }

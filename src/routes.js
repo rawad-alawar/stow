@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard'
 import ListingProfile from './components/ListingProfile'
 import Login from './components/Login'
 import UserProfile from './components/UserProfile'
+import EditListing from './components/EditListing'
 
 
 export default (
@@ -19,6 +20,8 @@ export default (
       <Route path='upload' component={Upload}/>
       <Route path='listing/:id' component={ListingProfile}/>
       <Route path='user/:id' component={UserProfile}/>
+      <Route path='EditListing/:id' component={EditListing}/>
+
 
     </Route>
   </Router>
