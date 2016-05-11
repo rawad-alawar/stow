@@ -52,9 +52,11 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
     .end((err,res) => {
       if(err) console.log(err)
       else {
-        if(Number.isInteger(res.body)){
+        var id = res.body.id
+        console.log('logup response', res.body)
+        if(Number.isInteger(id)){
           request
-            .get(`/user/${res.body}`)
+            .get(`/user/${id}`)
             .end((err,res) => {
               if(err) console.log(err)
               else {
