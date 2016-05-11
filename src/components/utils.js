@@ -53,7 +53,6 @@ export const loginOrSignUp = (action, formData, cbSuccess, cbError) => {
       if(err) console.log(err)
       else {
         var id = res.body.id
-        console.log('logup response', res.body)
         if(Number.isInteger(id)){
           request
             .get(`/user/${id}`)
@@ -158,6 +157,12 @@ export const addNewListing = (action, listingId, formData) => {
                         loadListingsToStore()
                         if(action == 'upload')
                           hashHistory.push('/')
+                        else {
+                          setTimeout(() => {
+                            loadListingsToStore()
+                            hashHistory.push('/user/userId.body')
+                          }, 1000)
+                        }
                       }
                       else console.log('fail')
                     }
