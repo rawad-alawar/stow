@@ -26,15 +26,14 @@ class ListingProfile extends Component {
   }
 
   getUserEmail(id){
-    request
-    .get('/singleuser/' + id)
-    .end((err, res) => {
-      var element = <div><p>{res.body.email}</p></div>
-      this.setState({
-        email: this.state.email = element
-      })
-      return
-    })
+    var {id} = this.props.params
+    var listerId = this.props.listings.filter(li => {
+      return li.get('listing_ID') == id
+    }).first().get('lister_ID')
+    var email = this.props.users.filter(u => {
+      return u.get('user_ID') == listerId
+    }).first().get('email')
+    this.setState({email: this.state.email = <div><p>{email}</p></div>})
   }
 
   handleClick(e) {
@@ -81,7 +80,8 @@ class ListingProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    listings:state.get('listings')
+    listings:state.get('listings'),
+    users: state.get('users')
   }
 }
 
