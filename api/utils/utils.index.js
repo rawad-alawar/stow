@@ -15,6 +15,7 @@ module.exports = {
   getListingsByLocation: require('./getListingsByLocation'),
   saveFeedback: require('./saveFeedback'),
   addListingToUser: require('./addListingToUser'),
-  deleteListing: require('./deleteListing')
+  deleteListing: require('./deleteListing'),
+  updateListingWithFeedback: require('./updateListingWithFeedback')
 
 }

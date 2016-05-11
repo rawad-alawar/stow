@@ -210,7 +210,8 @@ export const saveFeedback = formData => {
     .end((err, changedId)=>{
       if(err) console.log(err)
       else {
-        if(changedId.body > 0) {
+        if(changedId.body.changedListingId > 0 &&
+          changedId.body.changedFeedbackId > 0) {
           console.log('success')
           loadFeedbackToStore()
         }
