@@ -97,6 +97,13 @@ router.get('/list', function(req, res) {
   })
 })
 
+router.get('/users', function(req, res) {
+  utils.getAllUsers()
+  .then(function(users) {
+    res.json(users)
+  })
+})
+
 router.get('/user/:id', function(req, res) {
   utils.getUserById(req.params.id)
   .then(function(data){
@@ -126,9 +133,16 @@ router.get('/listing/:city', function(req, res){
 })
 
 router.post('/feedback/add', function(req, res){
-  utils.saveFeedback(req.body)
-  .then(function(){
-    res.end()
+  utils.saveFeedback(req.session.user_ID, req.body)
+  .then(function(changedId){
+    res.json(changedId)
+  })
+})
+
+router.get('/feedback', function(req, res) {
+  utils.getAllFeedback()
+  .then(function(feedback) {
+    res.json(feedback)
   })
 })
 
