@@ -12,6 +12,7 @@ console.log(webdriver)
 
 driver.get('http://localhost:8080/');
 
+driver.findElement(webdriver.By.id('signupBtn'))
 driver.findElement(webdriver.By.name('logInOut')).click();
 driver.findElement(webdriver.By.id('inputUsername')).sendKeys('selenium123');
 driver.findElement(webdriver.By.id('inputPassword')).sendKeys('123');
