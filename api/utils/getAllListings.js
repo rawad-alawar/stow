@@ -10,6 +10,4 @@ function getAllListings(){
     })
 }
 
-
-
 module.exports = getAllListings

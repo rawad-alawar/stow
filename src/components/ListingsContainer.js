@@ -57,8 +57,6 @@ class ListingsContainer extends Component {
   }
 }
 
-
-
 function mapStateToProps(state) {
   return {
     listings: state.get('listings')
