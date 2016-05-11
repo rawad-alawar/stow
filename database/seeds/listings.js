@@ -7,7 +7,6 @@ exports.seed = function(knex, Promise) {
     // Inserts seed entries
     knex('listings').insert({
       heading:'Great Stow',
-      renter_ID: ,
       lister_ID: 1,
       listerName: 'Gonzo',
       suburb:'Te Aro',
@@ -21,7 +20,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great location',
-      renter_ID: ,
       lister_ID: 2,
       listerName: 'Big Bird',
       suburb:'Te Aro',
@@ -35,7 +33,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Warm space,with a view!',
-      renter_ID: ,
       lister_ID: 3,
       listerName: 'Oscar',
       suburb:'Aro Valley',
@@ -49,7 +46,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'place with a view',
-      renter_ID: ,
       lister_ID: 4,
       listerName: 'Bert',
       suburb:'Thorndon',
@@ -63,7 +59,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great Stow,secure location',
-      renter_ID: ,
       lister_ID: 5,
       listerName: 'Ernie',
       suburb:'Kilbirnie',
@@ -77,7 +72,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great Stow, secure location',
-      renter_ID: ,
       lister_ID: 6,
       listerName: 'Kermit',
       suburb:'Oriental Bay',
@@ -91,7 +85,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Secure and safe',
-      renter_ID: ,
       lister_ID: 7,
       listerName: 'Snufaluffagus',
       suburb:'Aro Valley',
@@ -105,7 +98,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great location',
-      renter_ID: ,
       lister_ID: 8,
       listerName: 'Elmo',
       suburb:'Hataitai',
@@ -119,7 +111,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Greatest stow in all of Winterfell',
-      renter_ID: ,
       lister_ID: 9,
       listerName: 'Miss Piggy',
       suburb:'Mount Victoria',
@@ -133,7 +124,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great Stow of Brooklyn',
-      renter_ID: ,
       lister_ID: 10,
       listerName: "The Count",
       suburb:'Brooklyn',
@@ -147,7 +137,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great Stow in the kitchen',
-      renter_ID: ,
       lister_ID: 11,
       listerName: 'Cookie Monster',
       suburb:'Mount Cook',
@@ -161,7 +150,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Greatest PokeStow',
-      renter_ID: ,
       lister_ID: 12,
       listerName: 'Pikachu',
       suburb:'Mount Cook',
@@ -175,7 +163,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Great Stow of the south',
-      renter_ID: ,
       lister_ID: 13,
       listerName: "Kawasaki Jones",
       suburb:'Oriental Bay',
@@ -189,7 +176,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Grand Stow',
-      renter_ID: ,
       lister_ID: 14,
       listerName: 'SeaDoo Slayer',
       suburb:'Hataitai',
@@ -203,7 +189,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Lots of room!!!',
-      renter_ID:,
       lister_ID: 15,
       listerName: "morbiditytattler",
       suburb:'CBD',
@@ -217,7 +202,6 @@ exports.seed = function(knex, Promise) {
     }),
     knex('listings').insert({
       heading:'Clean space',
-      renter_ID: ,
       lister_ID:16 ,
       listerName: "hiddenshelduck",
       suburb:'Hauraki Gulf Islands ',
@@ -230,7 +214,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Plenty of room',
-      renter_ID: ,
       lister_ID: 17,
       listerName: "parmesaneyes",
       suburb:'Manukau ',
@@ -243,7 +226,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Very flexible',
-      renter_ID: ,
       lister_ID: 18,
       listerName: "dustybasement",
       suburb:'Castor Bay',
@@ -256,7 +238,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Climate control, clean',
-      renter_ID: ,
       lister_ID: 19,
       listerName: "gobsmackedparka",
       suburb:'Manukau ',
@@ -269,7 +250,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Nice stow',
-      renter_ID: ,
       lister_ID: 20,
       listerName: "happitoe",
       suburb:'Hauraki Gulf Islands ',
@@ -282,7 +262,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'I have plenty of space',
-      renter_ID: ,
       lister_ID: 21,
       listerName: "laptipper",
       suburb:'Awhitu',
@@ -295,7 +274,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Nice place',
-      renter_ID: ,
       lister_ID: 22,
       listerName: "slicky",
       suburb:'Manukau ',
@@ -308,7 +286,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'big room, can have whole space',
-      renter_ID: ,
       lister_ID: 23,
       listerName: "boatcomeboatgo",
       suburb:'Awhitu',
@@ -321,7 +298,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Perfect for inbetween moves',
-      renter_ID: ,
       lister_ID: 24,
       listerName: "inbeforeGeorge",
       suburb:'Manukau ',
@@ -334,7 +310,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Not that big, perfect for small furniture',
-      renter_ID: ,
       lister_ID: 25,
       listerName: "stowin and flowin",
       suburb:'Hauraki Gulf Islands ',
@@ -347,7 +322,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'still room for more!!!',
-      renter_ID: ,
       lister_ID: 26,
       listerName: "makemodel",
       suburb:'CBD',
@@ -360,7 +334,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Great space',
-      renter_ID: ,
       lister_ID: 27,
       listerName: "agaveking",
       suburb:'Franklin District',
@@ -373,7 +346,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'clean, climate control',
-      renter_ID: ,
       lister_ID: 28,
       listerName: "idownit",
       suburb:'CBD',
@@ -386,7 +358,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'room for more',
-      renter_ID: ,
       lister_ID: 29,
       listerName: "letitbetold",
       suburb:'Franklin District',
@@ -399,7 +370,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'perfect for a couch',
-      renter_ID:,
       lister_ID: 30,
       listerName: "tooSpacy",
       suburb:'Bombay',
@@ -412,7 +382,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'im flexible, contact me',
-      renter_ID: ,
       lister_ID: 31,
       listerName: "CBD",
       suburb:'auckland',
@@ -425,7 +394,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Safe with me',
-      renter_ID: ,
       lister_ID: 32,
       listerName: "spacecitystows",
       suburb:'CBD',
@@ -438,7 +406,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Highly reviewed, good price',
-      renter_ID: ,
       lister_ID: 33,
       listerName: "bigboi12",
       suburb:'Castor Bay',
@@ -451,7 +418,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'rent now!!',
-      renter_ID: ,
       lister_ID: 34,
       listerName: "lostnfound",
       suburb:'Hauraki Gulf Islands ',
@@ -464,59 +430,54 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'great space',
-      renter_ID: ,
       lister_ID: 35,
       listerName: "mylo44",
       suburb:'Central City',
       city:'christchurch',
       size:'2 * 2 m',
-      price:,
+      price:12,
       description: 'a real beauty of spot',
       url: 'http://www.fairdinkumsheds.co.nz/sites/default/files/uploads/shed_2_inside.jpg',
       isAvailable:true,
       hasFeedback: false
     }),knex('listings').insert({
       heading:'college students welcome',
-      renter_ID: ,
       lister_ID: 36,
       listerName: "colt32",
       suburb:'Avonside',
       city:'christchurch',
       size:'1 * 3 m',
-      price:,
+      price:20,
       description: 'a real beauty of spot',
       url: 'http://basement.virginiawhalen.com/wp-content/uploads/2015/01/Basement-Storage-Shelves.jpg',
       isAvailable:true,
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Will stow anything legal',
-      renter_ID: ,
       lister_ID: 37,
       listerName: "zigzag",
       suburb:'Hei Hei',
       city:'christchurch',
       size:'2 * 2 m',
-      price:,
+      price:12,
       description: 'a real beauty of spot',
       url: 'http://photowizdesign.com/wp-content/uploads/2016/03/Striking-Meier-Road-Barn-Mork-Ulnes-Architects-Garage-and-Shed-Interior-Design-with-Neon-Ceiling-Lamps-on-Sloping.jpg',
       isAvailable:true,
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Very clean stow',
-      renter_ID: ,
       lister_ID: 38,
       listerName: "whereyaat",
       suburb:'Redcliffs',
       city:'christchurch',
       size:'3 * 2 m',
-      price:,
+      price:10,
       description: 'a real beauty of spot',
       url: 'https://s-media-cache-ak0.pinimg.com/736x/72/fa/2d/72fa2d3b4d0c5d631c427dd0670d49c3.jpg',
       isAvailable:true,
       hasFeedback: false
     }),knex('listings').insert({
       heading:'lots of space',
-      renter_ID: ,
       lister_ID: 39,
       listerName: "atx4life",
       suburb:'Papanui',
@@ -529,7 +490,6 @@ exports.seed = function(knex, Promise) {
       hasFeedback: false
     }),knex('listings').insert({
       heading:'Catch me stowin',
-      renter_ID: ,
       lister_ID: 40,
       listerName: "kiwiclass",
       suburb:'Hornby',
