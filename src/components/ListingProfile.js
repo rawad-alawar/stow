@@ -29,6 +29,7 @@ class ListingProfile extends Component {
     request
     .get('/singleuser/' + id)
     .end((err, res) => {
+      console.log(res)
       var element = <div><p>{res.body.email}</p></div>
       this.setState({
         email: this.state.email = element

@@ -9,15 +9,24 @@ class ListingsContainer extends Component {
     super(props)
     this.state={
       filterString: 'city',
-      filterInput: 'Wellington',
-      defaultCity: 'Wellington'   //will be changed to geolocated city
+      filterInput: 'wellington',
+      defaultCity: 'wellington'   //will be changed to geolocated city
     }
   }
 
   handleFilter(){
     this.setState({
-      filterInput: this.refs.filterInput.value
+      filterInput: this.refs.filterInput.value.toLowerCase()
     })
+  }
+
+  getUsersLocation(){
+    const userLocation = document.querySelector("#userLocation").value.toLowerCase()
+    console.log(userLocation)
+      this.setState({
+        filterInput: this.state.filterInput = userLocation,
+        defaultCity: this.state.defaultCity = userLocation
+      })
   }
 
   render() {
@@ -27,9 +36,9 @@ class ListingsContainer extends Component {
     const appendedListings = availableListings.filter((t) => {
       if(this.refs.filterSelect){
         if (this.state.filterInput.length ==0){
-          return (t.get('city')== this.state.defaultCity )
+          return (t.get('city').toLowerCase()== this.state.defaultCity )
         }else if (this.refs.filterSelect.value=='city' && this.state.filterInput.length>-1){
-          return (t.get('city') == this.state.filterInput)
+          return (t.get('city').toLowerCase() == this.state.filterInput)
         }else if (this.refs.filterSelect.value=='price'){
           return (t.get('price') <= parseInt(this.state.filterInput))
         }
@@ -43,6 +52,7 @@ class ListingsContainer extends Component {
     return (
       <div>
         <div className="searchBar">
+          <button type="button" onClick={this.getUsersLocation.bind(this)}>Get Nearest Listing</button>
           <select ref="filterSelect" >
             <option value='city'>City</option>
             <option value="price">price</option>
