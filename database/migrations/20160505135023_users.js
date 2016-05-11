@@ -4,9 +4,8 @@ exports.up = function(knex, Promise) {
   console.log('create table')
 
   return knex.schema.createTableIfNotExists('users', function(table) {
-      table.increments('user_ID')
-      table.string('firstName')
-      table.string('lastName')
+      table.increments()
+      table.integer('user_ID')
       table.string('username')
       table.string('email')
       table.string('password')
