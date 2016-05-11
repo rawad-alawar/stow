@@ -43,7 +43,7 @@ class ListingsContainer extends Component {
           return (t.get('price') <= parseInt(this.state.filterInput))
         }
       }else{
-        return t.get('city') == this.state.filterInput
+        return t.get('city').toLowerCase() == this.state.filterInput
       }
     })
     .map( listing => {

@@ -161,6 +161,15 @@ router.post('/upload', function(req, res) {
   res.end()
 })
 
+router.get('/getlisting/:id', function(req, res) {
+  var sess = req.session
+    utils.getListingById(req.params.id)
+    .then(function(err, res) {
+      console.log(res)
+      res.json(res)
+    })
+})
+
 router.delete('/listing/:id', function(req, res) {
   var sess = req.session
   if(sess.user_ID) {
