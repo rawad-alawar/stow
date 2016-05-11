@@ -20,7 +20,7 @@ class Jumbotron extends Component {
     <div className="jumbotron main-jumbotron col-sm-12 text-center">
       <h1 className='bigheading'>Stow</h1>
       <p className='lead'>Turn your spare space into spare cash!</p>
-      <button name='upload' type='button' className='btn btn-lg btn-info' onClick={this.handleClick.bind(this)}>List your space now!</button>
+      <button name='upload' type='button' className='btn btn-lg btn-info listSpaceBtn' onClick={this.handleClick.bind(this)}>List your space now!</button>
     </div>
     )
   }

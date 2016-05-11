@@ -68,7 +68,7 @@ class Upload extends Component {
 
   render() {
     return (
-      <div className="row-sm-12 row-centered">
+      <div className="row-sm-12 row-centered uploadForm">
         <div className="jumbotron col-sm-5 text-center col-centered">
           <form className="form-signin">
             <h2 className="form-signin-heading">Upload your stow space! </h2>
