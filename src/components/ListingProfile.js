@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
-
 import ListingsContainer from './ListingsContainer'
 import ListingsPreview from './ListingPreview'
 import {addNewListing} from './utils'
@@ -19,7 +18,7 @@ class ListingProfile extends Component {
     const {id} = this.props.params
     const listing = nextProps.listings.filter(l => l.get('listing_ID') == id).first()
     if(!listing.get('isAvailable'))
-      this.setState({rentButton: <div class="alert alert-success" role="alert"><h4>Congratulations! You are renting this space!</h4></div>})
+      this.setState({rentButton: <div className="alert alert-success" role="alert"><h4>Congratulations! You are renting this space!</h4></div>})
   }
 
   handleClick(e) {
