@@ -12,6 +12,16 @@
 <tr><td rowspan="1" colspan="3">Stow sign up test</td></tr>
 </thead><tbody>
 <tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>Stow: Lets you visit the log in page</td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>xpath=(//button[@type='button'])[2]</td>
 	<td></td>
@@ -35,6 +45,16 @@
 	<td>click</td>
 	<td>xpath=(//button[@type='button'])[4]</td>
 	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td></td>
+	<td>Stow: Lets you create an account</td>
 </tr>
 </tbody></table>
 </body>

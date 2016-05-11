@@ -4,42 +4,32 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>userProfileandLogOutSelenium</title>
+<title>canRentStowLoggedInSelenium</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">userProfileandLogOutSelenium</td></tr>
+<tr><td rowspan="1" colspan="3">canRentStowLoggedInSelenium</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>/#/?_k=2q0ptk</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForPageToLoad</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=a.accountLink</td>
+	<td>clickAt</td>
+	<td>css=img.img</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>name=removeListing</td>
+	<td>name=rent</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>name=logInOut</td>
+	<td>name=back</td>
 	<td></td>
-</tr>
-<tr>
-	<td>echo</td>
-	<td></td>
-	<td>Stow lets you </td>
 </tr>
 
 </tbody></table>
