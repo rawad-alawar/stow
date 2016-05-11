@@ -111,6 +111,13 @@ router.get('/user/:id', function(req, res) {
   })
 })
 
+router.get('/singleuser/:id', function(req, res) {
+  utils.getUserById(req.params.id)
+  .then(function(data){
+    res.json(data[0])
+  })
+})
+
 router.post('/add/:id', function(req, res) {
   utils.addListingToUser(req.body.action, req.params.id, req.body.listingId, req.body.formData)
   .then(function(changedId) {
