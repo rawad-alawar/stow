@@ -70,6 +70,10 @@ class Signup extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {}
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     setCurrentUser: user => {

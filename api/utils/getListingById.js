@@ -5,8 +5,8 @@ function getListingById(listingID){
   return knex('listings')
   .where({listing_ID: listingID})
   .then(function(data) {
-    console.log(data[0])
-    return data[0]
+    console.log(data)
+    return data
   })
 }
 

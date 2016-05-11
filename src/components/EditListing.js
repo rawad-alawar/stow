@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {hashHistory, Link} from 'react-router'
 import request from 'superagent'
 
-import {validateForm, addNewListing} from './utils'
+import {deleteListing, validateForm, addNewListing} from './utils'
 
 class EditListing extends Component {
 
@@ -12,11 +12,26 @@ class EditListing extends Component {
     super()
     this.state = {
       error: <div></div>,
-      style: ''
+      style: '',
+      listing: ''
     }
   }
 
+  getListingFromDatabase(params){
+    var listId = params.id
+    console.log(listId)
+    request
+    .get('/getlisting/'+listId)
+    .end((err, res) => {
+      console.log(res.body)
+      this.setState({
+        listing: this.state.listing = res.body
+      })
+    })
+  }
+
  componentDidMount() {
+   this.getListingFromDatabase(this.props.params)
       $('#upload').cloudinary_upload_widget(
       {
         cloud_name: 'dvzbt8kfq',
@@ -58,8 +73,11 @@ class EditListing extends Component {
     }
 
     var form = validateForm(formData)
-    if(form.isValid)
+    if(form.isValid){
+      console.log(this.state.listing.listing_ID)
+      deleteListing(this.state.listing.listing_ID)
       addNewListing('upload', null, formData)
+    }
     else {
       this.setState({error: <p className='onError'>Please fill in the required fields</p>})
       this.setState({style: 'error'})
@@ -71,26 +89,26 @@ class EditListing extends Component {
       <div className="row-sm-12 row-centered uploadForm">
         <div className="jumbotron col-sm-5 text-center col-centered">
           <form className="form-signin">
-            <h2 className="form-signin-heading">Upload your stow space! </h2>
+            <h2 className="form-signin-heading">Edit your stow space! </h2>
             <label className="sr-only">Title</label>
-            <input type="text" id="title" className={`form-control ${this.state.style}`} placeholder="title" ref='title' required autofocus/>
+            <input type="text" id="title" className={`form-control ${this.state.style}`}  ref='title' placeholder={this.state.listing.heading} required autofocus/>
 
             <label for="details" className="sr-only">Tell us about your stow space!</label>
-            <textarea className="form-control img-responsive" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="75" id="description" ref='description' required autofocus></textarea>
+            <textarea className="form-control img-responsive" placeholder="e.g very large space, indoor cupboard..." rows="8" cols="75" id="description" ref='description' placeholder={this.state.listing.description} required autofocus></textarea>
             <div id="upload"></div>
             <div id="url" type="hidden" ref="url"></div>
 
             <label className="sr-only">Suburb</label>
-            <input type="text" id="suburb" className={`form-control ${this.state.style}`} placeholder="Suburb..." ref='suburb' required autofocus/>
+            <input type="text" id="suburb" className={`form-control ${this.state.style}`} ref='suburb' placeholder={this.state.listing.suburb} required autofocus/>
 
             <label className="sr-only">City</label>
-            <input type="text" id="city" className={`form-control ${this.state.style}`} placeholder="City..." ref='city' required autofocus/>
+            <input type="text" id="city" className={`form-control ${this.state.style}`} ref='city' placeholder={this.state.listing.city} required autofocus/>
 
             <label className="sr-only">Price</label>
-            <input type="text" id="price" className={`form-control ${this.state.style}`} placeholder="price" ref='price' required autofocus/>
+            <input type="text" id="price" className={`form-control ${this.state.style}`} ref='price' placeholder={this.state.listing.price} required autofocus/>
 
             <label className="sr-only">Approximate Size</label>
-            <input type="text" id="size" className="form-control" placeholder="Approximate size..." ref='size' required autofocus/>
+            <input placeholder={this.state.listing.size} type="text" id="size" className="form-control" ref='size' required autofocus/>
 
             {this.state.error}
 
