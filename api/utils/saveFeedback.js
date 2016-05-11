@@ -6,8 +6,7 @@ function saveFeedback(feedbackerId, formData){
     listingId: formData.listingId.value,
     poster_ID: formData.posterId.value,
     comment: formData.comment.value,
-    rating: formData.rating.value || null,
-    created_at: Date()
+    rating: formData.rating.value || null
   })
 }
 

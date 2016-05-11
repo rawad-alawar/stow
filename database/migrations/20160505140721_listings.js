@@ -21,7 +21,7 @@ exports.up = function(knex, Promise) {
       table.dateTime('startDate')
       table.dateTime('endDate')
       table.boolean('isAvailable')
-      table.timestamps()
+      table.boolean('hasFeedback')
   })
 };
 

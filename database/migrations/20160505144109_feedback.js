@@ -10,12 +10,11 @@ exports.up = function(knex, Promise) {
       table.integer('poster_ID')
       table.string('comment')
       table.integer('rating')
-      table.timestamps()
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('feedback').then(function () {
     console.log('feedback table was dropped')
   })
-};
+}
