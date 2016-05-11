@@ -19,11 +19,9 @@ class EditListing extends Component {
 
   getListingFromDatabase(params){
     var listId = params.id
-    console.log(listId)
     request
     .get('/getlisting/'+listId)
     .end((err, res) => {
-      console.log(res.body)
       this.setState({
         listing: this.state.listing = res.body
       })

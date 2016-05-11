@@ -57,7 +57,7 @@ class ListingsContainer extends Component {
             <option value='city'>City</option>
             <option value="price">price</option>
           </select>
-          <input placeholder={this.state.defaultCity} ref='filterInput' onChange={this.handleFilter.bind(this)} type='text' />
+          <input ref='filterInput' placeholder="Wellington" onChange={this.handleFilter.bind(this)} type='text' />
         </div>
         <div className="row row-centered">
           {appendedListings}
