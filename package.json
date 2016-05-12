@@ -2,7 +2,7 @@
   "name": "stow",
   "version": "0.1.0",
   "scripts": {
-    "start": "npm run build && node ./bin/www",
+    "start": "node ./bin/www",
     "start:dev": "node ./bin/www",
     "build": "webpack --config ./webpack.prod.config.js --progress --colors",
     "watch": "webpack --config ./webpack.dev.config.js --progress --colors --watch",

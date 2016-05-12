@@ -11,7 +11,7 @@ function addListingToUser(action, userId, listingId, formData) {
           isAvailable: false
         })
         .then(function(changedId) {
-          return changedId
+          return [changedId]
         })
       break
     case 'upload':

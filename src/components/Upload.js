@@ -87,7 +87,7 @@ class Upload extends Component {
             <input type="text" id="city" className={`form-control ${this.state.style}`} placeholder="City..." ref='city' required autofocus/>
 
             <label className="sr-only">Price</label>
-            <input type="text" id="price" className={`form-control ${this.state.style}`} placeholder="price" ref='price' required autofocus/>
+            <input type="text" id="price" className={`form-control ${this.state.style}`} placeholder="$/week" ref='price' required autofocus/>
 
             <label className="sr-only">Approximate Size</label>
             <input type="text" id="size" className="form-control" placeholder="Approximate size..." ref='size' required autofocus/>

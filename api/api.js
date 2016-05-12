@@ -167,10 +167,8 @@ router.post('/upload', function(req, res) {
 
 router.get('/getlisting/:id', function(req, res) {
   var sess = req.session
-  console.log(req.params.id, "this is req.params")
     utils.getListingById(req.params.id)
     .then(function(data) {
-      console.log(data, 'this is this')
       res.json(data[0])
     })
 })

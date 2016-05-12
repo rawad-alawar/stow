@@ -152,7 +152,7 @@ export const addNewListing = (action, listingId, formData) => {
                   .end((err,changedId) => {
                     if(err) console.log(err)
                     else {
-                      if(changedId.body > 0){
+                      if(changedId.body[0] > 0){
                         console.log('success')
                         loadListingsToStore()
                         if(action == 'upload')
